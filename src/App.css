@@ -1,0 +1,30 @@
+
+
+
+.navbar {
+  background-color: blue;
+  margin-bottom: 200px;
+}
+
+.logo {
+  width: 12rem;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.recipe-square {
+  background-color: #f0f0f0;
+  padding-bottom: 100%;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 18px;
+}
+
+
+
+
