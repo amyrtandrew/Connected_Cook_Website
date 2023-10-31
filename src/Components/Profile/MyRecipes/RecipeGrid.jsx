@@ -7,6 +7,7 @@ const RecipeGrid = ({ recipes }) => {
       {recipes.map((recipe) => (
         <div className="recipe-square" key={recipe.id}>
           {recipe.name}
+          <img id='recipe-image' src={recipe.image} />
         </div>
       ))}
     </div>

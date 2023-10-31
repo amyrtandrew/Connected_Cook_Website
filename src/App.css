@@ -19,12 +19,15 @@
 
 .recipe-square {
   background-color: #f0f0f0;
-  padding-bottom: 100%;
   border: 1px solid #ccc;
   text-align: center;
   font-size: 18px;
+  cursor: pointer;
 }
 
+#recipe-image {
+  flex-wrap: wrap;
+}
 
 
 
