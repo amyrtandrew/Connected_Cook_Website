@@ -2,6 +2,8 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
 import Logo from './Logo';
+import ExploreHeader from '../Profile/Explore/Header/ExploreHeader';
+import { Link } from 'react-router-dom';
 
 
 
@@ -16,7 +18,7 @@ function NavBar() {
   <div className="collapse navbar-collapse" id="navbarNavDropdown">
     <ul className="navbar-nav">
       <li className="nav-item">
-        <a className="nav-link" href="#">Explore</a>
+        <Link to='/ExploreHeader' className="nav-link" href="#" >Explore</Link>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">My Recipes</a>

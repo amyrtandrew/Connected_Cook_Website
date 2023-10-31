@@ -5,6 +5,8 @@ import NavBar from './Components/NavBar/NavBar'
 import IndividualRecipe from './Components/Profile/Explore/IndividualRecipe'
 import RecipeGrid from './Components/Profile/MyRecipes/RecipeGrid'
 import { Link, Outlet } from 'react-router-dom';
+import ExploreHeader from './Components/Profile/Explore/Header/ExploreHeader'
+import { Nav } from 'react-bootstrap'
 
 
 function App() {
@@ -24,9 +26,9 @@ function App() {
 
   return (
     <div>
-      <Link to='/navbar'>NavBar</Link>
-      <Link to='/RecipeGrid'>Recipe Grid</Link>
-      {/* <RecipeGrid recipes={recipes}/> */}
+      <NavBar />
+      <Link to='/IndividualRecipe'>Individual Recipe</Link>
+      <RecipeGrid recipes={recipes}/>
       <Outlet />
     </div>
   

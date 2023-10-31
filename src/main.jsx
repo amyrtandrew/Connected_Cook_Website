@@ -8,13 +8,17 @@ import RecipeGrid from './Components/Profile/MyRecipes/RecipeGrid.jsx';
 import NavBar from './Components/NavBar/NavBar.jsx';
 import {RouterProvider} from 'react-router-dom';
 import ExploreHeader from './Components/Profile/Explore/Header/ExploreHeader.jsx';
+import IdvRecipe from './pages/IdvRecipe.jsx';
+import IndividualRecipe from './Components/Profile/Explore/IndividualRecipe.jsx';
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
 
     <Route path="/" element={<App />} >
-      <Route path="/navbar" element={<NavBar />} />
-      <Route path="/RecipeGrid" element={< RecipeGrid/>} />
+      <Route path="/navbar" element={<NavBar/>}/>
+      <Route path="/IndividualRecipe" element={< IndividualRecipe/>} />
+      <Route path="/ExploreHeader" element={< ExploreHeader/>} />
     </Route>
   ),
 );
