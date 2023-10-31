@@ -7,6 +7,7 @@ import RecipeGrid from './Components/Profile/MyRecipes/RecipeGrid'
 import { Link, Outlet } from 'react-router-dom';
 import ExploreHeader from './Components/Profile/Explore/Header/ExploreHeader'
 import { Nav } from 'react-bootstrap'
+import SingleRecipe from './Components/Profile/MyRecipes/SingleRecipe'
 
 
 function App() {
@@ -23,14 +24,20 @@ function App() {
     { id: 9, name: 'Recipe 9' },
     // Add more recipe objects as needed
   ];
+  let TEST_DATA = [
+  { id: 0, name: 'Content plan', category: 50, prepTime: 4, cookTime: 5, servings: 1, ingredients: 'butter', instructions: 'bake', notes: 'do not burn'},
+  { id: 0, name: 'Content plan', category: 50, prepTime: 4, cookTime: 5, servings: 1, ingredients: 'butter', instructions: 'bake', notes: 'do not burn'},
+  { id: 0, name: 'Content plan', category: 50, prepTime: 4, cookTime: 5, servings: 1, ingredients: 'butter', instructions: 'bake', notes: 'do not burn'}
+]
 
   return (
     <div>
-      <NavBar />
+      <SingleRecipe initialRecipeList={TEST_DATA}/>
+      {/* <NavBar />
       <Link to='/navbar'>navbar</Link>
       <Link to='/IndividualRecipe'>Individual Recipe</Link>
       {/* <RecipeGrid recipes={recipes}/> */}
-      <Outlet />
+      {/* <Outlet />  */}
     </div>
   
   );

@@ -11,7 +11,7 @@ const Name = ({ value, isEditing }) => {
         />
       </div>
   ) : (
-    <div>{value}</div>
+    <div>Name: {value}</div>
   )
 }
 

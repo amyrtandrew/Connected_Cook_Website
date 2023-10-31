@@ -1,6 +1,0 @@
-[
-  { id: 0, name: 'Content plan', category: 50, prepTime: 4 },
-  { id: 1, name: 'Copy writing', category: 50, prepTime: 2 },
-  { id: 2, name: 'Website design', category: 50, prepTime: 5 },
-  { id: 3, name: 'Website development', category: 100, prepTime: 5 },
-];
