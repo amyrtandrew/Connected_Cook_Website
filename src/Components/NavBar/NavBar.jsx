@@ -4,6 +4,7 @@ import HamburgerMenu from './HamburgerMenu/HamburgerMenu';
 import Logo from './Logo';
 import ExploreHeader from '../Profile/Explore/Header/ExploreHeader';
 import { Link } from 'react-router-dom';
+import MyRecipes from '../../pages/MyRecipes';
 
 
 
@@ -21,7 +22,7 @@ function NavBar() {
         <Link to='/ExploreHeader' className="nav-link" href="#" >Explore</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">My Recipes</a>
+        <Link to='/MyRecipes' className="nav-link" href="#">My Recipes</Link>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#" id="navbarHamburger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
