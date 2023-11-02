@@ -9,46 +9,25 @@ import {
   db,
 } from "../model.js";
 
-import recipeData from "../data/recipes.json" assert { type: "json" };
-
 console.log("Syncing database...");
 await db.sync({ force: true });
 
 console.log("Seeding database...");
 
-const {
-  name,
-  category,
-  prepTime,
-  cookTime,
-  servings,
-  ingredients,
-  instructions,
-  notes,
-} = Recipe;
+const cookie = await Recipe.create({
+  recipeId: 1,
+  recipeName: "cookies",
+  recipeFood: 3,
+  servings: 5,
+  instructions: "bake for an hour",
+  prepTime: 10,
+  cookTime: 15,
+  favorite: true,
+  categoryId: 1,
+  notes: "these are my notes",
+});
 
-const recipiesInDB = await Promise.all(
-  recipeData.map((recipe) => {
-    const newRecipe = Recipe.create({
-      name,
-      category,
-      prepTime,
-      cookTime,
-      servings,
-      ingredients,
-      instructions,
-      notes,
-    });
-
-    return newRecipe;
-  })
-);
-
-console.log(recipiesInDB);
-
-const usersInDB = await Promise.all(usersToCreate);
-
-console.log(usersInDB);
+console.log(cookie);
 
 await db.close();
 console.log("Finished seeding database!");

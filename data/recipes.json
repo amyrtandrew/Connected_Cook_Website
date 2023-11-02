@@ -1,22 +1,22 @@
 [
   {
-    "name": "cookie",
-    "category": "lunch",
+    "favorite": true,
     "prepTime": 4,
     "cookTime": 8,
     "servings": 2,
-    "ingredients": "flour, butter, sugar",
+    "recipeFood": 2,
+    "categoryId": 4,
     "instructions": "stir",
     "notes": "don't overmix"
   },
   {
-    "name": "cookie",
-    "category": "lunch",
+    "favorite": false,
     "prepTime": 4,
     "cookTime": 8,
     "servings": 2,
-    "ingredients": "flour, butter, sugar",
     "instructions": "stir",
-    "notes": "don't overmix"
+    "notes": "don't overmix",
+    "categoryId": 5,
+    "recipeFood": 3
   }
 ]

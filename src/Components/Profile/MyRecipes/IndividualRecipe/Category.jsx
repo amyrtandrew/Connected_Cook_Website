@@ -9,6 +9,7 @@ const Category = ({ value, isEditing, onValueChange }) => {
         value={value}
         onChange={(e) => onValueChange(e.target.value)}
       >
+        <option value="">Select</option>
         <option value="appetizer">appetizer</option>
         <option value="breakfast">breakfast</option>
         <option value="lunch">lunch</option>

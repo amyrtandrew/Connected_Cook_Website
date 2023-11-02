@@ -14,14 +14,21 @@ import { RouterProvider } from "react-router-dom";
 import ExploreHeader from "./Components/Profile/Explore/Header/ExploreHeader.jsx";
 import MyRecipes from "./pages/MyRecipes.jsx";
 import axios from "axios";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import Login from "./Components/Login/Login.jsx";
+import CreateAccount from "./Components/Login/CreateAccount.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
+    <Route path="/" element={<App />} errorElement={<ErrorPage />}>
       {/* <Route index element={<ExploreHeader/>} /> */}
-      <Route path="/navbar" element={<NavBar />} />
-      <Route path="/MyRecipes" element={<MyRecipes />} />
-      <Route path="/ExploreHeader" element={<ExploreHeader />} />
+      <Route path="/navbar" element={<NavBar />}>
+        <Route path="/recipe-grid" element={<RecipeGrid />} />
+        <Route path="/explore-header" element={<ExploreHeader />} />
+      </Route>
+      {/* <Route path="/login" element={<Login />}>
+        <Route path="/create-account" element={<CreateAccount />} />
+      </Route> */}
     </Route>
   )
 );

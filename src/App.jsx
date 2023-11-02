@@ -17,9 +17,10 @@ function App({ initialData }) {
       {/* <NavBar />
       <Link to='/navbar'>navbar</Link>
       {/* <RecipeGrid recipes={recipes}/> */}
-      {/* <Outlet />  */}
+      {/* <Outlet /> */}
       {/* <MyRecipes /> */}
-      <SingleRecipe initialData={initialData} />
+      <NavBar />
+      {/* <SingleRecipe initialData={initialData} /> */}
     </div>
   );
 }

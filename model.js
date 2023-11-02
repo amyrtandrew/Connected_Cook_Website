@@ -83,6 +83,10 @@ Recipe.init(
       autoIncrement: true,
       primaryKey: true,
     },
+    recipeName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     recipeFood: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -108,6 +112,10 @@ Recipe.init(
     },
     categoryId: {
       type: DataTypes.INTEGER,
+    },
+    notes: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {
