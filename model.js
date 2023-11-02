@@ -12,7 +12,7 @@ export class User extends Model {
 
 User.init(
   {
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -35,12 +35,12 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    user_recipes: {
+    userRecipes: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
     favorite: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BOOLEAN,
     },
   },
   {
@@ -57,10 +57,10 @@ export class UserRecipe extends Model {
 
 UserRecipe.init(
   {
-    recipe_id: {
+    recipeId: {
       type: DataTypes.INTEGER,
     },
-    user_id: {
+    userId: {
       type: DataTypes.STRING,
     },
   },
@@ -78,12 +78,12 @@ export class Recipe extends Model {
 
 Recipe.init(
   {
-    recipe_id: {
+    recipeId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    recipe_food: {
+    recipeFood: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
@@ -95,18 +95,18 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    prep_time: {
+    prepTime: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    cook_time: {
+    cookTime: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
     favorite: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BOOLEAN,
     },
-    category_id: {
+    categoryId: {
       type: DataTypes.INTEGER,
     },
   },
@@ -124,10 +124,10 @@ export class Favorite extends Model {
 
 Favorite.init(
   {
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
     },
-    recipe_id: {
+    recipeId: {
       type: DataTypes.INTEGER,
     },
   },
@@ -145,10 +145,10 @@ export class RecipeFood extends Model {
 
 RecipeFood.init(
   {
-    food_id: {
+    foodId: {
       type: DataTypes.INTEGER,
     },
-    recipe_id: {
+    recipeId: {
       type: DataTypes.INTEGER,
     },
   },
@@ -166,21 +166,21 @@ export class FoodItem extends Model {
 
 FoodItem.init(
   {
-    food_id: {
+    foodId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    food_name: {
+    foodName: {
       type: DataTypes.STRING,
     },
     amount: {
       type: DataTypes.FLOAT,
     },
-    recipe_food: {
+    recipeFood: {
       type: DataTypes.INTEGER,
     },
-    food_name: {
+    foodName: {
       type: DataTypes.INTEGER,
     },
   },
@@ -198,7 +198,7 @@ export class Category extends Model {
 
 Category.init(
   {
-    category_id: {
+    categoryId: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
