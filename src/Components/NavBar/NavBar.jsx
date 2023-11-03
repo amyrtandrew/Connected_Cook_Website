@@ -10,11 +10,9 @@ function NavBar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-primary">
-        <a className="navbar-brand" href="#">
-          <NavLink to="/">
-            <Logo />
-          </NavLink>
-        </a>
+        <NavLink to="/" className="navbar-brand" href="#">
+          <Logo />
+        </NavLink>
         <button
           className="navbar-toggler"
           type="button"

@@ -36,7 +36,7 @@ const Form = ({ initialData, initialIsEditing, onDeleteRecipe, id }) => {
       instructions: instructions,
       notes: notes,
     };
-    const response = await axios.put("/api/recipe", bodyObj);
+    const response = await axios.put(`/api/recipe/${id}`, bodyObj);
     if (!response.data.error) {
       setIsEditing(false);
     } else {

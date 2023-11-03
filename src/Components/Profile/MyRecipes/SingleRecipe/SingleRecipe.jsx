@@ -56,13 +56,16 @@ const SingleRecipe = () => {
   };
 
   const deleteRecipe = async (itemId) => {
-    const response = await axios.delete("/api/recipe");
-    if (!response.data.error) {
-      const filteredRecipe = recipeList.filter(
-        (recipeInfo) => recipeInfo.id !== itemId
-      );
-      setRecipeList(filteredRecipe);
-    }
+    const response = await axios.delete(`/api/recipe/${itemId}`);
+
+    setRecipeList(response.data);
+
+    // if (!response.data.error) {
+    //   const filteredRecipe = recipeList.filter(
+    //     (recipeInfo) => recipeInfo.id !== itemId
+    //   );
+    //   setRecipeList(filteredRecipe);
+    // }
   };
 
   return (
