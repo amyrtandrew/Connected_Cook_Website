@@ -36,14 +36,14 @@ const Form = ({ initialData, initialIsEditing, onDeleteRecipe, id }) => {
       instructions: instructions,
       notes: notes,
     };
-    const response = await axios.put(`/editRecipe/${id}`, bodyObj);
+    const response = await axios.put("/api/recipe", bodyObj);
     if (!response.data.error) {
       setIsEditing(false);
     } else {
       alert("something went wrong");
     }
   };
-  // const { name, category, prepTime, cookTime, servings, ingredients, instructions, notes} = initialData
+
   return (
     <div className="recipe-form">
       <Name isEditing={isEditing} value={name} onValueChange={setName} />

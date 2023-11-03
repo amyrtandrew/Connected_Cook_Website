@@ -3,15 +3,17 @@ import Navbar from "react-bootstrap/Navbar";
 import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 import Logo from "./Logo";
 import ExploreHeader from "../Profile/Explore/Header/ExploreHeader";
-import { Link } from "react-router-dom";
-import MyRecipes from "../../pages/MyRecipes";
+import { NavLink } from "react-router-dom";
+// import MyRecipes from "../../pages/MyRecipes";
 
 function NavBar() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-success">
+      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
         <a className="navbar-brand" href="#">
-          <Logo />
+          <NavLink to="/">
+            <Logo />
+          </NavLink>
         </a>
         <button
           className="navbar-toggler"
@@ -27,14 +29,14 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/explore-header" className="nav-link" href="#">
+              <NavLink to="/explore-header" className="nav-link" href="#">
                 Explore
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link to="/navbar" className="nav-link" href="#">
+              <NavLink to="/recipe-grid" className="nav-link" href="#">
                 My Recipes
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
               <a

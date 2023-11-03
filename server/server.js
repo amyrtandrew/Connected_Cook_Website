@@ -11,10 +11,10 @@ app.use(express.json());
 
 import handlerFunctions from "./controller.js";
 
-app.get("/recipe-grid/recipe", handlerFunctions.getRecipe);
-app.post("/addRecipe", handlerFunctions.addRecipe);
-app.delete("/deleteRecipe/:id", handlerFunctions.deleteRecipe);
-app.put("/editRecipe/:id", handlerFunctions.editRecipe);
+app.get("/api/recipe", handlerFunctions.getRecipe);
+app.post("/api/recipe", handlerFunctions.addRecipe);
+app.delete("/api/recipe", handlerFunctions.deleteRecipe);
+app.put("/api/recipe", handlerFunctions.editRecipe);
 
 ViteExpress.listen(app, 5555, () =>
   console.log(`Server working on http://localhost:5555`)

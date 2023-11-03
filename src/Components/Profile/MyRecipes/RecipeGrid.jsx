@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const RecipeGrid = () => {
   const recipes = [
@@ -37,15 +37,12 @@ const RecipeGrid = () => {
   return (
     <div className="recipe-grid">
       {recipes.map((recipe) => (
-        <Link
-          to="/recipe-grid/recipe"
-          className="recipe-square"
-          key={recipe.id}
-        >
+        <Link to="/recipe" className="recipe-square" key={recipe.id}>
           {recipe.name}
           <img id="recipe-image" src={recipe.image} />
         </Link>
       ))}
+      <Outlet />
     </div>
   );
 };

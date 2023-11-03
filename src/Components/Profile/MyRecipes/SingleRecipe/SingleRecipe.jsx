@@ -5,11 +5,12 @@ import Form from "./Form";
 import idGenerator from "./idGenerator";
 import PlusButton from "./PlusButton";
 import axios from "axios";
+import { useLoaderData } from "react-router";
 
 // let globalId = 3
-const SingleRecipe = ({ initialData }) => {
+const SingleRecipe = () => {
+  const { initialData } = useLoaderData();
   const [recipeList, setRecipeList] = useState(initialData);
-  initialData = { initialData };
   const rows = recipeList.map((recipeInfo) => {
     const {
       id,
@@ -47,13 +48,15 @@ const SingleRecipe = ({ initialData }) => {
   });
 
   const addRecipe = async () => {
-    const response = await axios.post("/addRecipe", { name: "name of recipe" });
+    const response = await axios.post("/api/recipe", {
+      name: "name of recipe",
+    });
 
     setRecipeList([...recipeList, response.data]);
   };
 
   const deleteRecipe = async (itemId) => {
-    const response = await axios.delete(`/deleteRecipe/${itemId}`);
+    const response = await axios.delete("/api/recipe");
     if (!response.data.error) {
       const filteredRecipe = recipeList.filter(
         (recipeInfo) => recipeInfo.id !== itemId

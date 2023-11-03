@@ -1,9 +1,7 @@
-import React from 'react'
-
-const Logout = () => {
+export default function LogoutButton({ onLogout }) {
   return (
-    <div>Logout</div>
-  )
+    <form onSubmit={onLogout}>
+      <button type="submit">Log Out</button>
+    </form>
+  );
 }
-
-export default Logout

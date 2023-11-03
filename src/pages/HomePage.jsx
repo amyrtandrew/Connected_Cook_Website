@@ -4,7 +4,7 @@ import ExploreHeader from "../Components/Profile/Explore/Header/ExploreHeader";
 import RecipeGrid from "../Components/Profile/MyRecipes/RecipeGrid";
 import { Outlet } from "react-router";
 
-class NavBar extends Component {
+class HomePage extends Component {
   render() {
     return (
       <div>
@@ -14,4 +14,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default HomePage;
