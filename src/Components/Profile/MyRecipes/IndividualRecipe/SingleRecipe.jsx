@@ -9,6 +9,7 @@ import axios from "axios";
 // let globalId = 3
 const SingleRecipe = ({ initialData }) => {
   const [recipeList, setRecipeList] = useState(initialData);
+  initialData = { initialData };
   const rows = recipeList.map((recipeInfo) => {
     const {
       id,

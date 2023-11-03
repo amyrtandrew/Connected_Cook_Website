@@ -17,31 +17,24 @@ User.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    fname: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-    lname: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // fname: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   unique: true,
+    // },
+    // lname: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    userRecipes: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    favorite: {
-      type: DataTypes.BOOLEAN,
-    },
+    // password: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
   },
   {
     modelName: "user",
@@ -49,26 +42,26 @@ User.init(
   }
 );
 
-export class UserRecipe extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
+// export class UserRecipe extends Model {
+//   [util.inspect.custom]() {
+//     return this.toJSON();
+//   }
+// }
 
-UserRecipe.init(
-  {
-    recipeId: {
-      type: DataTypes.INTEGER,
-    },
-    userId: {
-      type: DataTypes.STRING,
-    },
-  },
-  {
-    modelName: "userRecipe",
-    sequelize: db,
-  }
-);
+// UserRecipe.init(
+//   {
+//     recipeId: {
+//       type: DataTypes.INTEGER,
+//     },
+//     userId: {
+//       type: DataTypes.STRING,
+//     },
+//   },
+//   {
+//     modelName: "userRecipe",
+//     sequelize: db,
+//   }
+// );
 
 export class Recipe extends Model {
   [util.inspect.custom]() {
@@ -87,10 +80,6 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    recipeFood: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
     servings: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -107,12 +96,6 @@ Recipe.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    favorite: {
-      type: DataTypes.BOOLEAN,
-    },
-    categoryId: {
-      type: DataTypes.INTEGER,
-    },
     notes: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -120,48 +103,6 @@ Recipe.init(
   },
   {
     modelName: "recipe",
-    sequelize: db,
-  }
-);
-
-export class Favorite extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
-
-Favorite.init(
-  {
-    userId: {
-      type: DataTypes.INTEGER,
-    },
-    recipeId: {
-      type: DataTypes.INTEGER,
-    },
-  },
-  {
-    modelName: "favorite",
-    sequelize: db,
-  }
-);
-
-export class RecipeFood extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
-
-RecipeFood.init(
-  {
-    foodId: {
-      type: DataTypes.INTEGER,
-    },
-    recipeId: {
-      type: DataTypes.INTEGER,
-    },
-  },
-  {
-    modelName: "recipeFood",
     sequelize: db,
   }
 );
@@ -185,15 +126,12 @@ FoodItem.init(
     amount: {
       type: DataTypes.FLOAT,
     },
-    recipeFood: {
-      type: DataTypes.INTEGER,
-    },
-    foodName: {
+    calories: {
       type: DataTypes.INTEGER,
     },
   },
   {
-    modelName: "recipeFood",
+    modelName: "foodItem",
     sequelize: db,
   }
 );
@@ -211,23 +149,10 @@ Category.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    appetizer: {
-      type: DataTypes.STRING,
-    },
-    breakfast: {
-      type: DataTypes.STRING,
-    },
-    lunch: {
-      type: DataTypes.STRING,
-    },
-    dinner: {
-      type: DataTypes.STRING,
-    },
-    dessert: {
-      type: DataTypes.STRING,
-    },
-    other: {
-      type: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING(15),
+      allowNull: false,
+      unique: true,
     },
   },
   {
@@ -236,14 +161,18 @@ Category.init(
   }
 );
 
-Category.hasMany(Recipe, { foreignKey: "category_id" });
-Recipe.belongsTo(Category, { foreignKey: "category_id" });
+Category.hasMany(Recipe, { foreignKey: "categoryId" });
+Recipe.belongsTo(Category, { foreignKey: "categoryId" });
 
-Recipe.belongsToMany(FoodItem, { through: "RecipeFood" });
-FoodItem.belongsToMany(Recipe, { through: "RecipeFood" });
+Recipe.belongsToMany(FoodItem, { through: "recipe_foods" });
+FoodItem.belongsToMany(Recipe, { through: "recipe_foods" });
 
-Recipe.belongsToMany(User, { through: "UserRecipe" });
-User.belongsToMany(Recipe, { through: "UserRecipe" });
+// one-many rel where a user can 'own' a recipe
+User.hasMany(Recipe, { foreignKey: "userId" });
+Recipe.belongsTo(User, { foreignKey: "userId" });
+// User.addRecipe()
 
-Recipe.belongsToMany(User, { through: "Favorite" });
-User.belongsToMany(Recipe, { through: "Favorite" });
+// many-many rel between users & recipes
+Recipe.belongsToMany(User, { through: "favorites" });
+User.belongsToMany(Recipe, { through: "favorites" });
+// Recipe.addUser()

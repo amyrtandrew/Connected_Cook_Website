@@ -1,33 +1,56 @@
-import {
-  User,
-  Recipe,
-  UserRecipe,
-  Favorite,
-  RecipeFood,
-  FoodItem,
-  Category,
-  db,
-} from "../model.js";
+import { User, Recipe, FoodItem, Category, db } from "../model.js";
 
 console.log("Syncing database...");
 await db.sync({ force: true });
 
 console.log("Seeding database...");
 
+const user1 = await User.create({
+  username: "amy",
+});
+
 const cookie = await Recipe.create({
-  recipeId: 1,
   recipeName: "cookies",
-  recipeFood: 3,
   servings: 5,
   instructions: "bake for an hour",
   prepTime: 10,
   cookTime: 15,
-  favorite: true,
-  categoryId: 1,
   notes: "these are my notes",
 });
 
+const chickenStrips = await Recipe.create({
+  recipeName: "Chicken Strips",
+  servings: 1,
+  instructions: "deep fry",
+  prepTime: 1,
+  cookTime: 1,
+  notes: "fry at 350 degrees",
+});
+
+let categories = [
+  "appetizer",
+  "breakfast",
+  "lunch",
+  "dinner",
+  "dessert",
+  "other",
+];
+for (const cat of categories) {
+  await Category.create({
+    name: cat,
+  });
+}
+
+const sugar = await FoodItem.create({
+  foodName: "sugar",
+  amount: 4.5,
+  calories: 425
+});
+
+console.log(user1);
 console.log(cookie);
+console.log(chickenStrips);
+// console.log(breakfast);
 
 await db.close();
 console.log("Finished seeding database!");

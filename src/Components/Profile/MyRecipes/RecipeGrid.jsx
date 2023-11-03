@@ -37,12 +37,14 @@ const RecipeGrid = () => {
   return (
     <div className="recipe-grid">
       {recipes.map((recipe) => (
-        <div className="recipe-square" key={recipe.id}>
-          <Link to="/IndividualRecipe">
-            {recipe.name}
-            <img id="recipe-image" src={recipe.image} />
-          </Link>
-        </div>
+        <Link
+          to="/recipe-grid/recipe"
+          className="recipe-square"
+          key={recipe.id}
+        >
+          {recipe.name}
+          <img id="recipe-image" src={recipe.image} />
+        </Link>
       ))}
     </div>
   );

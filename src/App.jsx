@@ -10,17 +10,19 @@ import SingleRecipe from "./Components/Profile/MyRecipes/IndividualRecipe/Single
 import MyRecipes from "./pages/MyRecipes";
 import Explore from "./pages/Explore";
 
-function App({ initialData }) {
+function App() {
   return (
     <div>
       {/* <SingleRecipe initialRecipeList={TEST_DATA}/> */}
       {/* <NavBar />
       <Link to='/navbar'>navbar</Link>
       {/* <RecipeGrid recipes={recipes}/> */}
-      {/* <Outlet /> */}
       {/* <MyRecipes /> */}
       <NavBar />
-      {/* <SingleRecipe initialData={initialData} /> */}
+      <Outlet />
+      {/* <SingleRecipe /> */}
+      {/* <SingleRecipe /> */}
+      {/* <SingleRecipe /> */}
     </div>
   );
 }

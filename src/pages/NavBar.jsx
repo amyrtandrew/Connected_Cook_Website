@@ -9,7 +9,6 @@ class NavBar extends Component {
     return (
       <div>
         <NavBar />
-        <Outlet />
       </div>
     );
   }
