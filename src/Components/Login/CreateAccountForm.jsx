@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const CreateAccountForm = ({ onLogin }) => {
+const CreateAccountForm = ({ onCreateAccount }) => {
   const [fnameValue, setFnameValue] = useState("");
   const [lnameValue, setLnameValue] = useState("");
   const [usernameValue, setUsernameValue] = useState("");
@@ -9,7 +9,7 @@ const CreateAccountForm = ({ onLogin }) => {
   return (
     <form
       onSubmit={(e) => {
-        onLogin(e, {
+        onCreateAccount(e, {
           fname: fnameValue,
           lname: lnameValue,
           username: usernameValue,

@@ -32,6 +32,20 @@ app.post("/api/auth", async (req, res) => {
   }
 });
 
+app.post("/api/create-account", async (req, res) => {
+  const { fname, lname, username, password } = req.body;
+  const user = await User.create({
+    fname: fname,
+    lname: lname,
+    username: username,
+    password: password,
+  });
+  // console.log(req.body.fname);
+  if (user) {
+    res.json({ success: true });
+  }
+});
+
 app.post("/api/logout", loginRequired, (req, res) => {
   req.session.destroy();
   res.json({ success: true });

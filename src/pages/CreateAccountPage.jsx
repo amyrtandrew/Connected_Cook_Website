@@ -1,19 +1,27 @@
-import React, { Component } from "react";
-import NavBar from "../Components/NavBar/NavBar";
-import ExploreHeader from "../Components/Profile/Explore/Header/ExploreHeader";
-import RecipeGrid from "../Components/Profile/MyRecipes/RecipeGrid";
-import { Outlet } from "react-router";
-import LoginForm from "../Components/Login/LoginForm";
+import React from "react";
+import { useLoaderData, useNavigate } from "react-router";
+import axios from "axios";
+import CreateAccountForm from "../Components/Login/CreateAccountForm";
 
-class NavBar extends Component {
-  render() {
-    return (
-      <div>
-        <LoginForm />
-        <Outlet />
-      </div>
-    );
-  }
-}
+const CreateAccountPage = () => {
+  const navigate = useNavigate();
 
-export default NavBar;
+  const handleCreateAccount = async (event, formData) => {
+    event.preventDefault();
+
+    const res = await axios.post("/api/create-account", formData);
+
+    if (res.data.success) {
+      navigate("/");
+    }
+  };
+
+  return (
+    <div>
+      hey
+      <CreateAccountForm onCreateAccount={handleCreateAccount} />
+    </div>
+  );
+};
+
+export default CreateAccountPage;

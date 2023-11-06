@@ -5,7 +5,17 @@ import { useEffect, useState } from "react";
 
 export default function RecipePage() {
   const [recipe, setRecipe] = useState(null);
-  const { id } = useParams();
+  const [editMode, setEditMode] = useState(null);
+  const [recipeName, setRecipeName] = useState("");
+  const [category, setCategory] = useState("");
+  const [prepTime, setPrepTime] = useState("");
+  const [cookTime, setCookTime] = useState("");
+  const [servings, setServings] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [instructions, setInstructions] = useState("");
+  const [notes, setNotes] = useState("");
+  const { id } = useParams("");
+
   //   const {
   //     recipe: { recipeName, servings, instructions, prepTime, cookTime, notes },
   //   } = useLoaderData();
@@ -23,7 +33,6 @@ export default function RecipePage() {
 
   return (
     <>
-      Hi
       {recipe && (
         <div>
           <h1>{recipe.recipeName}</h1>

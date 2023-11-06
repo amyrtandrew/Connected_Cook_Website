@@ -78,6 +78,10 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    // image: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: true,
+    // },
   },
   {
     modelName: "recipe",

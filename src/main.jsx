@@ -17,6 +17,7 @@ import SingleRecipe from "./Components/Profile/MyRecipes/SingleRecipe/SingleReci
 import LoginPage from "./pages/LoginPage.jsx";
 import CreateAccountForm from "./Components/Login/CreateAccountForm.jsx";
 import RecipePage from "./pages/RecipePage.jsx";
+import CreateAccountPage from "./pages/CreateAccountPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,7 +46,7 @@ const router = createBrowserRouter(
       />
 
       <Route path="login" element={<LoginPage />} />
-      <Route path="create-account" element={<CreateAccountForm />} />
+      <Route path="create-account" element={<CreateAccountPage />} />
     </Route>
   )
 );
