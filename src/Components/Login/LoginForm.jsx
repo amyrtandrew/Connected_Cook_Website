@@ -1,25 +1,27 @@
 import { useState } from "react";
 
 export default function LoginForm({ onLogin }) {
-  const [emailValue, setEmailValue] = useState("");
+  const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
 
   return (
     <form
       onSubmit={(e) => {
         onLogin(e, {
-          email: emailValue,
+          username: usernameValue,
           password: passwordValue,
         });
+        console.log(usernameValue);
+        console.log(passwordValue);
       }}
     >
-      <label htmlFor="email">Email:</label>
+      <label htmlFor="username">Username:</label>
       <input
-        name="email"
-        id="email"
+        name="username"
+        id="username"
         type="text"
         required
-        onChange={(e) => setEmailValue(e.target.value)}
+        onChange={(e) => setUsernameValue(e.target.value)}
       />
       <label htmlFor="password">Password:</label>
       <input

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../Components/Login/LoginForm";
+import LoginForm from "../components/Login/LoginForm.jsx";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ export default function LoginPage() {
     const res = await axios.post("/api/auth", formData);
 
     if (res.data.success) {
-      navigate("/me");
+      navigate("/");
     }
   };
 

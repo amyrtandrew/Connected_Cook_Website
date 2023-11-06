@@ -1,6 +1,6 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
+import Logout from "./Logout";
 import Logo from "./Logo";
 import ExploreHeader from "../Profile/Explore/Header/ExploreHeader";
 import { NavLink } from "react-router-dom";
@@ -37,16 +37,7 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#"
-                id="navbarHamburger"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <HamburgerMenu />
-              </a>
+              <Logout />
             </li>
           </ul>
         </div>

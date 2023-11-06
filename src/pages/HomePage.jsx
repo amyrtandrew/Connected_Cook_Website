@@ -9,6 +9,8 @@ class HomePage extends Component {
     return (
       <div>
         <NavBar />
+        <RecipeGrid />
+        <Outlet />
       </div>
     );
   }

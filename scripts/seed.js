@@ -6,7 +6,10 @@ await db.sync({ force: true });
 console.log("Seeding database...");
 
 const user1 = await User.create({
-  username: "amy",
+  fname: "Amy",
+  lname: "Andrew",
+  username: "asdf",
+  password: "asdf",
 });
 
 const cookie = await Recipe.create({
@@ -44,7 +47,7 @@ for (const cat of categories) {
 const sugar = await FoodItem.create({
   foodName: "sugar",
   amount: 4.5,
-  calories: 425
+  calories: 425,
 });
 
 console.log(user1);

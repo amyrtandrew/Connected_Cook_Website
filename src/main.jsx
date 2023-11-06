@@ -25,8 +25,8 @@ const router = createBrowserRouter(
         path="recipe"
         element={<SingleRecipe />}
         loader={async () => {
-          const response = await axios.get("/api/recipe");
-          return { initialData: response.data };
+          const res = await axios.get("/api/recipe");
+          return { initialData: res.data };
         }}
       />
 

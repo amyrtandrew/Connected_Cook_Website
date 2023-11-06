@@ -17,51 +17,29 @@ User.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    // fname: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   unique: true,
-    // },
-    // lname: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
+    fname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
-    // password: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     modelName: "user",
     sequelize: db,
   }
 );
-
-// export class UserRecipe extends Model {
-//   [util.inspect.custom]() {
-//     return this.toJSON();
-//   }
-// }
-
-// UserRecipe.init(
-//   {
-//     recipeId: {
-//       type: DataTypes.INTEGER,
-//     },
-//     userId: {
-//       type: DataTypes.STRING,
-//     },
-//   },
-//   {
-//     modelName: "userRecipe",
-//     sequelize: db,
-//   }
-// );
 
 export class Recipe extends Model {
   [util.inspect.custom]() {

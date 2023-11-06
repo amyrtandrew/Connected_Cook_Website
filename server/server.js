@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import ViteExpress from "vite-express";
+import { User } from "../model.js";
 
 const app = express();
 
@@ -10,6 +11,31 @@ app.use(express.static("public"));
 app.use(express.json());
 
 import handlerFunctions from "./controller.js";
+
+function loginRequired(req, res, next) {
+  if (!req.session.userId) {
+    res.status(401).json({ error: "Unauthorized" });
+  } else {
+    next();
+  }
+}
+
+app.post("/api/auth", async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ where: { username: username } });
+
+  if (user && user.password === password) {
+    // req.session.userId = user.userId;
+    res.json({ success: true });
+  } else {
+    res.json({ success: false });
+  }
+});
+
+app.post("/api/logout", loginRequired, (req, res) => {
+  req.session.destroy();
+  res.json({ success: true });
+});
 
 app.get("/api/recipe", handlerFunctions.getRecipe);
 app.post("/api/recipe", handlerFunctions.addRecipe);
