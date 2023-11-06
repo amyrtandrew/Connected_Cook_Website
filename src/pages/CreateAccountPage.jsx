@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import axios from "axios";
 import CreateAccountForm from "../Components/Login/CreateAccountForm";
+import { Link } from "react-router-dom";
 
 const CreateAccountPage = () => {
   const navigate = useNavigate();
@@ -18,7 +19,6 @@ const CreateAccountPage = () => {
 
   return (
     <div>
-      hey
       <CreateAccountForm onCreateAccount={handleCreateAccount} />
     </div>
   );

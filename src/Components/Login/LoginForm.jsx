@@ -7,6 +7,7 @@ export default function LoginForm({ onLogin }) {
 
   return (
     <form
+      className="login-form"
       onSubmit={(e) => {
         onLogin(e, {
           username: usernameValue,

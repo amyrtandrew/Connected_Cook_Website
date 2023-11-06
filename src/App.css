@@ -1,6 +1,3 @@
-
-
-
 .navbar {
   background-color: blue;
   margin-bottom: 200px;
@@ -26,7 +23,7 @@
   font-size: 18px;
   cursor: pointer;
   width: 200px;
-  height: 200px
+  height: 200px;
 }
 
 #recipe-image {
@@ -43,3 +40,25 @@
   margin-left: 50px;
 }
 
+.login-title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.login-form {
+  text-align: center;
+}
+
+.login-message {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.create-account-form {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-link {
+  text-align: center;
+}
