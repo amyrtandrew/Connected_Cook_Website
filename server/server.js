@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import ViteExpress from "vite-express";
-import { User } from "../model.js";
+import { Recipe, User } from "../model.js";
 
 const app = express();
 
@@ -37,7 +37,12 @@ app.post("/api/logout", loginRequired, (req, res) => {
   res.json({ success: true });
 });
 
-app.get("/api/recipe", handlerFunctions.getRecipe);
+app.get("/api/recipe/:recipeId", async (req, res) => {
+  const { recipeId } = req.params;
+  const recipe = await Recipe.findByPk(recipeId);
+  res.json(recipe);
+});
+
 app.post("/api/recipe", handlerFunctions.addRecipe);
 app.delete("/api/recipe/:id", handlerFunctions.deleteRecipe);
 app.put("/api/recipe/:id", handlerFunctions.editRecipe);

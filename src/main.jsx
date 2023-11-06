@@ -15,6 +15,8 @@ import axios from "axios";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import SingleRecipe from "./Components/Profile/MyRecipes/SingleRecipe/SingleRecipe.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import CreateAccountForm from "./Components/Login/CreateAccountForm.jsx";
+import RecipePage from "./pages/RecipePage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,7 +34,18 @@ const router = createBrowserRouter(
 
       <Route path="/explore-header" element={<ExploreHeader />} />
 
+      {/* All Movies */}
+      <Route
+        path="recipe/:id"
+        element={<RecipePage />}
+        // loader={async () => {
+        //   const res = await axios.get("/api/recipe/:id");
+        //   return { movies: res.data };
+        // }}
+      />
+
       <Route path="login" element={<LoginPage />} />
+      <Route path="create-account" element={<CreateAccountForm />} />
     </Route>
   )
 );

@@ -8,7 +8,7 @@ import axios from "axios";
 import { useLoaderData } from "react-router";
 
 // let globalId = 3
-const SingleRecipe = () => {
+const SingleRecipe = ({recipeId}) => {
   const { initialData } = useLoaderData();
   const [recipeList, setRecipeList] = useState(initialData);
   const rows = recipeList.map((recipeInfo) => {
@@ -29,7 +29,7 @@ const SingleRecipe = () => {
       <div className="form">
         <Form
           key={id}
-          id={id}
+          id={recipeId}
           initialData={{
             name,
             category,

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
-export default function LoginForm({ onLogin }) {
+const CreateAccountForm = ({ onLogin }) => {
+  const [fnameValue, setFnameValue] = useState("");
+  const [lnameValue, setLnameValue] = useState("");
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
 
@@ -9,11 +10,30 @@ export default function LoginForm({ onLogin }) {
     <form
       onSubmit={(e) => {
         onLogin(e, {
+          fname: fnameValue,
+          lname: lnameValue,
           username: usernameValue,
           password: passwordValue,
         });
       }}
     >
+      <label htmlFor="fname">First Name:</label>
+      <input
+        name="fname"
+        id="fname"
+        type="text"
+        required
+        onChange={(e) => setFnameValue(e.target.value)}
+      />
+
+      <label htmlFor="lname">Last Name:</label>
+      <input
+        name="lname"
+        id="lname"
+        type="text"
+        required
+        onChange={(e) => setLnameValue(e.target.value)}
+      />
       <label htmlFor="username">Username:</label>
       <input
         name="username"
@@ -30,10 +50,9 @@ export default function LoginForm({ onLogin }) {
         required
         onChange={(e) => setPasswordValue(e.target.value)}
       />
-      <button type="submit">Log In</button>
-      <p>
-        Don't have an account? <Link to="/create-account">Create Account</Link>{" "}
-      </p>
+      <button type="submit">Create Account</button>
     </form>
   );
-}
+};
+
+export default CreateAccountForm;

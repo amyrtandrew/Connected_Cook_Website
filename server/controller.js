@@ -36,9 +36,9 @@ let TEST_DATA = [
 
 let globalId = 3;
 const handlerFunctions = {
-  getRecipe: (req, res) => {
-    res.send(TEST_DATA);
-  },
+  // getRecipe: (req, res) => {
+  //   res.send(TEST_DATA);
+  // },
   addRecipe: (req, res) => {
     const {
       name,
