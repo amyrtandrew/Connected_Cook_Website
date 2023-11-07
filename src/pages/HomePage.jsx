@@ -7,7 +7,7 @@ import { Outlet } from "react-router";
 class HomePage extends Component {
   render() {
     return (
-      <div>
+      <div className='home-page'>
         <NavBar />
         <RecipeGrid />
         <Outlet />

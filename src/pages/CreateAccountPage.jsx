@@ -18,7 +18,7 @@ const CreateAccountPage = () => {
   };
 
   return (
-    <div>
+    <div className="create-account-page">
       <CreateAccountForm onCreateAccount={handleCreateAccount} />
     </div>
   );

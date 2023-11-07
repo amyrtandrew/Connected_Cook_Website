@@ -34,7 +34,7 @@ export default function RecipePage() {
   return (
     <>
       {recipe && (
-        <div>
+        <div className='recipe-page'>
           <h1>{recipe.recipeName}</h1>
           <ul>
             <li>{recipe.servings}</li>

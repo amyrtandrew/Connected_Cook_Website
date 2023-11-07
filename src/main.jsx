@@ -18,6 +18,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import CreateAccountForm from "./Components/Login/CreateAccountForm.jsx";
 import RecipePage from "./pages/RecipePage.jsx";
 import CreateAccountPage from "./pages/CreateAccountPage.jsx";
+import CreateRecipePage from "./pages/CreateRecipePage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,6 +48,7 @@ const router = createBrowserRouter(
 
       <Route path="login" element={<LoginPage />} />
       <Route path="create-account" element={<CreateAccountPage />} />
+      <Route path="create-recipe" element={<CreateRecipePage />} />
     </Route>
   )
 );

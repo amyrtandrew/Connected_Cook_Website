@@ -8,7 +8,7 @@ import axios from "axios";
 import { useLoaderData } from "react-router";
 
 // let globalId = 3
-const SingleRecipe = ({recipeId}) => {
+const SingleRecipe = ({ recipeId }) => {
   const { initialData } = useLoaderData();
   const [recipeList, setRecipeList] = useState(initialData);
   const rows = recipeList.map((recipeInfo) => {

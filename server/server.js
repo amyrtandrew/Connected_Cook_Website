@@ -46,6 +46,23 @@ app.post("/api/create-account", async (req, res) => {
   }
 });
 
+app.post("/api/create-recipe", async (req, res) => {
+  const { recipeName, servings, instructions, prepTime, cookTime, notes } =
+    req.body;
+  const recipe = await Recipe.create({
+    recipeName: recipeName,
+    servings: servings,
+    instructions: instructions,
+    prepTime: prepTime,
+    cookTime: cookTime,
+    notes: notes,
+  });
+  // console.log(req.body.fname);
+  if (recipe) {
+    res.json({ success: true });
+  }
+});
+
 app.post("/api/logout", loginRequired, (req, res) => {
   req.session.destroy();
   res.json({ success: true });
