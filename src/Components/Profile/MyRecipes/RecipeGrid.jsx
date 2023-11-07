@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const RecipeGrid = ({ recipeId }) => {
   const recipes = [
@@ -35,18 +36,25 @@ const RecipeGrid = ({ recipeId }) => {
     // Add more recipe objects as needed
   ];
   return (
-    <div className="recipe-grid">
-      {recipes.map((recipe) => (
-        <Link
-          to={`/recipe/${recipe.id}`}
-          className="recipe-square"
-          key={recipe.id}
-        >
-          {recipe.name}
-          <img id="recipe-image" src={recipe.image} />
-        </Link>
-      ))}
-      <Outlet />
+    <div>
+      <nav className="grid-navbar">
+        <NavLink to="/create-recipe" href="#">
+          <button className='plus-button'>+</button>
+        </NavLink>
+      </nav>
+      <div className="recipe-grid">
+        {recipes.map((recipe) => (
+          <Link
+            to={`/recipe/${recipe.id}`}
+            className="recipe-square"
+            key={recipe.id}
+          >
+            {recipe.name}
+            <img id="recipe-image" src={recipe.image} />
+          </Link>
+        ))}
+        <Outlet />
+      </div>
     </div>
   );
 };

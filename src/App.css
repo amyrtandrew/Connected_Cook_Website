@@ -62,3 +62,7 @@
 .login-link {
   text-align: center;
 }
+
+.plus-button {
+  align-self: flex-end;
+}
