@@ -30,27 +30,36 @@ const EditRecipe = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-  const navigate = useNavigate;
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .put("http://localhost:5555/api/recipe/" + recipeId, values)
-      .then((res) => {
-        navigate(`/recipe/${res.data.recipeId}`);
-        // console.log(res.data.recipeName);
-      })
-      .catch((err) => console.log(err));
+
+  const navigate = useNavigate();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const res = await axios.put(
+      `http://localhost:5555/api/edit-recipe/${recipeId}`,
+      values
+    );
+
+    if (res.data.success) {
+      navigate(`/recipe/${res.data.recipeId}`);
+    }
   };
 
-  // app.put("/api/recipe/:recipeId", async (req, res) => {
-  //   const { recipeId } = req.params;
-  //   const recipe = await Recipe.findByPk(recipeId);
-  //   res.json(recipe);
-  // });
+  const handleDelete = async (event) => {
+    event.preventDefault();
+
+    const res = await axios.delete(
+      `http://localhost:5555/api/edit-recipe/${recipeId}`
+    );
+
+    if (res.data.success) {
+      navigate("/recipe-grid");
+    }
+  };
 
   return (
     <div>
-      <form className="create-recipe-form" onSubmit={handleSubmit}>
+      <form className="create-recipe-form" onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor="recipeName">Recipe Name:</label>
         <input
           name="recipeName"
@@ -105,23 +114,16 @@ const EditRecipe = () => {
           value={values.notes}
           onChange={(e) => setValues({ ...values, notes: e.target.value })}
         />
-        <button type="submit">Add Recipe</button>
+        <button type="submit">Save</button>
       </form>
       <div className="home-link">
-        <Link to="/recipe-grid">
+        <Link to={`/recipe/${recipeId}`}>
           <button>Cancel</button>
         </Link>
+        <button onClick={(e) => handleDelete(e)}>Delete Recipe</button>
       </div>
     </div>
   );
 };
 
 export default EditRecipe;
-
-// const EditRecipe = () => {
-//   return (
-//     <div>EditRecipe</div>
-//   )
-// }
-
-// export default EditRecipe

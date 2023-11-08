@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import ViteExpress from "vite-express";
 import { Recipe, User } from "../model.js";
+import session from "express-session";
 
 const app = express();
 
@@ -9,8 +10,15 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(express.json());
+app.use(
+  session({
+    secret: "amy",
+    saveUninitialized: false,
+    resave: false,
+  })
+);
 
-import handlerFunctions from "./controller.js";
+// import handlerFunctions from "./controller.js";
 
 function loginRequired(req, res, next) {
   if (!req.session.userId) {
@@ -67,8 +75,9 @@ app.put("/api/edit-recipe/:recipeId", async (req, res) => {
   const { recipeId } = req.params;
   const { recipeName, servings, instructions, prepTime, cookTime, notes } =
     req.body;
+  console.log(req.body.recipeName);
   const recipe = await Recipe.findByPk(recipeId);
-  if (req.session.recipe.recipeId) {
+  if (recipe) {
     (recipe.recipeName = recipeName),
       (recipe.servings = servings),
       (recipe.instructions = instructions),
@@ -76,10 +85,19 @@ app.put("/api/edit-recipe/:recipeId", async (req, res) => {
       (recipe.cookTime = cookTime),
       (recipe.notes = notes),
       await recipe.save();
-    // console.log(req.body.fname);
-    if (recipe) {
-      res.json({ success: true });
-    }
+    res.json({ success: true, recipeId: recipe.recipeId });
+  }
+});
+
+app.delete("/api/edit-recipe/:recipeId", async (req, res) => {
+  const { recipeId } = req.params;
+  // const { recipeName, servings, instructions, prepTime, cookTime, notes } =
+  //   req.body;
+  // console.log(req.body.recipeName);
+  const recipe = await Recipe.findByPk(recipeId);
+  if (recipe) {
+    await recipe.destroy();
+    res.json({ success: true, recipeId: recipe.recipeId });
   }
 });
 
@@ -94,10 +112,8 @@ app.get("/api/recipe/:recipeId", async (req, res) => {
   res.json(recipe);
 });
 
-app.post("/api/recipe", handlerFunctions.addRecipe);
-app.delete("/api/recipe/:id", handlerFunctions.deleteRecipe);
-// app.put("/api/recipe/:id", handlerFunctions.editRecipe);
-
+// app.post("/api/recipe", handlerFunctions.addRecipe);
+// app.delete("/api/recipe/:id", handlerFunctions.deleteRecipe);
 ViteExpress.listen(app, 5555, () =>
   console.log(`Server working on http://localhost:5555`)
 );
