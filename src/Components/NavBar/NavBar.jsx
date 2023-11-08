@@ -6,13 +6,13 @@ import ExploreHeader from "../Profile/Explore/Header/ExploreHeader";
 import { NavLink } from "react-router-dom";
 // import MyRecipes from "../../pages/MyRecipes";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function NavBar() {
   const navigate = useNavigate();
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    console.log("hello");
     const res = await axios.post("/api/logout");
     if (res.data.success) {
       navigate("/login");

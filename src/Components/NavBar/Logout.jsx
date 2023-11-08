@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 const Logout = ({ onLogout }) => {
   return (
-    <button onSubmit={onLogout} className="nav-link">
-      Logout
-    </button>
+    <form onSubmit={onLogout} className="nav-link">
+      <button>Logout</button>
+    </form>
   );
 };
 

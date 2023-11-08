@@ -51,11 +51,13 @@ app.post("/api/create-account", async (req, res) => {
   });
   // console.log(req.body.fname);
   if (user) {
+    req.session.userId = user.userId;
+    console.log(user.userId);
     res.json({ success: true });
   }
 });
 
-app.post("/api/create-recipe", async (req, res) => {
+app.post("/api/create-recipe", loginRequired, async (req, res) => {
   const { recipeName, servings, instructions, prepTime, cookTime, notes } =
     req.body;
   const recipe = await Recipe.create({
@@ -105,7 +107,7 @@ app.post("/api/logout", loginRequired, (req, res) => {
   res.json({ success: true });
 });
 
-app.get("/api/recipe/:recipeId", async (req, res) => {
+app.get("/api/recipe/:recipeId", loginRequired, async (req, res) => {
   const { recipeId } = req.params;
   const recipe = await Recipe.findByPk(recipeId);
   if (req.session.userId) {
