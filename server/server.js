@@ -34,7 +34,7 @@ app.post("/api/auth", async (req, res) => {
 
   if (user && user.password === password) {
     req.session.userId = user.userId;
-    console.log(req.session.userId);
+    // console.log(req.session.userId);
     res.json({ success: true });
   } else {
     res.json({ success: false });
@@ -52,7 +52,7 @@ app.post("/api/create-account", async (req, res) => {
   // console.log(req.body.fname);
   if (user) {
     req.session.userId = user.userId;
-    console.log(user.userId);
+    // console.log(user.userId);
     res.json({ success: true });
   }
 });
@@ -60,7 +60,9 @@ app.post("/api/create-account", async (req, res) => {
 app.post("/api/create-recipe", loginRequired, async (req, res) => {
   const { recipeName, servings, instructions, prepTime, cookTime, notes } =
     req.body;
-  const recipe = await Recipe.create({
+  const { userId } = req.session;
+  const user = await User.findByPk(userId);
+  const recipe = await user.createRecipe({
     recipeName: recipeName,
     servings: servings,
     instructions: instructions,
@@ -68,8 +70,9 @@ app.post("/api/create-recipe", loginRequired, async (req, res) => {
     cookTime: cookTime,
     notes: notes,
   });
-  console.log(req.body.recipeName);
+  // console.log(req.body.recipeName);
   if (recipe) {
+    // await user.createRecipe(recipe);
     res.json({ success: true, recipeId: recipe.recipeId });
   }
 });
