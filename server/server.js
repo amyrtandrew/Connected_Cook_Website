@@ -33,7 +33,8 @@ app.post("/api/auth", async (req, res) => {
   const user = await User.findOne({ where: { username: username } });
 
   if (user && user.password === password) {
-    // req.session.userId = user.userId;
+    req.session.userId = user.userId;
+    console.log(req.session.userId);
     res.json({ success: true });
   } else {
     res.json({ success: false });
@@ -91,9 +92,6 @@ app.put("/api/edit-recipe/:recipeId", async (req, res) => {
 
 app.delete("/api/edit-recipe/:recipeId", async (req, res) => {
   const { recipeId } = req.params;
-  // const { recipeName, servings, instructions, prepTime, cookTime, notes } =
-  //   req.body;
-  // console.log(req.body.recipeName);
   const recipe = await Recipe.findByPk(recipeId);
   if (recipe) {
     await recipe.destroy();
@@ -102,6 +100,7 @@ app.delete("/api/edit-recipe/:recipeId", async (req, res) => {
 });
 
 app.post("/api/logout", loginRequired, (req, res) => {
+  console.log(req.session.userId);
   req.session.destroy();
   res.json({ success: true });
 });
@@ -109,11 +108,13 @@ app.post("/api/logout", loginRequired, (req, res) => {
 app.get("/api/recipe/:recipeId", async (req, res) => {
   const { recipeId } = req.params;
   const recipe = await Recipe.findByPk(recipeId);
-  res.json(recipe);
+  if (req.session.userId) {
+    res.json(recipe);
+  } else {
+    console.log("error");
+  }
 });
 
-// app.post("/api/recipe", handlerFunctions.addRecipe);
-// app.delete("/api/recipe/:id", handlerFunctions.deleteRecipe);
 ViteExpress.listen(app, 5555, () =>
   console.log(`Server working on http://localhost:5555`)
 );

@@ -5,8 +5,20 @@ import Logo from "./Logo";
 import ExploreHeader from "../Profile/Explore/Header/ExploreHeader";
 import { NavLink } from "react-router-dom";
 // import MyRecipes from "../../pages/MyRecipes";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const navigate = useNavigate();
+
+  const handleLogout = async (e) => {
+    e.preventDefault();
+    console.log("hello");
+    const res = await axios.post("/api/logout");
+    if (res.data.success) {
+      navigate("/login");
+    }
+  };
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-primary">
@@ -37,7 +49,7 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <Logout />
+              <Logout onLogout={handleLogout} />
             </li>
           </ul>
         </div>
