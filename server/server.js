@@ -57,9 +57,29 @@ app.post("/api/create-recipe", async (req, res) => {
     cookTime: cookTime,
     notes: notes,
   });
-  // console.log(req.body.fname);
+  console.log(req.body.recipeName);
   if (recipe) {
-    res.json({ success: true });
+    res.json({ success: true, recipeId: recipe.recipeId });
+  }
+});
+
+app.put("/api/edit-recipe/:recipeId", async (req, res) => {
+  const { recipeId } = req.params;
+  const { recipeName, servings, instructions, prepTime, cookTime, notes } =
+    req.body;
+  const recipe = await Recipe.findByPk(recipeId);
+  if (req.session.recipe.recipeId) {
+    (recipe.recipeName = recipeName),
+      (recipe.servings = servings),
+      (recipe.instructions = instructions),
+      (recipe.prepTime = prepTime),
+      (recipe.cookTime = cookTime),
+      (recipe.notes = notes),
+      await recipe.save();
+    // console.log(req.body.fname);
+    if (recipe) {
+      res.json({ success: true });
+    }
   }
 });
 
@@ -76,7 +96,7 @@ app.get("/api/recipe/:recipeId", async (req, res) => {
 
 app.post("/api/recipe", handlerFunctions.addRecipe);
 app.delete("/api/recipe/:id", handlerFunctions.deleteRecipe);
-app.put("/api/recipe/:id", handlerFunctions.editRecipe);
+// app.put("/api/recipe/:id", handlerFunctions.editRecipe);
 
 ViteExpress.listen(app, 5555, () =>
   console.log(`Server working on http://localhost:5555`)

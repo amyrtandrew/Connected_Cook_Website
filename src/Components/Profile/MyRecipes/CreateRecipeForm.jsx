@@ -41,7 +41,6 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           name="servings"
           id="servings"
           type="text"
-          required
           onChange={(e) => setServings(e.target.value)}
         />
         <label htmlFor="instructions">Instructions:</label>
@@ -57,7 +56,6 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           name="prepTime"
           id="prepTime"
           type="text"
-          required
           onChange={(e) => setPrepTime(e.target.value)}
         />
         <label htmlFor="cookTime">Cook Time:</label>
@@ -65,7 +63,6 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           name="cookTime"
           id="cookTime"
           type="text"
-          required
           onChange={(e) => setCookTime(e.target.value)}
         />
         <label htmlFor="notes">Notes:</label>
@@ -73,13 +70,14 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           name="notes"
           id="notes"
           type="text"
-          required
           onChange={(e) => setNotes(e.target.value)}
         />
         <button type="submit">Add Recipe</button>
       </form>
       <div className="home-link">
-        <Link to="/">Back to home</Link>
+        <Link to="/recipe-grid">
+          <button>Cancel</button>
+        </Link>
       </div>
     </div>
   );

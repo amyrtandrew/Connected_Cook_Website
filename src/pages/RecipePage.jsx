@@ -1,24 +1,11 @@
 import axios from "axios";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
-import SingleRecipe from "../Components/Profile/MyRecipes/SingleRecipe/SingleRecipe";
+import { useLoaderData, useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function RecipePage() {
   const [recipe, setRecipe] = useState(null);
-  const [editMode, setEditMode] = useState(null);
-  const [recipeName, setRecipeName] = useState("");
-  const [category, setCategory] = useState("");
-  const [prepTime, setPrepTime] = useState("");
-  const [cookTime, setCookTime] = useState("");
-  const [servings, setServings] = useState("");
-  const [ingredients, setIngredients] = useState("");
-  const [instructions, setInstructions] = useState("");
-  const [notes, setNotes] = useState("");
   const { id } = useParams("");
 
-  //   const {
-  //     recipe: { recipeName, servings, instructions, prepTime, cookTime, notes },
-  //   } = useLoaderData();
   const navigate = useNavigate();
 
   const loadRecipe = async () => {
@@ -34,7 +21,7 @@ export default function RecipePage() {
   return (
     <>
       {recipe && (
-        <div className='recipe-page'>
+        <div>
           <h1>{recipe.recipeName}</h1>
           <ul>
             <li>{recipe.servings}</li>
@@ -43,6 +30,9 @@ export default function RecipePage() {
             <li>{recipe.cookTime}</li>
             <li>{recipe.notes}</li>
           </ul>
+          <Link to={`/edit-recipe/${recipe.recipeId}`}>
+            <button>Edit</button>
+          </Link>
         </div>
       )}
     </>
