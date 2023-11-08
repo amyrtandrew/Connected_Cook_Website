@@ -64,11 +64,11 @@ app.post("/api/create-recipe", loginRequired, async (req, res) => {
   const user = await User.findByPk(userId);
   const recipe = await user.createRecipe({
     recipeName: recipeName,
-    servings: servings,
-    instructions: instructions,
-    prepTime: prepTime,
-    cookTime: cookTime,
-    notes: notes,
+    servings: servings || null,
+    instructions: instructions || null,
+    prepTime: prepTime || null,
+    cookTime: cookTime || null,
+    notes: notes || null,
   });
   // console.log(req.body.recipeName);
   if (recipe) {
@@ -85,11 +85,11 @@ app.put("/api/edit-recipe/:recipeId", async (req, res) => {
   const recipe = await Recipe.findByPk(recipeId);
   if (recipe) {
     (recipe.recipeName = recipeName),
-      (recipe.servings = servings),
-      (recipe.instructions = instructions),
-      (recipe.prepTime = prepTime),
-      (recipe.cookTime = cookTime),
-      (recipe.notes = notes),
+      (recipe.servings = +servings ?? recipe.servings),
+      (recipe.instructions = instructions ?? recipe.instructions),
+      (recipe.prepTime = +prepTime ?? recipe.prepTime),
+      (recipe.cookTime = +cookTime ?? recipe.cookTime),
+      (recipe.notes = notes ?? recipe.notes),
       await recipe.save();
     res.json({ success: true, recipeId: recipe.recipeId });
   }
