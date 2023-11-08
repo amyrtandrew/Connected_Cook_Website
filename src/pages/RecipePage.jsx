@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useLoaderData, useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import React from "react";
 
 export default function RecipePage() {
   const [recipe, setRecipe] = useState(null);
@@ -16,7 +17,7 @@ export default function RecipePage() {
   useEffect(() => {
     loadRecipe();
   }, []);
-  console.log(recipe);
+  console.log(recipe.image);
 
   return (
     <>
@@ -29,6 +30,9 @@ export default function RecipePage() {
             <li>{recipe.prepTime}</li>
             <li>{recipe.cookTime}</li>
             <li>{recipe.notes}</li>
+            <li>
+              <img src={recipe.image} />
+            </li>
           </ul>
           <Link to={`/edit-recipe/${recipe.recipeId}`}>
             <button>Edit</button>

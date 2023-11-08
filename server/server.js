@@ -58,8 +58,15 @@ app.post("/api/create-account", async (req, res) => {
 });
 
 app.post("/api/create-recipe", loginRequired, async (req, res) => {
-  const { recipeName, servings, instructions, prepTime, cookTime, notes } =
-    req.body;
+  const {
+    recipeName,
+    servings,
+    instructions,
+    prepTime,
+    cookTime,
+    notes,
+    image,
+  } = req.body;
   const { userId } = req.session;
   const user = await User.findByPk(userId);
   const recipe = await user.createRecipe({
@@ -69,6 +76,7 @@ app.post("/api/create-recipe", loginRequired, async (req, res) => {
     prepTime: prepTime || null,
     cookTime: cookTime || null,
     notes: notes || null,
+    image: image || null,
   });
   // console.log(req.body.recipeName);
   if (recipe) {
@@ -79,8 +87,15 @@ app.post("/api/create-recipe", loginRequired, async (req, res) => {
 
 app.put("/api/edit-recipe/:recipeId", async (req, res) => {
   const { recipeId } = req.params;
-  const { recipeName, servings, instructions, prepTime, cookTime, notes } =
-    req.body;
+  const {
+    recipeName,
+    servings,
+    instructions,
+    prepTime,
+    cookTime,
+    notes,
+    image,
+  } = req.body;
   console.log(req.body.recipeName);
   const recipe = await Recipe.findByPk(recipeId);
   if (recipe) {
@@ -90,6 +105,7 @@ app.put("/api/edit-recipe/:recipeId", async (req, res) => {
       (recipe.prepTime = +prepTime ?? recipe.prepTime),
       (recipe.cookTime = +cookTime ?? recipe.cookTime),
       (recipe.notes = notes ?? recipe.notes),
+      (recipe.image = image ?? recipe.image),
       await recipe.save();
     res.json({ success: true, recipeId: recipe.recipeId });
   }

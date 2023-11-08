@@ -10,7 +10,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
   //   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
   const [notes, setNotes] = useState("");
-  // const [image, setImage] = useState("");
+  const [image, setImage] = useState("");
 
   return (
     <div>
@@ -25,7 +25,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
             prepTime: prepTime,
             cookTime: cookTime,
             notes: notes,
-            // image:
+            image: image,
           });
         }}
       >
@@ -75,13 +75,13 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           onChange={(e) => setNotes(e.target.value)}
         />
         <button type="submit">Add Recipe</button>
-        {/* <input
+        <input
           name="image"
           id="image"
           accept="image/*"
           type="file"
-          onChange={(e) => setImage(e.target.files[0])}
-        /> */}
+          onChange={(e) => setImage(e.target.files)}
+        />
       </form>
       <div className="home-link">
         <Link to="/recipe-grid">

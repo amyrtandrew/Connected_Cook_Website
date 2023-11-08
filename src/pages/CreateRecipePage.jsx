@@ -2,8 +2,6 @@ import React from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import axios from "axios";
 import CreateRecipeForm from "../Components/Profile/MyRecipes/CreateRecipeForm";
-import { useState } from "react";
-import RecipePage from "./RecipePage";
 
 const CreateRecipePage = ({ recipeId }) => {
   const navigate = useNavigate();

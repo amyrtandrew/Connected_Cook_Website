@@ -12,6 +12,7 @@ const EditRecipe = () => {
     prepTime: "",
     cookTime: "",
     notes: "",
+    image: "",
   });
   useEffect(() => {
     axios
@@ -25,6 +26,7 @@ const EditRecipe = () => {
           prepTime: res.data.prepTime,
           cookTime: res.data.cookTime,
           notes: res.data.notes,
+          image: res.data.image,
         });
         // console.log(res.data.recipeName);
       })
@@ -113,6 +115,13 @@ const EditRecipe = () => {
           type="text"
           value={values.notes}
           onChange={(e) => setValues({ ...values, notes: e.target.value })}
+        />
+        <input
+          name="image"
+          id="image"
+          accept="image/*"
+          type="file"
+          onChange={(e) => setValues({ ...values, image: e.target.files })}
         />
         <button type="submit">Save</button>
       </form>
