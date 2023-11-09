@@ -78,8 +78,16 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    // imageType: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
+    // imageName: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
     image: {
-      type: DataTypes.BLOB,
+      type: DataTypes.BLOB("long"),
       allowNull: true,
     },
   },

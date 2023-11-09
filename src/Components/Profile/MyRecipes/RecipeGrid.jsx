@@ -39,7 +39,7 @@ const RecipeGrid = ({ recipeId }) => {
     <div>
       <nav className="grid-navbar">
         <NavLink to="/create-recipe" href="#">
-          <button className='plus-button'>+</button>
+          <button className="plus-button">+</button>
         </NavLink>
       </nav>
       <div className="recipe-grid">

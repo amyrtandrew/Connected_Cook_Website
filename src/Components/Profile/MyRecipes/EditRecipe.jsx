@@ -37,6 +37,18 @@ const EditRecipe = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    console.log(values.image);
+    console.log(values);
+    let body = {
+      recipeName,
+      servings,
+      instructions,
+      prepTime,
+      cookTime,
+      notes,
+      image,
+      // image: URL.createObjectURL(values.image),
+    };
     const res = await axios.put(
       `http://localhost:5555/api/edit-recipe/${recipeId}`,
       values
@@ -121,7 +133,8 @@ const EditRecipe = () => {
           id="image"
           accept="image/*"
           type="file"
-          onChange={(e) => setValues({ ...values, image: e.target.files })}
+          // value={values.image}
+          onChange={(e) => setValues({ ...values, image: e.target.files[0] })}
         />
         <button type="submit">Save</button>
       </form>
