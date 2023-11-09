@@ -24,6 +24,7 @@ import EditRecipe from "./Components/Profile/MyRecipes/EditRecipe.jsx";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+      {/* <Route index element={<LoginPage />} /> */}
       <Route path="recipe-grid" element={<RecipeGrid />} />
 
       {/* <Route

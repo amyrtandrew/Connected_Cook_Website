@@ -73,7 +73,7 @@ const recipeFunctions = {
     }
   },
 
-  //view a recipe
+  //view a specific recipe
   viewRecipe: async (req, res) => {
     // console.log(req.session.userId);
     const { recipeId } = req.params;
@@ -84,6 +84,31 @@ const recipeFunctions = {
       res.json(recipe);
     } else {
       console.log("error");
+    }
+  },
+  //view all recipes
+  allRecipes: async (req, res) => {
+    const {
+      recipeName,
+      servings,
+      instructions,
+      prepTime,
+      cookTime,
+      notes,
+      image,
+    } = req.body;
+    const recipes = await Recipe.findAll({
+      recipeName: recipeName,
+      servings: servings || null,
+      instructions: instructions || null,
+      prepTime: prepTime || null,
+      cookTime: cookTime || null,
+      notes: notes || null,
+      image: image || null,
+    });
+    // console.log(recipes);
+    if (recipes) {
+      res.send(recipes);
     }
   },
 };

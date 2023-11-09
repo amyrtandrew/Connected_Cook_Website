@@ -20,7 +20,8 @@ app.use(
 );
 
 const { login, logout, createAccount } = authFunctions;
-const { createRecipe, editRecipe, deleteRecipe, viewRecipe } = recipeFunctions;
+const { createRecipe, editRecipe, deleteRecipe, viewRecipe, allRecipes } =
+  recipeFunctions;
 
 function loginRequired(req, res, next) {
   if (!req.session.userId) {
@@ -41,6 +42,7 @@ app.post("/api/create-recipe", loginRequired, createRecipe);
 app.put("/api/edit-recipe/:recipeId", editRecipe);
 app.delete("/api/edit-recipe/:recipeId", deleteRecipe);
 app.get("/api/recipe/:recipeId", loginRequired, viewRecipe);
+app.get("/api/all-recipes", allRecipes);
 
 ViteExpress.listen(app, 5555, () =>
   console.log(`Server working on http://localhost:5555`)
