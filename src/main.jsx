@@ -8,9 +8,9 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import RecipeGrid from "./Components/Profile/MyRecipes/RecipeGrid.jsx";
+import RecipeGrid from "./Components/Profile/Explore/ExploreGrid.jsx";
 import { RouterProvider } from "react-router-dom";
-import ExploreHeader from "./Components/Profile/Explore/Header/ExploreHeader.jsx";
+import ExploreHeader from "./Components/Profile/Explore/ExploreHeader.jsx";
 import axios from "axios";
 import ErrorPage from "./pages/ErrorPage.jsx";
 
@@ -20,33 +20,19 @@ import RecipePage from "./pages/RecipePage.jsx";
 import CreateAccountPage from "./pages/CreateAccountPage.jsx";
 import CreateRecipePage from "./pages/CreateRecipePage.jsx";
 import EditRecipe from "./Components/Profile/MyRecipes/EditRecipe.jsx";
+import MyRecipesPage from "./pages/MyRecipesPage.jsx";
+import MyRecipesGrid from "./Components/Profile/MyRecipes/MyRecipesGrid.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />} errorElement={<ErrorPage />}>
       {/* <Route index element={<LoginPage />} /> */}
-      <Route path="recipe-grid" element={<RecipeGrid />} />
+      <Route path="my-recipes" element={<MyRecipesGrid />} />
 
-      {/* <Route
-        path="recipe"
-        element={<SingleRecipe />}
-        loader={async () => {
-          const res = await axios.get("/api/recipe");
-          return { initialData: res.data };
-        }}
-      /> */}
-
-      <Route path="/explore-header" element={<ExploreHeader />} />
+      <Route path="explore-header" element={<ExploreHeader />} />
 
       {/* All Movies */}
-      <Route
-        path="recipe/:id"
-        element={<RecipePage />}
-        // loader={async () => {
-        //   const res = await axios.get("/api/recipe/:id");
-        //   return { movies: res.data };
-        // }}
-      />
+      <Route path="recipe/:id" element={<RecipePage />} />
 
       <Route path="login" element={<LoginPage />} />
       <Route path="create-account" element={<CreateAccountPage />} />

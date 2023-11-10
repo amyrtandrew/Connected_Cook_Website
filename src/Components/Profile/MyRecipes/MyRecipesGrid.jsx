@@ -3,17 +3,17 @@ import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
-const RecipeGrid = ({ recipeId, filtered }) => {
-  // const [recipes, setRecipes] = useState([]);
-  // useEffect(() => {
-  //   axios
-  //     .get("/api/all-recipes")
-  //     .then((res) => {
-  //       setRecipes(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-  let recipeList = filtered.map((recipe) => {
+const MyRecipesGrid = () => {
+  const [recipes, setRecipes] = useState([]);
+  useEffect(() => {
+    axios
+      .get("/api/all-recipes")
+      .then((res) => {
+        setRecipes(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  let recipeList = recipes.map((recipe) => {
     return (
       <Link
         to={`/recipe/${recipe.recipeId}`}
@@ -42,4 +42,4 @@ const RecipeGrid = ({ recipeId, filtered }) => {
   );
 };
 
-export default RecipeGrid;
+export default MyRecipesGrid;

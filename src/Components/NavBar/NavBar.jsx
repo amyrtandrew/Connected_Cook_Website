@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Logout from "./Logout";
 import Logo from "./Logo";
-import ExploreHeader from "../Profile/Explore/Header/ExploreHeader";
+import ExploreHeader from "../Profile/Explore/ExploreHeader";
 import { NavLink } from "react-router-dom";
 // import MyRecipes from "../../pages/MyRecipes";
 import { useNavigate } from "react-router-dom";
@@ -20,8 +20,8 @@ function NavBar() {
   };
 
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+    <div className="navbar-main">
+      <nav className="navbar navbar-expand-lg navbar-light">
         <NavLink to="/" className="navbar-brand" href="#">
           <Logo />
         </NavLink>
@@ -44,7 +44,7 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/recipe-grid" className="nav-link" href="#">
+              <NavLink to="/my-recipes" className="nav-link" href="#">
                 My Recipes
               </NavLink>
             </li>

@@ -84,7 +84,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
         />
       </form>
       <div className="home-link">
-        <Link to="/recipe-grid">
+        <Link to="/my-recipes">
           <button>Cancel</button>
         </Link>
       </div>

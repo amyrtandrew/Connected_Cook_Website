@@ -1,35 +1,12 @@
 import React, { useEffect, useState } from "react";
-import RecipeGrid from "../../MyRecipes/RecipeGrid";
+import RecipeGrid from "./ExploreGrid";
 import axios from "axios";
 
-const ExploreHeader = () => {
-  const [data, setData] = useState([]);
-  const [filterData, setFilterData] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("/api/all-recipes")
-      // .then((res) => res.json())
-      .then(({ data }) => {
-        console.log(data);
-        setData(data);
-        setFilterData(data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  const handleFilter = (value) => {
-    const res = data.filter((f) => f.recipeName.toLowerCase().includes(value));
-    setFilterData(res);
-  };
-
-  let searchResults = data.map((d, i) => {
-    return <div key={i}>{d.recipeName}</div>;
-  });
+const ExploreHeader = ({ handleFilter }) => {
   return (
-    <div>
+    <div className="explore-header">
       <nav
-        className="navbar navbar-light bg-light justify-content-between"
+        className="navbar navbar-light justify-content-between"
         style={{ marginTop: "50px", height: "80px" }}
       >
         <p className="explore-message">
@@ -62,7 +39,6 @@ const ExploreHeader = () => {
           </svg>
         </form>
       </nav>
-      <RecipeGrid filtered={filterData} />
     </div>
   );
 };

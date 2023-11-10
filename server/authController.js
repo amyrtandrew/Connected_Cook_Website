@@ -4,7 +4,6 @@ const authFunctions = {
   login: async (req, res) => {
     const { username, password } = req.body;
     const user = await User.findOne({ where: { username: username } });
-
     if (user && user.password === password) {
       req.session.userId = user.userId;
       // console.log(req.session.userId);
