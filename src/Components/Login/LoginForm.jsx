@@ -20,6 +20,7 @@ export default function LoginForm({ onLogin }) {
         name="username"
         id="username"
         type="text"
+        placeholder="username"
         required
         onChange={(e) => setUsernameValue(e.target.value)}
       />
@@ -28,6 +29,7 @@ export default function LoginForm({ onLogin }) {
         name="password"
         id="password"
         type="password"
+        placeholder="password"
         required
         onChange={(e) => setPasswordValue(e.target.value)}
       />

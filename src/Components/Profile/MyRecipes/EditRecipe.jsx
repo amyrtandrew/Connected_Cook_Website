@@ -7,6 +7,7 @@ const EditRecipe = () => {
   const { recipeId } = useParams();
   const [values, setValues] = useState({
     recipeName: "",
+    category: "",
     servings: "",
     instructions: "",
     prepTime: "",
@@ -21,6 +22,7 @@ const EditRecipe = () => {
         setValues({
           ...values,
           recipeName: res.data.recipeName,
+          category: res.data.category,
           servings: res.data.servings,
           instructions: res.data.instructions,
           prepTime: res.data.prepTime,
@@ -37,10 +39,11 @@ const EditRecipe = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(values.image);
+    // console.log(values.image);
     console.log(values);
     let body = {
       recipeName,
+      category,
       servings,
       instructions,
       prepTime,
@@ -84,6 +87,20 @@ const EditRecipe = () => {
           value={values.recipeName}
           onChange={(e) => setValues({ ...values, recipeName: e.target.value })}
         />
+        <label htmlFor="category">Category:</label>
+        <select
+          name="category"
+          id="category"
+          value={values.category}
+          onChange={(e) => setValues({ ...values, category: e.target.value })}
+        >
+          <option value="1">Appetizer</option>
+          <option value="2">Breakfast</option>
+          <option value="3">Lunch</option>
+          <option value="4">Dinner</option>
+          <option value="5">Dessert</option>
+          <option value="6">Other</option>
+        </select>
 
         <label htmlFor="servings">Servings:</label>
         <input

@@ -24,6 +24,7 @@ export default function RecipePage() {
         <div>
           <h1>{recipe.recipeName}</h1>
           <ul>
+            {recipe.category}
             <li>{recipe.servings}</li>
             <li>{recipe.instructions}</li>
             <li>{recipe.prepTime}</li>

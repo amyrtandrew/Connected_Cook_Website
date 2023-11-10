@@ -5,6 +5,7 @@ const recipeFunctions = {
   createRecipe: async (req, res) => {
     const {
       recipeName,
+      category,
       servings,
       instructions,
       prepTime,
@@ -19,6 +20,7 @@ const recipeFunctions = {
     const user = await User.findByPk(userId);
     const recipe = await user.createRecipe({
       recipeName: recipeName,
+      categoryId: +category || null,
       servings: servings || null,
       instructions: instructions || null,
       prepTime: prepTime || null,
@@ -37,8 +39,9 @@ const recipeFunctions = {
   //edit a recipe
   editRecipe: async (req, res) => {
     const { recipeId } = req.params;
-    const {
+    let {
       recipeName,
+      category,
       servings,
       instructions,
       prepTime,
@@ -46,11 +49,14 @@ const recipeFunctions = {
       notes,
       image,
     } = req.body;
+    category = +category;
     console.log(req.body.recipeName);
-    console.log(req.body);
+    console.log(category);
     const recipe = await Recipe.findByPk(recipeId);
     if (recipe) {
+      console.log(recipe);
       (recipe.recipeName = recipeName),
+        (recipe.categoryId = +category ?? recipe.category),
         (recipe.servings = +servings ?? recipe.servings),
         (recipe.instructions = instructions ?? recipe.instructions),
         (recipe.prepTime = +prepTime ?? recipe.prepTime),

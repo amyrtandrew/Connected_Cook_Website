@@ -25,6 +25,7 @@ const CreateAccountForm = ({ onCreateAccount }) => {
           name="fname"
           id="fname"
           type="text"
+          placeholder="first name"
           required
           onChange={(e) => setFnameValue(e.target.value)}
         />
@@ -34,6 +35,7 @@ const CreateAccountForm = ({ onCreateAccount }) => {
           name="lname"
           id="lname"
           type="text"
+          placeholder="last name"
           required
           onChange={(e) => setLnameValue(e.target.value)}
         />
@@ -42,6 +44,7 @@ const CreateAccountForm = ({ onCreateAccount }) => {
           name="username"
           id="username"
           type="text"
+          placeholder="username"
           required
           onChange={(e) => setUsernameValue(e.target.value)}
         />
@@ -50,6 +53,7 @@ const CreateAccountForm = ({ onCreateAccount }) => {
           name="password"
           id="password"
           type="password"
+          placeholder="password"
           required
           onChange={(e) => setPasswordValue(e.target.value)}
         />

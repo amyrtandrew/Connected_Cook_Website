@@ -71,3 +71,8 @@
 .explore-header {
   background-color: white;
 }
+
+.create-recipe-form {
+  text-align: left;
+  padding: 100px;
+}

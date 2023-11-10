@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const CreateRecipeForm = ({ onCreateRecipe }) => {
   const [recipeName, setRecipeName] = useState("");
-  //   const [category, setCategory] = useState('');
   const [prepTime, setPrepTime] = useState("");
   const [cookTime, setCookTime] = useState("");
   const [servings, setServings] = useState("");
+  const [category, setCategory] = useState("");
   //   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
   const [notes, setNotes] = useState("");
@@ -20,7 +20,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           onCreateRecipe(e, {
             recipeName: recipeName,
             servings: servings,
-            // category: category,
+            category: category,
             instructions: instructions,
             prepTime: prepTime,
             cookTime: cookTime,
@@ -34,15 +34,29 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           name="recipeName"
           id="recipeName"
           type="text"
+          placeholder="name of recipe"
           required
           onChange={(e) => setRecipeName(e.target.value)}
         />
-
+        <label htmlFor="category">Category:</label>
+        <select
+          name="category"
+          id="category"
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="1">Appetizer</option>
+          <option value="2">Breakfast</option>
+          <option value="3">Lunch</option>
+          <option value="4">Dinner</option>
+          <option value="5">Dessert</option>
+          <option value="6">Other</option>
+        </select>
         <label htmlFor="servings">Servings:</label>
         <input
           name="servings"
           id="servings"
           type="text"
+          placeholder="# servings"
           onChange={(e) => setServings(e.target.value)}
         />
         <label htmlFor="instructions">Instructions:</label>
@@ -50,6 +64,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           name="instructions"
           id="instructions"
           type="text"
+          placeholder="instructions"
           required
           onChange={(e) => setInstructions(e.target.value)}
         />
@@ -58,6 +73,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           name="prepTime"
           id="prepTime"
           type="text"
+          placeholder="prep time (min)"
           onChange={(e) => setPrepTime(e.target.value)}
         />
         <label htmlFor="cookTime">Cook Time:</label>
@@ -65,6 +81,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           name="cookTime"
           id="cookTime"
           type="text"
+          placeholder="cook time (min)"
           onChange={(e) => setCookTime(e.target.value)}
         />
         <label htmlFor="notes">Notes:</label>
@@ -72,6 +89,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           name="notes"
           id="notes"
           type="text"
+          placeholder="notes"
           onChange={(e) => setNotes(e.target.value)}
         />
         <button type="submit">Add Recipe</button>
