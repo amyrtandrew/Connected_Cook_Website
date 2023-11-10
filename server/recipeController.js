@@ -75,12 +75,10 @@ const recipeFunctions = {
 
   //view a specific recipe
   viewRecipe: async (req, res) => {
-    // console.log(req.session.userId);
     const { recipeId } = req.params;
     const recipe = await Recipe.findByPk(recipeId);
-    // console.log(recipe.userId);
-    // console.log(recipe.userId);
-    if (recipe && req.session.userId === recipe.userId) {
+    if (recipe) {
+      // && req.session.userId === recipe.userId
       res.json(recipe);
     } else {
       console.log("error");
@@ -88,29 +86,12 @@ const recipeFunctions = {
   },
   //view all recipes
   allRecipes: async (req, res) => {
-    const {
-      recipeName,
-      servings,
-      instructions,
-      prepTime,
-      cookTime,
-      notes,
-      image,
-    } = req.body;
-    const recipes = await Recipe.findAll({
-      recipeName: recipeName,
-      servings: servings || null,
-      instructions: instructions || null,
-      prepTime: prepTime || null,
-      cookTime: cookTime || null,
-      notes: notes || null,
-      image: image || null,
-    });
-    // console.log(recipes);
+    const recipes = await Recipe.findAll();
     if (recipes) {
       res.send(recipes);
     }
   },
+  //view only your recipes
   myRecipes: async (req, res) => {
     const recipes = await Recipe.findAll({
       where: { userId: req.session.userId },

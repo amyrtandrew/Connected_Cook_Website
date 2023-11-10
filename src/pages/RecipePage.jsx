@@ -8,8 +8,6 @@ export default function RecipePage() {
   const [recipe, setRecipe] = useState(null);
   const { id } = useParams("");
 
-  const navigate = useNavigate();
-
   const loadRecipe = async () => {
     const response = await axios.get(`/api/recipe/${id}`);
     setRecipe(response.data);
@@ -31,10 +29,10 @@ export default function RecipePage() {
             <li>{recipe.prepTime}</li>
             <li>{recipe.cookTime}</li>
             <li>{recipe.notes}</li>
-            <li>
-              {/* <Image src={recipe.image}></Image> */}
-              <img src={recipe.image} />
-            </li>
+            {/* <li> */}
+            {/* <Image src={recipe.image}></Image> */}
+            {/* <img src={recipe.image} /> */}
+            {/* </li> */}
           </ul>
           <Link to={`/edit-recipe/${recipe.recipeId}`}>
             <button>Edit</button>
