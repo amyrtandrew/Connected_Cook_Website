@@ -111,5 +111,13 @@ const recipeFunctions = {
       res.send(recipes);
     }
   },
+  myRecipes: async (req, res) => {
+    const recipes = await Recipe.findAll({
+      where: { userId: req.session.userId },
+    });
+    if (recipes) {
+      res.send(recipes);
+    }
+  },
 };
 export default recipeFunctions;

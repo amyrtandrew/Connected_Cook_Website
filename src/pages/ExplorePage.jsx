@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import NavBar from "../Components/NavBar/NavBar";
 import ExploreHeader from "../Components/Profile/Explore/ExploreHeader";
-import RecipeGrid from "../Components/Profile/Explore/ExploreGrid";
+import ExploreGrid from "../Components/Profile/Explore/ExploreGrid";
 import { Outlet } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -33,9 +32,8 @@ const ExplorePage = () => {
 
   return (
     <div className="home-page">
-      <NavBar />
-      <ExploreHeader />
-      <RecipeGrid filtered={filterData} />
+      <ExploreHeader handleFilter={handleFilter} />
+      <ExploreGrid filtered={filterData} />
       <Outlet />
     </div>
   );

@@ -7,7 +7,7 @@ const MyRecipesGrid = () => {
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
     axios
-      .get("/api/all-recipes")
+      .get("/api/my-recipes")
       .then((res) => {
         setRecipes(res.data);
       })

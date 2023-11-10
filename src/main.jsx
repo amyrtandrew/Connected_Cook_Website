@@ -22,6 +22,7 @@ import CreateRecipePage from "./pages/CreateRecipePage.jsx";
 import EditRecipe from "./Components/Profile/MyRecipes/EditRecipe.jsx";
 import MyRecipesPage from "./pages/MyRecipesPage.jsx";
 import MyRecipesGrid from "./Components/Profile/MyRecipes/MyRecipesGrid.jsx";
+import ExplorePage from "./pages/ExplorePage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,7 +30,7 @@ const router = createBrowserRouter(
       {/* <Route index element={<LoginPage />} /> */}
       <Route path="my-recipes" element={<MyRecipesGrid />} />
 
-      <Route path="explore-header" element={<ExploreHeader />} />
+      <Route path="explore-page" element={<ExplorePage />} />
 
       {/* All Movies */}
       <Route path="recipe/:id" element={<RecipePage />} />

@@ -39,7 +39,7 @@ export default function RecipePage() {
           <Link to={`/edit-recipe/${recipe.recipeId}`}>
             <button>Edit</button>
           </Link>
-          <Link to="/explore-header">
+          <Link to="/my-recipes">
             <button>Back to Recipes</button>
           </Link>
         </div>

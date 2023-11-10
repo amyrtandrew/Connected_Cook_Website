@@ -39,7 +39,7 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <NavLink to="/explore-header" className="nav-link" href="#">
+              <NavLink to="/explore-page" className="nav-link" href="#">
                 Explore
               </NavLink>
             </li>
