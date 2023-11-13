@@ -9,23 +9,18 @@ export default function RecipePage() {
   const { id } = useParams("");
   const [like, setLike] = useState(50);
   // const [dislike, setDislike] = useState(3);
-  const [likeActive, setLikeActive] = useState(false);
+  // const [likeActive, setLikeActive] = useState(false);
   // const [dislikeActive, setDislikeActive] = useState(false);
+  const [fav, setFav] = useState(false);
 
-  function likef() {
-    if (likeActive) {
-      setLikeActive(false);
-      setLike(like - 1);
-    } else {
-      setLikeActive(true);
-      setLike(like + 1);
-      // if (dislikeActive) {
-      //   setDisklikeActive(false);
-      //   setLike(like + 1);
-      //   setDislike(dislike - 1);
-      // }
-    }
-  }
+  // function likef() {
+  // if (dislikeActive) {
+  //   setDisklikeActive(false);
+  //   setLike(like + 1);
+  //   setDislike(dislike - 1);
+  // }
+  // }
+  // }
 
   // function dislikef() {
   //   if (dislikeActive) {
@@ -51,31 +46,21 @@ export default function RecipePage() {
     loadRecipe();
   }, []);
   // console.log(recipe.image);
-  let favorited = true;
+  // let favorited = true;
 
   const handleFavorite = async (event) => {
     if (event && event.preventDefault) {
       event.preventDefault();
     }
+    console.log("favorite hit");
     // event.preventDefault();
     const res = await axios.post(`/api/favorite/${id}`);
     if (res.data.success) {
-      //   navigate("/recipe-grid");
-      // likef();
-      console.log("hooray");
-      // if (likeActive) {
-      //   setLikeActive(false);
-      //   setLike(like - 1);
-      // } else {
-      //   setLikeActive(true);
+      console.log("favorited");
+
       setLike(like + 1);
-      // if (dislikeActive) {
-      //   setDisklikeActive(false);
-      //   setLike(like + 1);
-      //   setDislike(dislike - 1);
-      // }
-      // }
-      favorited = true;
+
+      setFav(true);
     }
   };
 
@@ -83,14 +68,13 @@ export default function RecipePage() {
     if (event && event.preventDefault) {
       event.preventDefault();
     }
+    console.log("unfavorite hit");
     const res = await axios.post(`/api/unfavorite/${id}`);
     if (res.data.success) {
-      //   navigate("/recipe-grid");
-      // likef();
-      console.log("unhooray");
+      console.log("unfavorited");
       setLike(like - 1);
     }
-    favorited = false;
+    setFav(false);
   };
 
   return (
@@ -119,7 +103,8 @@ export default function RecipePage() {
           </Link>
           <button
             onClick={() => {
-              if (favorited === false) {
+              console.log("hit button");
+              if (!fav) {
                 handleFavorite();
               } else {
                 handleUnfavorite();

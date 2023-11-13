@@ -112,19 +112,15 @@ const recipeFunctions = {
     const recipe = await Recipe.findByPk(recipeId);
     const user = await User.findByPk(userId);
     const favorite = await recipe.addUser(user);
-    if (favorite) {
-      res.json({ success: true });
-    }
+    res.json({ success: true });
   },
   unfavoriteRecipe: async (req, res) => {
     const { recipeId } = req.params;
     const { userId } = req.session;
     const recipe = await Recipe.findByPk(recipeId);
     const user = await User.findByPk(userId);
-    const unfavorite = await recipe.removeUser(user);
-    if (unfavorite) {
-      res.json({ success: true });
-    }
+    await recipe.removeUser(user);
+    res.json({ success: true });
   },
 };
 export default recipeFunctions;
