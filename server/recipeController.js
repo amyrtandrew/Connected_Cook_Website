@@ -106,5 +106,25 @@ const recipeFunctions = {
       res.send(recipes);
     }
   },
+  favoriteRecipe: async (req, res) => {
+    const { recipeId } = req.params;
+    const { userId } = req.session;
+    const recipe = await Recipe.findByPk(recipeId);
+    const user = await User.findByPk(userId);
+    const favorite = await recipe.addUser(user);
+    if (favorite) {
+      res.json({ success: true });
+    }
+  },
+  unfavoriteRecipe: async (req, res) => {
+    const { recipeId } = req.params;
+    const { userId } = req.session;
+    const recipe = await Recipe.findByPk(recipeId);
+    const user = await User.findByPk(userId);
+    const unfavorite = await recipe.removeUser(user);
+    if (unfavorite) {
+      res.json({ success: true });
+    }
+  },
 };
 export default recipeFunctions;

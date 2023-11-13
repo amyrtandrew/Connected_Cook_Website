@@ -51,6 +51,47 @@ export default function RecipePage() {
     loadRecipe();
   }, []);
   // console.log(recipe.image);
+  let favorited = true;
+
+  const handleFavorite = async (event) => {
+    if (event && event.preventDefault) {
+      event.preventDefault();
+    }
+    // event.preventDefault();
+    const res = await axios.post(`/api/favorite/${id}`);
+    if (res.data.success) {
+      //   navigate("/recipe-grid");
+      // likef();
+      console.log("hooray");
+      // if (likeActive) {
+      //   setLikeActive(false);
+      //   setLike(like - 1);
+      // } else {
+      //   setLikeActive(true);
+      setLike(like + 1);
+      // if (dislikeActive) {
+      //   setDisklikeActive(false);
+      //   setLike(like + 1);
+      //   setDislike(dislike - 1);
+      // }
+      // }
+      favorited = true;
+    }
+  };
+
+  const handleUnfavorite = async (event) => {
+    if (event && event.preventDefault) {
+      event.preventDefault();
+    }
+    const res = await axios.post(`/api/unfavorite/${id}`);
+    if (res.data.success) {
+      //   navigate("/recipe-grid");
+      // likef();
+      console.log("unhooray");
+      setLike(like - 1);
+    }
+    favorited = false;
+  };
 
   return (
     <>
@@ -76,7 +117,17 @@ export default function RecipePage() {
           <Link to="/my-recipes">
             <button>Back to Recipes</button>
           </Link>
-          <button onClick={likef}>like {like}</button>
+          <button
+            onClick={() => {
+              if (favorited === false) {
+                handleFavorite();
+              } else {
+                handleUnfavorite();
+              }
+            }}
+          >
+            like {like}
+          </button>
           {/* <button onClick={dislikef}>dislike {dislike}</button> */}
         </div>
       )}

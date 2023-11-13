@@ -151,6 +151,31 @@ Category.init(
   }
 );
 
+// export class Favorite extends Model {
+//   [util.inspect.custom]() {
+//     return this.toJSON();
+//   }
+// }
+
+// Category.init(
+//   {
+//     categoryId: {
+//       type: DataTypes.INTEGER,
+//       autoIncrement: true,
+//       primaryKey: true,
+//     },
+//     name: {
+//       type: DataTypes.STRING(15),
+//       allowNull: false,
+//       unique: true,
+//     },
+//   },
+//   {
+//     modelName: "category",
+//     sequelize: db,
+//   }
+// );
+
 Category.hasMany(Recipe, { foreignKey: "categoryId" });
 Recipe.belongsTo(Category, { foreignKey: "categoryId" });
 

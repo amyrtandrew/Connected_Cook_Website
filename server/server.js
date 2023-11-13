@@ -27,6 +27,8 @@ const {
   viewRecipe,
   allRecipes,
   myRecipes,
+  favoriteRecipe,
+  unfavoriteRecipe,
 } = recipeFunctions;
 
 function loginRequired(req, res, next) {
@@ -50,6 +52,8 @@ app.delete("/api/edit-recipe/:recipeId", deleteRecipe);
 app.get("/api/recipe/:recipeId", viewRecipe);
 app.get("/api/all-recipes", allRecipes);
 app.get("/api/my-recipes", myRecipes);
+app.post("/api/favorite/:recipeId", favoriteRecipe);
+app.post("/api/unfavorite/:recipeId", unfavoriteRecipe);
 
 ViteExpress.listen(app, 5555, () =>
   console.log(`Server working on http://localhost:5555`)
