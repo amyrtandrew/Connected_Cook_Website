@@ -17,14 +17,15 @@ const recipeFunctions = {
     // const { imageName } = req.file.originalname;
     // const { imageData } = req.file.buffer;
     const { userId } = req.session;
+    console.log(category);
     const user = await User.findByPk(userId);
     const recipe = await user.createRecipe({
       recipeName: recipeName,
       categoryId: +category || null,
-      servings: servings || null,
+      servings: +servings || null,
       instructions: instructions || null,
-      prepTime: prepTime || null,
-      cookTime: cookTime || null,
+      prepTime: +prepTime || null,
+      cookTime: +cookTime || null,
       notes: notes || null,
       image: image || null,
     });
@@ -39,7 +40,7 @@ const recipeFunctions = {
   //edit a recipe
   editRecipe: async (req, res) => {
     const { recipeId } = req.params;
-    let {
+    const {
       recipeName,
       category,
       servings,
@@ -49,8 +50,7 @@ const recipeFunctions = {
       notes,
       image,
     } = req.body;
-    category = +category;
-    console.log(req.body.recipeName);
+    // category = +category;
     console.log(category);
     const recipe = await Recipe.findByPk(recipeId);
     if (recipe) {

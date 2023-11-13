@@ -30,32 +30,31 @@ const EditRecipe = () => {
           notes: res.data.notes,
           image: res.data.image,
         });
-        // console.log(res.data.recipeName);
+        console.log(res.data.category);
+        console.log(values);
       })
       .catch((err) => console.log(err));
   }, []);
 
   const navigate = useNavigate();
-  const handleSubmit = async (event) => {
+  const handleEdit = async (event) => {
     event.preventDefault();
 
     // console.log(values.image);
+    // console.log(values);
+    // let body = {
+    //   recipeName,
+    //   category,
+    //   servings,
+    //   instructions,
+    //   prepTime,
+    //   cookTime,
+    //   notes,
+    //   image,
+    //   // image: URL.createObjectURL(values.image),
+    // };
     console.log(values);
-    let body = {
-      recipeName,
-      category,
-      servings,
-      instructions,
-      prepTime,
-      cookTime,
-      notes,
-      image,
-      // image: URL.createObjectURL(values.image),
-    };
-    const res = await axios.put(
-      `http://localhost:5555/api/edit-recipe/${recipeId}`,
-      values
-    );
+    const res = await axios.put(`/api/edit-recipe/${recipeId}`, values);
 
     if (res.data.success) {
       navigate(`/recipe/${res.data.recipeId}`);
@@ -70,13 +69,13 @@ const EditRecipe = () => {
     );
 
     if (res.data.success) {
-      navigate("/recipe-grid");
+      navigate("/my-recipes");
     }
   };
 
   return (
     <div>
-      <form className="create-recipe-form" onSubmit={(e) => handleSubmit(e)}>
+      <form className="create-recipe-form" onSubmit={(e) => handleEdit(e)}>
         <label htmlFor="recipeName">Recipe Name:</label>
         <input
           name="recipeName"
@@ -115,7 +114,6 @@ const EditRecipe = () => {
           name="instructions"
           id="instructions"
           type="text"
-          required
           value={values.instructions}
           onChange={(e) =>
             setValues({ ...values, instructions: e.target.value })

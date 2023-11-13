@@ -8,6 +8,8 @@ const CreateRecipePage = ({ recipeId }) => {
 
   const handleCreateRecipe = async (event, formData) => {
     event.preventDefault();
+    console.log(`the form data is ${formData}`);
+    console.log(formData.category);
     const res = await axios.post("/api/create-recipe", formData);
     if (res.data.success) {
       //   navigate("/recipe-grid");
