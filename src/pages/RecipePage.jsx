@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { Image } from "react-bootstrap";
 
-export default function RecipePage() {
+export default function RecipePage({ personal }) {
   const [recipe, setRecipe] = useState(null);
   const { id } = useParams("");
   const [like, setLike] = useState(50);
@@ -95,12 +95,14 @@ export default function RecipePage() {
             {/* <img src={recipe.image} /> */}
             {/* </li> */}
           </ul>
-          <Link to={`/edit-recipe/${recipe.recipeId}`}>
-            <button>Edit</button>
-          </Link>
-          <Link to="/my-recipes">
-            <button>Back to Recipes</button>
-          </Link>
+          <div>
+            <Link to={`/edit-recipe/${recipe.recipeId}`}>
+              <button>Edit</button>
+            </Link>
+            <Link to="/my-recipes">
+              <button>Back to Recipes</button>
+            </Link>
+          </div>
           <button
             onClick={() => {
               console.log("hit button");

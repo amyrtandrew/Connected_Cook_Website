@@ -7,6 +7,8 @@ import { NavLink } from "react-router-dom";
 // import MyRecipes from "../../pages/MyRecipes";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useState } from "react";
+import RecipePage from "../../pages/RecipePage";
 
 function NavBar() {
   const navigate = useNavigate();
