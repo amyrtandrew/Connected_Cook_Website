@@ -8,21 +8,15 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import RecipeGrid from "./Components/Profile/Explore/ExploreGrid.jsx";
 import { RouterProvider } from "react-router-dom";
-import ExploreHeader from "./Components/Profile/Explore/ExploreHeader.jsx";
-import axios from "axios";
 import ErrorPage from "./pages/ErrorPage.jsx";
-
 import LoginPage from "./pages/LoginPage.jsx";
-import CreateAccountForm from "./Components/Login/CreateAccountForm.jsx";
-import RecipePage from "./pages/RecipePage.jsx";
 import CreateAccountPage from "./pages/CreateAccountPage.jsx";
 import CreateRecipePage from "./pages/CreateRecipePage.jsx";
 import EditRecipe from "./Components/Profile/MyRecipes/EditRecipe.jsx";
-import MyRecipesPage from "./pages/MyRecipesPage.jsx";
 import MyRecipesGrid from "./Components/Profile/MyRecipes/MyRecipesGrid.jsx";
 import ExplorePage from "./pages/ExplorePage.jsx";
+import RecipePage from "./pages/RecipePage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,6 +39,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    {/* <Provider store={store}> */}
     <RouterProvider router={router} />
+    {/* </Provider> */}
   </React.StrictMode>
 );

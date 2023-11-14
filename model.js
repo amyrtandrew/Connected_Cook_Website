@@ -151,6 +151,29 @@ Category.init(
   }
 );
 
+export class Favorite extends Model {
+  [util.inspect.custom]() {
+    return this.toJSON();
+  }
+}
+
+Favorite.init(
+  {
+    favoriteId: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    comment: {
+      type: DataTypes.STRING,
+    },
+  },
+  {
+    modelName: "favorite",
+    sequelize: db,
+  }
+);
+
 // export class Favorite extends Model {
 //   [util.inspect.custom]() {
 //     return this.toJSON();
@@ -187,7 +210,13 @@ User.hasMany(Recipe, { foreignKey: "userId" });
 Recipe.belongsTo(User, { foreignKey: "userId" });
 // User.addRecipe()
 
-// many-many rel between users & recipes
-Recipe.belongsToMany(User, { through: "favorites" });
-User.belongsToMany(Recipe, { through: "favorites" });
-// Recipe.addUser()
+// // many-many rel between users & recipes
+// Recipe.belongsToMany(User, { through: "favorites" });
+// User.belongsToMany(Recipe, { through: "favorites" });
+// // Recipe.addUser()
+
+User.hasMany(Favorite, { foreignKey: "userId" });
+Favorite.belongsTo(User, { foreignKey: "userId" });
+
+Recipe.hasMany(Favorite, { foreignKey: "recipeId" });
+Favorite.belongsTo(Recipe, { foreignKey: "recipeId" });

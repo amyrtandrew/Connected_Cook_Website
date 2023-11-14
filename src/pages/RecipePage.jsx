@@ -4,38 +4,13 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { Image } from "react-bootstrap";
 
-export default function RecipePage({ personal }) {
+export default function RecipePage() {
   const [recipe, setRecipe] = useState(null);
   const { id } = useParams("");
   const [like, setLike] = useState(50);
-  // const [dislike, setDislike] = useState(3);
-  // const [likeActive, setLikeActive] = useState(false);
-  // const [dislikeActive, setDislikeActive] = useState(false);
   const [fav, setFav] = useState(false);
 
-  // function likef() {
-  // if (dislikeActive) {
-  //   setDisklikeActive(false);
-  //   setLike(like + 1);
-  //   setDislike(dislike - 1);
-  // }
-  // }
-  // }
-
-  // function dislikef() {
-  //   if (dislikeActive) {
-  //     setDislikeActive(false);
-  //     setDislike(dislike - 1);
-  //   } else {
-  //     setDislikeActive(true);
-  //     setDislike(dislike + 1);
-  //     if (likeActive) {
-  //       setLikeActive(false);
-  //       setDislike(dislike + 1);
-  //       setLike(like - 1);
-  //     }
-  //   }
-  // }
+  let userId = 1;
 
   const loadRecipe = async () => {
     const response = await axios.get(`/api/recipe/${id}`);
@@ -45,15 +20,12 @@ export default function RecipePage({ personal }) {
   useEffect(() => {
     loadRecipe();
   }, []);
-  // console.log(recipe.image);
-  // let favorited = true;
 
   const handleFavorite = async (event) => {
     if (event && event.preventDefault) {
       event.preventDefault();
     }
     console.log("favorite hit");
-    // event.preventDefault();
     const res = await axios.post(`/api/favorite/${id}`);
     if (res.data.success) {
       console.log("favorited");
@@ -95,26 +67,28 @@ export default function RecipePage({ personal }) {
             {/* <img src={recipe.image} /> */}
             {/* </li> */}
           </ul>
-          <div>
+          {userId === recipe.userId ? (
             <Link to={`/edit-recipe/${recipe.recipeId}`}>
               <button>Edit</button>
             </Link>
-            <Link to="/my-recipes">
-              <button>Back to Recipes</button>
-            </Link>
-          </div>
-          <button
-            onClick={() => {
-              console.log("hit button");
-              if (!fav) {
-                handleFavorite();
-              } else {
-                handleUnfavorite();
-              }
-            }}
-          >
-            like {like}
-          </button>
+          ) : (
+            <button
+              onClick={() => {
+                console.log("hit button");
+                if (!fav) {
+                  handleFavorite();
+                } else {
+                  handleUnfavorite();
+                }
+              }}
+            >
+              like {like}
+            </button>
+          )}
+          <Link to="/my-recipes">
+            <button>Back to Recipes</button>
+          </Link>
+
           {/* <button onClick={dislikef}>dislike {dislike}</button> */}
         </div>
       )}

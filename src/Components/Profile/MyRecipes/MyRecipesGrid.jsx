@@ -4,16 +4,43 @@ import { Link, Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 const MyRecipesGrid = () => {
-  const [recipes, setRecipes] = useState([]);
+  // const [recipes, setRecipes] = useState([]);
+
+  const [myRecipes, setMyRecipes] = useState([]);
+  const [myFavRecipes, setMyFavRecipes] = useState([]);
+
   useEffect(() => {
     axios
       .get("/api/my-recipes")
       .then((res) => {
-        setRecipes(res.data);
+        // setRecipes(res.data);
+        let { data } = res;
+        setMyRecipes(data.myRecipes);
+        // setMyFavRecipes(res.data.myFavRecipes)
       })
       .catch((err) => console.log(err));
+    axios.get("/api/my-favrecipes").then((res) => {
+      // setRecipes(res.data);
+      // setMyRecipes(res.data.myRecipes)
+      setMyFavRecipes(res.data.favRecipes);
+    });
   }, []);
-  let recipeList = recipes.map((recipe) => {
+
+  // Do this, but one for myRecipes array, and myFavRecipes array
+  let recipeList = myRecipes.map((recipe) => {
+    return (
+      <Link
+        to={`/recipe/${recipe.recipeId}`}
+        className="recipe-square"
+        key={recipe.recipeId}
+      >
+        {recipe.recipeName}
+        <img id="recipe-image" src={recipe.image} />
+      </Link>
+    );
+  });
+
+  let favRecipeList = myFavRecipes.map((recipe) => {
     return (
       <Link
         to={`/recipe/${recipe.recipeId}`}
@@ -35,7 +62,10 @@ const MyRecipesGrid = () => {
       </nav>
 
       <div className="recipe-grid">
+        <h1>My Recipes</h1>
         {recipeList}
+        <h1>My favorite recipes</h1>
+        {favRecipeList}
         <Outlet />
       </div>
     </div>

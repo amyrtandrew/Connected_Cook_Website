@@ -1,4 +1,5 @@
-import { Recipe, User } from "../model.js";
+import { Sequelize } from "sequelize";
+import { Recipe, User, Favorite } from "../model.js";
 
 const recipeFunctions = {
   //create a recipe
@@ -30,6 +31,9 @@ const recipeFunctions = {
       image: image || null,
     });
     console.log(req.body);
+    // await user.createFavorite({
+    //   recipeId: recipe.recipeId,
+    // });
     // console.log(req.body.recipeName);
     if (recipe) {
       res.json({ success: true, recipeId: recipe.recipeId });
@@ -102,16 +106,47 @@ const recipeFunctions = {
     const recipes = await Recipe.findAll({
       where: { userId: req.session.userId },
     });
-    if (recipes) {
-      res.send(recipes);
-    }
+
+    // 'recipes' is an array of Recipe objects
+    // 'favoriteRecipes' is an array of Favorite objects
+    // to access each Recipe object from a Favorite object (eager loaded include: Recipe):
+    //  favoriteRecipes.recipes
+
+    res.send({
+      myRecipes: recipes,
+    });
+    // if (recipes || favoriteRecipes) {
+    //   res.send([...recipes, ...favoriteRecipes]);
+    // }
+  },
+
+  myFavRecipes: async (req, res) => {
+    const favoriteRecipes = await Favorite.findAll({
+      where: {
+        userId: req.session.userId,
+      },
+      include: Recipe,
+    });
+
+    // 'recipes' is an array of Recipe objects
+    // 'favoriteRecipes' is an array of Favorite objects
+    // to access each Recipe object from a Favorite object (eager loaded include: Recipe):
+    //  favoriteRecipes.recipes
+
+    res.send({
+      favRecipes: favoriteRecipes,
+    });
   },
   favoriteRecipe: async (req, res) => {
     const { recipeId } = req.params;
     const { userId } = req.session;
     const recipe = await Recipe.findByPk(recipeId);
     const user = await User.findByPk(userId);
-    const favorite = await recipe.addUser(user);
+    // const favorite = await recipe.addUser(user);
+    await Favorite.create({
+      userId: userId,
+      recipeId: recipeId,
+    });
     res.json({ success: true });
   },
   unfavoriteRecipe: async (req, res) => {
@@ -119,7 +154,11 @@ const recipeFunctions = {
     const { userId } = req.session;
     const recipe = await Recipe.findByPk(recipeId);
     const user = await User.findByPk(userId);
-    await recipe.removeUser(user);
+    // await recipe.removeUser(user);
+    await Favorite.remove({
+      userId: userId,
+      recipeId: recipeId,
+    });
     res.json({ success: true });
   },
 };

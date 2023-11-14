@@ -27,6 +27,7 @@ const {
   viewRecipe,
   allRecipes,
   myRecipes,
+  myFavRecipes,
   favoriteRecipe,
   unfavoriteRecipe,
 } = recipeFunctions;
@@ -52,6 +53,8 @@ app.delete("/api/edit-recipe/:recipeId", deleteRecipe);
 app.get("/api/recipe/:recipeId", viewRecipe);
 app.get("/api/all-recipes", allRecipes);
 app.get("/api/my-recipes", myRecipes);
+app.get("/api/my-recipes", myRecipes);
+app.get("/api/my-favrecipes", myFavRecipes);
 app.post("/api/favorite/:recipeId", favoriteRecipe);
 app.post("/api/unfavorite/:recipeId", unfavoriteRecipe);
 
