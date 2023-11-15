@@ -2,10 +2,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const MyRecipesGrid = () => {
-  // const [recipes, setRecipes] = useState([]);
-
   const [myRecipes, setMyRecipes] = useState([]);
   const [myFavRecipes, setMyFavRecipes] = useState([]);
 

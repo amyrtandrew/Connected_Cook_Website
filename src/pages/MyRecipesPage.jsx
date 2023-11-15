@@ -4,7 +4,9 @@ import ExploreHeader from "../Components/Profile/Explore/ExploreHeader";
 import RecipeGrid from "../Components/Profile/Explore/ExploreGrid";
 import { Outlet } from "react-router";
 
+
 class MyRecipesPage extends Component {
+
   render() {
     return (
       <div className="home-page">

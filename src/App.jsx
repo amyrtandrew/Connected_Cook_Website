@@ -16,9 +16,12 @@ function App() {
       if (res.data.user) {
         dispatch({
           type: "SET_USER_ID",
-          payload: res.data.user.userId,
+          payload: res.data.user,
         });
         console.log(res.data.user);
+      } else {
+        console.log("this is an error");
+        console.log(res.data);
       }
     });
   };
@@ -26,7 +29,6 @@ function App() {
   useEffect(() => {
     sessionCheck();
   }, []);
-
   return (
     <div>
       <NavBar />

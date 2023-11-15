@@ -34,8 +34,8 @@ const authFunctions = {
     }
   },
   sessionCheck: async (req, res) => {
-    if (req.session.user) {
-      res.json({ user: req.session.user });
+    if (req.session.userId) {
+      res.json({ user: req.session.userId });
     } else {
       res.json("no user logged in");
     }
