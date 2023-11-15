@@ -3,18 +3,25 @@ import { useLoaderData, useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 import { Image } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 export default function RecipePage() {
   const [recipe, setRecipe] = useState(null);
-  const { id } = useParams("");
-  const [like, setLike] = useState(50);
+  const { recipeId } = useParams("");
+  // const [like, setLike] = useState(50);
   const [fav, setFav] = useState(false);
 
-  let userId = 1;
+  let userId = useSelector((state) => state.userId);
+  console.log(userId);
 
   const loadRecipe = async () => {
-    const response = await axios.get(`/api/recipe/${id}`);
-    setRecipe(response.data);
+    const { data } = await axios.get(`/api/recipe/${recipeId}`);
+    for (let favorite of data.favorites) {
+      if (favorite.userId === userId) {
+        setFav(true);
+      }
+    }
+    setRecipe(data);
   };
 
   useEffect(() => {
@@ -26,11 +33,11 @@ export default function RecipePage() {
       event.preventDefault();
     }
     console.log("favorite hit");
-    const res = await axios.post(`/api/favorite/${id}`);
+    const res = await axios.post(`/api/favorite/${recipeId}`);
     if (res.data.success) {
       console.log("favorited");
 
-      setLike(like + 1);
+      // setLike(like + 1);
 
       setFav(true);
     }
@@ -41,10 +48,10 @@ export default function RecipePage() {
       event.preventDefault();
     }
     console.log("unfavorite hit");
-    const res = await axios.post(`/api/unfavorite/${id}`);
+    const res = await axios.post(`/api/unfavorite/${recipeId}`);
     if (res.data.success) {
       console.log("unfavorited");
-      setLike(like - 1);
+      // setLike(like - 1);
     }
     setFav(false);
   };
@@ -82,7 +89,8 @@ export default function RecipePage() {
                 }
               }}
             >
-              like {like}
+              {/* like {like} */}
+              likes {recipe.favorites.length}
             </button>
           )}
           <Link to="/my-recipes">

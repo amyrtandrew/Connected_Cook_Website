@@ -17,6 +17,8 @@ import EditRecipe from "./Components/Profile/MyRecipes/EditRecipe.jsx";
 import MyRecipesGrid from "./Components/Profile/MyRecipes/MyRecipesGrid.jsx";
 import ExplorePage from "./pages/ExplorePage.jsx";
 import RecipePage from "./pages/RecipePage.jsx";
+import store from "./store.js";
+import { Provider } from "react-redux";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,7 +29,7 @@ const router = createBrowserRouter(
       <Route path="explore-page" element={<ExplorePage />} />
 
       {/* All Movies */}
-      <Route path="recipe/:id" element={<RecipePage />} />
+      <Route path="recipe/:recipeId" element={<RecipePage />} />
 
       <Route path="login" element={<LoginPage />} />
       <Route path="create-account" element={<CreateAccountPage />} />
@@ -39,8 +41,8 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {/* <Provider store={store}> */}
-    <RouterProvider router={router} />
-    {/* </Provider> */}
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

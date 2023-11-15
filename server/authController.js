@@ -7,7 +7,7 @@ const authFunctions = {
     if (user && user.password === password) {
       req.session.userId = user.userId;
       // console.log(req.session.userId);
-      res.json({ success: true });
+      res.json({ success: true, userId: user.userId });
     } else {
       res.json({ success: false });
     }
@@ -30,7 +30,14 @@ const authFunctions = {
     if (user) {
       req.session.userId = user.userId;
       // console.log(user.userId);
-      res.json({ success: true });
+      res.json({ success: true, userId: user.userId });
+    }
+  },
+  sessionCheck: async (req, res) => {
+    if (req.session.user) {
+      res.json({ user: req.session.user });
+    } else {
+      res.json("no user logged in");
     }
   },
 };

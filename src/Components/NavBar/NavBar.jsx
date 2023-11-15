@@ -1,17 +1,15 @@
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
 import Logout from "./Logout";
 import Logo from "./Logo";
-import ExploreHeader from "../Profile/Explore/ExploreHeader";
 import { NavLink } from "react-router-dom";
 // import MyRecipes from "../../pages/MyRecipes";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
-import RecipePage from "../../pages/RecipePage";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function NavBar() {
   const navigate = useNavigate();
+
 
   const handleLogout = async (e) => {
     e.preventDefault();

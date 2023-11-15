@@ -86,7 +86,10 @@ const recipeFunctions = {
   //view a specific recipe
   viewRecipe: async (req, res) => {
     const { recipeId } = req.params;
-    const recipe = await Recipe.findByPk(recipeId);
+    const recipe = await Recipe.findByPk(recipeId, {
+      include: Favorite,
+    });
+    console.log(recipe);
     if (recipe) {
       // && req.session.userId === recipe.userId
       res.json(recipe);
@@ -140,20 +143,19 @@ const recipeFunctions = {
   favoriteRecipe: async (req, res) => {
     const { recipeId } = req.params;
     const { userId } = req.session;
-    const recipe = await Recipe.findByPk(recipeId);
-    const user = await User.findByPk(userId);
-    // const favorite = await recipe.addUser(user);
+
     await Favorite.create({
       userId: userId,
       recipeId: recipeId,
     });
-    res.json({ success: true });
+    const recipe = await Recipe.findByPk(recipeId);
+    if (recipe) res.json({ success: true });
   },
   unfavoriteRecipe: async (req, res) => {
     const { recipeId } = req.params;
     const { userId } = req.session;
-    const recipe = await Recipe.findByPk(recipeId);
-    const user = await User.findByPk(userId);
+    // const recipe = await Recipe.findByPk(recipeId);
+    // const user = await User.findByPk(userId);
     // await recipe.removeUser(user);
     const favorited = await Favorite.findOne({
       where: { recipeId: recipeId, userId: userId },

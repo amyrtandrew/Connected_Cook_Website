@@ -19,7 +19,7 @@ app.use(
   })
 );
 
-const { login, logout, createAccount } = authFunctions;
+const { login, logout, createAccount, sessionCheck } = authFunctions;
 const {
   createRecipe,
   editRecipe,
@@ -46,6 +46,7 @@ function loginRequired(req, res, next) {
 app.post("/api/auth", login);
 app.post("/api/logout", loginRequired, logout);
 app.post("/api/create-account", createAccount);
+app.get("/api/session-check", sessionCheck);
 //Recipes
 app.post("/api/create-recipe", loginRequired, createRecipe);
 app.put("/api/edit-recipe/:recipeId", editRecipe);

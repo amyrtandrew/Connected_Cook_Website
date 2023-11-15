@@ -5,8 +5,28 @@ import LoginPage from "./pages/LoginPage";
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.userId);
+  const sessionCheck = async () => {
+    await axios.get("/api/session-check").then((res) => {
+      if (res.data.user) {
+        dispatch({
+          type: "SET_USER_ID",
+          payload: res.data.user.userId,
+        });
+        console.log(res.data.user);
+      }
+    });
+  };
+
+  useEffect(() => {
+    sessionCheck();
+  }, []);
+
   return (
     <div>
       <NavBar />
