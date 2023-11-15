@@ -22,7 +22,7 @@ const EditRecipe = () => {
         setValues({
           ...values,
           recipeName: res.data.recipeName,
-          category: res.data.category,
+          category: res.data.categoryId,
           servings: res.data.servings,
           instructions: res.data.instructions,
           prepTime: res.data.prepTime,
@@ -30,7 +30,7 @@ const EditRecipe = () => {
           notes: res.data.notes,
           image: res.data.image,
         });
-        console.log(res.data.category);
+        console.log(res.data);
         console.log(values);
       })
       .catch((err) => console.log(err));

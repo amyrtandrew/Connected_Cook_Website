@@ -12,7 +12,7 @@ export default function RecipePage() {
   const [fav, setFav] = useState(false);
 
   let userId = useSelector((state) => state.userId);
-  console.log(userId);
+  // console.log(userId);
 
   const loadRecipe = async () => {
     const { data } = await axios.get(`/api/recipe/${recipeId}`);
