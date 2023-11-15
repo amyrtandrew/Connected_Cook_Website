@@ -155,10 +155,10 @@ const recipeFunctions = {
     const recipe = await Recipe.findByPk(recipeId);
     const user = await User.findByPk(userId);
     // await recipe.removeUser(user);
-    await Favorite.remove({
-      userId: userId,
-      recipeId: recipeId,
+    const favorited = await Favorite.findOne({
+      where: { recipeId: recipeId, userId: userId },
     });
+    await favorited.destroy();
     res.json({ success: true });
   },
 };
