@@ -22,6 +22,7 @@ export default function RecipePage() {
       }
     }
     setRecipe(data);
+    // console.log(recipe);
   };
 
   useEffect(() => {
@@ -36,6 +37,7 @@ export default function RecipePage() {
     const res = await axios.post(`/api/favorite/${recipeId}`);
     if (res.data.success) {
       console.log("favorited");
+      console.log(recipe.favorites.length);
 
       // setLike(like + 1);
 
@@ -51,11 +53,11 @@ export default function RecipePage() {
     const res = await axios.post(`/api/unfavorite/${recipeId}`);
     if (res.data.success) {
       console.log("unfavorited");
+      console.log(recipe.favorites.length);
       // setLike(like - 1);
     }
     setFav(false);
   };
-  console.log(recipe);
 
   return (
     <>
@@ -63,7 +65,20 @@ export default function RecipePage() {
         <div>
           <h1>{recipe.recipeName}</h1>
           <ul>
-            <li>{recipe.category}</li>
+            <li>
+              {/* {recipe.categoryId} */}Category:
+              {recipe.categoryId === 1
+                ? " Appetizer"
+                : recipe.categoryId === 2
+                ? " Breakfast"
+                : recipe.categoryId === 3
+                ? " Lunch"
+                : recipe.categoryId === 4
+                ? " Dinner"
+                : recipe.categoryId === 5
+                ? " Dessert"
+                : " Other"}
+            </li>
             <li>Servings: {recipe.servings} people</li>
             <li>Ingredients/Amounts: {recipe.ingredients}</li>
             <li>Instructions: {recipe.instructions}</li>
