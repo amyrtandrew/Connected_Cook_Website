@@ -58,10 +58,7 @@ function MyRecipesPage() {
 
   return (
     <div className="home-page">
-      <MyRecipesGrid
-        recipeList={recipeList}
-        // favRecipeList={favRecipeList}
-      />
+      <MyRecipesGrid recipeList={recipeList} favRecipeList={favRecipeList} />
       <Outlet />
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import RecipeGrid from "./ExploreGrid";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
+import Accordion from "react-bootstrap/Accordion";
 
 const ExploreHeader = ({
   filterName,
@@ -33,35 +34,65 @@ const ExploreHeader = ({
           >
             Search
           </button>
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Filter
-            </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1" onClick={filterCookTime}>
-                Ready in under 30 minutes
-              </Dropdown.Item>
-              <Dropdown.Item href="#/action-2" onClick={filterCategory}>
-                Appetizer
-              </Dropdown.Item>
-              <Dropdown.Item href="#/action-3" onClick={filterCategory}>
-                Breakfast
-              </Dropdown.Item>
-              <Dropdown.Item href="#/action-4" onClick={filterCategory}>
-                Lunch
-              </Dropdown.Item>
-              <Dropdown.Item href="#/action-5" onClick={filterCategory}>
-                Dinner
-              </Dropdown.Item>
-              <Dropdown.Item href="#/action-6" onClick={filterCategory}>
-                Dessert
-              </Dropdown.Item>
-              <Dropdown.Item href="#/action-3" onClick={filterPopular}>
-                Popular
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <Accordion defaultActiveKey="0">
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Filter</Accordion.Header>
+              <Accordion.Body>
+                <button
+                  className="accordian-btn"
+                  href="#/action-1"
+                  onClick={filterCookTime}
+                >
+                  Ready in under 30 minutes
+                </button>
+                Category:
+                <button
+                  className="accordian-btn"
+                  href="#/action-2"
+                  onClick={filterCategory}
+                >
+                  Appetizer
+                </button>
+                <button
+                  className="accordian-btn"
+                  href="#/action-3"
+                  onClick={filterCategory}
+                >
+                  Breakfast
+                </button>
+                <button
+                  className="accordian-btn"
+                  href="#/action-4"
+                  onClick={filterCategory}
+                >
+                  Lunch
+                </button>
+                <button
+                  className="accordian-btn"
+                  href="#/action-5"
+                  onClick={filterCategory}
+                >
+                  Dinner
+                </button>
+                <button
+                  className="accordian-btn"
+                  href="#/action-6"
+                  onClick={filterCategory}
+                >
+                  Dessert
+                </button>
+                <button
+                  className="accordian-btn"
+                  href="#/action-3"
+                  onClick={filterPopular}
+                >
+                  Popular
+                </button>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+
           {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
