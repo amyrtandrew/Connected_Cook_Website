@@ -103,7 +103,9 @@ const recipeFunctions = {
   },
   //view all recipes
   allRecipes: async (req, res) => {
-    const recipes = await Recipe.findAll();
+    const recipes = await Recipe.findAll({
+      include: Favorite,
+    });
     if (recipes) {
       res.send(recipes);
     }

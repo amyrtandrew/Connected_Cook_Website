@@ -4,11 +4,21 @@ function ErrorPage() {
   const error = useRouteError();
   console.error(error);
 
+  if (error.response) {
+    if (error.response.status === 401) {
+      return (
+        <>
+          <h1>Oops!</h1>
+          <p>You must be logged in to do that.</p>
+          <Link to="/">Click here to go back to the homepage</Link>
+        </>
+      );
+    }
+  }
   return (
-    <div className='error-page'>
+    <div className="error-page">
       <h1>Uh oh.</h1>
       <p>Sorry, an unexpected error has occurred.</p>
-      <Link to="/">Return to home</Link>
       <p>
         <i>{error.statusText || error.message}</i>
       </p>

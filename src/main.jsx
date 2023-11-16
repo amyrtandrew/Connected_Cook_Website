@@ -19,23 +19,27 @@ import ExplorePage from "./pages/ExplorePage.jsx";
 import RecipePage from "./pages/RecipePage.jsx";
 import store from "./store.js";
 import { Provider } from "react-redux";
+import MyRecipesPage from "./pages/MyRecipesPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+    <>
+      {/* <Route path="/" element={<LoginPage />} errorElement={<ErrorPage />} /> */}
       {/* <Route index element={<LoginPage />} /> */}
-      <Route path="my-recipes" element={<MyRecipesGrid />} />
+      <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+        <Route path="my-recipes" element={<MyRecipesPage />} />
 
-      <Route path="explore-page" element={<ExplorePage />} />
+        <Route path="explore-page" element={<ExplorePage />} />
 
-      {/* All Movies */}
-      <Route path="recipe/:recipeId" element={<RecipePage />} />
+        {/* All Movies */}
+        <Route path="recipe/:recipeId" element={<RecipePage />} />
 
-      <Route path="login" element={<LoginPage />} />
-      <Route path="create-account" element={<CreateAccountPage />} />
-      <Route path="create-recipe" element={<CreateRecipePage />} />
-      <Route path="edit-recipe/:recipeId" element={<EditRecipe />} />
-    </Route>
+        <Route path="login" element={<LoginPage />} />
+        <Route path="create-account" element={<CreateAccountPage />} />
+        <Route path="create-recipe" element={<CreateRecipePage />} />
+        <Route path="edit-recipe/:recipeId" element={<EditRecipe />} />
+      </Route>
+    </>
   )
 );
 

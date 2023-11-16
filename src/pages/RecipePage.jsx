@@ -56,6 +56,7 @@ export default function RecipePage() {
     setFav(false);
   };
   console.log(recipe);
+
   return (
     <>
       {recipe && (

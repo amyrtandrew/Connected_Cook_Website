@@ -3,7 +3,12 @@ import RecipeGrid from "./ExploreGrid";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 
-const ExploreHeader = ({ handleFilter, handleFunnel }) => {
+const ExploreHeader = ({
+  filterName,
+  filterCookTime,
+  filterCategory,
+  filterPopular,
+}) => {
   return (
     <div className="explore-header">
       <nav
@@ -19,7 +24,7 @@ const ExploreHeader = ({ handleFilter, handleFunnel }) => {
             type="search"
             placeholder="Search"
             aria-label="Search"
-            onChange={(e) => handleFilter(e.target.value)}
+            onChange={(e) => filterName(e.target.value)}
           />
 
           <button
@@ -34,14 +39,27 @@ const ExploreHeader = ({ handleFilter, handleFunnel }) => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1" onClick={handleFunnel}>
+              <Dropdown.Item href="#/action-1" onClick={filterCookTime}>
                 Ready in under 30 minutes
               </Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Breakfast</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">
-                Serves large groups (10 or more)
+              <Dropdown.Item href="#/action-2" onClick={filterCategory}>
+                Appetizer
               </Dropdown.Item>
-              <Dropdown.Item href="#/action-4">Vegetarian</Dropdown.Item>
+              <Dropdown.Item href="#/action-3" onClick={filterCategory}>
+                Breakfast
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-4" onClick={filterCategory}>
+                Lunch
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-5" onClick={filterCategory}>
+                Dinner
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-6" onClick={filterCategory}>
+                Dessert
+              </Dropdown.Item>
+              <Dropdown.Item href="#/action-3" onClick={filterPopular}>
+                Popular
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           {/* <svg

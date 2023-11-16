@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const dispatch = useDispatch();
