@@ -55,7 +55,7 @@ export default function RecipePage() {
     }
     setFav(false);
   };
-
+  console.log(recipe);
   return (
     <>
       {recipe && (
@@ -64,11 +64,13 @@ export default function RecipePage() {
           <ul>
             <li>{recipe.category}</li>
             <li>Servings: {recipe.servings} people</li>
+            <li>Ingredients/Amounts: {recipe.ingredients}</li>
             <li>Instructions: {recipe.instructions}</li>
             <li>Prep Time: {recipe.prepTime} minutes</li>
             <li>Cook Time: {recipe.cookTime} minutes</li>
             <li>Total Time: {recipe.prepTime + recipe.cookTime} minutes</li>
             <li>Notes: {recipe.notes}</li>
+            {/* <img src={recipe.image.data} alt="could not load" /> */}
             {/* <li> */}
             {/* <Image src={recipe.image}></Image> */}
             {/* <img src={recipe.image} /> */}

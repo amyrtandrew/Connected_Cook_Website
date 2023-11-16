@@ -2,8 +2,8 @@ import React from "react";
 
 const Logout = ({ onLogout }) => {
   return (
-    <form onSubmit={onLogout} className="nav-link">
-      <button>Logout</button>
+    <form onSubmit={onLogout} className="logout-form">
+      <button className="logout-btn">Logout</button>
     </form>
   );
 };

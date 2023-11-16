@@ -8,6 +8,7 @@ const recipeFunctions = {
       recipeName,
       category,
       servings,
+      ingredients,
       instructions,
       prepTime,
       cookTime,
@@ -24,6 +25,7 @@ const recipeFunctions = {
       recipeName: recipeName,
       categoryId: +category || null,
       servings: +servings || null,
+      ingredients: ingredients || null,
       instructions: instructions || null,
       prepTime: +prepTime || null,
       cookTime: +cookTime || null,
@@ -46,8 +48,9 @@ const recipeFunctions = {
     const { recipeId } = req.params;
     const {
       recipeName,
-      category,
+      categoryId,
       servings,
+      ingredients,
       instructions,
       prepTime,
       cookTime,
@@ -55,13 +58,14 @@ const recipeFunctions = {
       image,
     } = req.body;
     // category = +category;
-    console.log(category);
+    console.log(categoryId);
     const recipe = await Recipe.findByPk(recipeId);
     if (recipe) {
       console.log(recipe);
       (recipe.recipeName = recipeName),
-        (recipe.categoryId = +category ?? recipe.category),
+        (recipe.categoryId = +categoryId ?? recipe.categoryId),
         (recipe.servings = +servings ?? recipe.servings),
+        (recipe.ingredients = ingredients ?? recipe.ingredients),
         (recipe.instructions = instructions ?? recipe.instructions),
         (recipe.prepTime = +prepTime ?? recipe.prepTime),
         (recipe.cookTime = +cookTime ?? recipe.cookTime),

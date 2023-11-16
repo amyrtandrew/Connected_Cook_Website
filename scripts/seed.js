@@ -1,4 +1,4 @@
-import { User, Recipe, FoodItem, Category, db } from "../model.js";
+import { User, Recipe, Category, db } from "../model.js";
 
 console.log("Syncing database...");
 await db.sync({ force: true });
@@ -15,6 +15,7 @@ const user1 = await User.create({
 const cookie = await Recipe.create({
   recipeName: "cookies",
   servings: 5,
+  ingredients: "1 cup sugar, 2 cups flour, 1 tsp vanilla",
   instructions: "bake for an hour",
   prepTime: 10,
   cookTime: 15,
@@ -24,6 +25,7 @@ const cookie = await Recipe.create({
 const chickenStrips = await Recipe.create({
   recipeName: "Chicken Strips",
   servings: 1,
+  ingredients: "1/2 cup canola oil, 2 lbs chicken, bbq sauce",
   instructions: "deep fry",
   prepTime: 1,
   cookTime: 1,
@@ -43,12 +45,6 @@ for (const cat of categories) {
     name: cat,
   });
 }
-
-const sugar = await FoodItem.create({
-  foodName: "sugar",
-  amount: 4.5,
-  calories: 425,
-});
 
 console.log(user1);
 console.log(cookie);

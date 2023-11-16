@@ -7,33 +7,41 @@ const EditRecipe = () => {
   const { recipeId } = useParams();
   const [values, setValues] = useState({
     recipeName: "",
-    category: "",
+    categoryId: "",
     servings: "",
+    ingredients: "",
     instructions: "",
     prepTime: "",
     cookTime: "",
     notes: "",
     image: "",
   });
-  useEffect(() => {
-    axios
+  console.log(values);
+
+  const getRecipeVals = async () => {
+    await axios
       .get("http://localhost:5555/api/recipe/" + recipeId)
       .then((res) => {
+        console.log(res.data);
         setValues({
           ...values,
           recipeName: res.data.recipeName,
-          category: res.data.categoryId,
-          servings: res.data.servings,
-          instructions: res.data.instructions,
-          prepTime: res.data.prepTime,
-          cookTime: res.data.cookTime,
-          notes: res.data.notes,
-          image: res.data.image,
+          categoryId: res.data.categoryId ? res.data.categoryId : "1",
+          servings: res.data.servings ? res.data.servings : "",
+          ingredients: res.data.ingredients ? res.data.ingredients : "",
+          instructions: res.data.instructions ? res.data.instructions : "",
+          prepTime: res.data.prepTime ? res.data.prepTime : "",
+          cookTime: res.data.cookTime ? res.data.cookTime : "",
+          notes: res.data.notes ? res.data.notes : "",
+          image: res.data.image ? res.data.image : "",
         });
         console.log(res.data);
         console.log(values);
       })
       .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    getRecipeVals();
   }, []);
 
   const navigate = useNavigate();
@@ -90,8 +98,8 @@ const EditRecipe = () => {
         <select
           name="category"
           id="category"
-          value={values.category}
-          onChange={(e) => setValues({ ...values, category: e.target.value })}
+          value={values.categoryId}
+          onChange={(e) => setValues({ ...values, categoryId: e.target.value })}
         >
           <option value="1">Appetizer</option>
           <option value="2">Breakfast</option>
@@ -108,6 +116,16 @@ const EditRecipe = () => {
           type="text"
           value={values.servings}
           onChange={(e) => setValues({ ...values, servings: e.target.value })}
+        />
+        <label htmlFor="ingredients">Ingredients/Amounts:</label>
+        <input
+          name="ingredients"
+          id="ingredients"
+          type="text"
+          value={values.ingredients}
+          onChange={(e) =>
+            setValues({ ...values, ingredients: e.target.value })
+          }
         />
         <label htmlFor="instructions">Instructions:</label>
         <input

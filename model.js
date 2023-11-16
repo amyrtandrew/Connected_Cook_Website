@@ -62,6 +62,10 @@ Recipe.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    ingredients: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     instructions: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -87,7 +91,7 @@ Recipe.init(
     //   allowNull: true,
     // },
     image: {
-      type: DataTypes.BLOB("long"),
+      type: DataTypes.STRING,
       allowNull: true,
     },
   },
@@ -97,34 +101,34 @@ Recipe.init(
   }
 );
 
-export class FoodItem extends Model {
-  [util.inspect.custom]() {
-    return this.toJSON();
-  }
-}
+// export class FoodItem extends Model {
+//   [util.inspect.custom]() {
+//     return this.toJSON();
+//   }
+// }
 
-FoodItem.init(
-  {
-    foodId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    foodName: {
-      type: DataTypes.STRING,
-    },
-    amount: {
-      type: DataTypes.FLOAT,
-    },
-    calories: {
-      type: DataTypes.INTEGER,
-    },
-  },
-  {
-    modelName: "foodItem",
-    sequelize: db,
-  }
-);
+// FoodItem.init(
+//   {
+//     foodId: {
+//       type: DataTypes.INTEGER,
+//       autoIncrement: true,
+//       primaryKey: true,
+//     },
+//     foodName: {
+//       type: DataTypes.STRING,
+//     },
+//     amount: {
+//       type: DataTypes.FLOAT,
+//     },
+//     calories: {
+//       type: DataTypes.INTEGER,
+//     },
+//   },
+//   {
+//     modelName: "foodItem",
+//     sequelize: db,
+//   }
+// );
 
 export class Category extends Model {
   [util.inspect.custom]() {
@@ -202,8 +206,8 @@ Favorite.init(
 Category.hasMany(Recipe, { foreignKey: "categoryId" });
 Recipe.belongsTo(Category, { foreignKey: "categoryId" });
 
-Recipe.belongsToMany(FoodItem, { through: "recipe_foods" });
-FoodItem.belongsToMany(Recipe, { through: "recipe_foods" });
+// Recipe.belongsToMany(FoodItem, { through: "recipe_foods" });
+// FoodItem.belongsToMany(Recipe, { through: "recipe_foods" });
 
 // one-many rel where a user can 'own' a recipe
 User.hasMany(Recipe, { foreignKey: "userId" });

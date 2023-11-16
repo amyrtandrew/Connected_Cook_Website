@@ -13,7 +13,7 @@ const ExplorePage = () => {
     axios
       .get("/api/all-recipes")
       .then(({ data }) => {
-        // console.log(data);
+        console.log(data);
         setData(data);
         setFilterData(data);
       })
@@ -25,13 +25,19 @@ const ExplorePage = () => {
     setFilterData(res);
   };
 
-  let searchResults = data.map((d, i) => {
-    return <div key={i}>{d.recipeName}</div>;
-  });
+  const handleFunnel = () => {
+    const res = data.filter((f) => f.cookTime < 10);
+    setFilterData(res);
+    console.log(data);
+  };
+
+  // let searchResults = data.map((d, i) => {
+  //   return <div key={i}>{d.recipeName}</div>;
+  // });
 
   return (
     <div className="home-page">
-      <ExploreHeader handleFilter={handleFilter} />
+      <ExploreHeader handleFilter={handleFilter} handleFunnel={handleFunnel} />
       <ExploreGrid filtered={filterData} />
       <Outlet />
     </div>

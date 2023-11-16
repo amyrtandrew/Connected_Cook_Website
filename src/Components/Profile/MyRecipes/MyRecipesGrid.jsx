@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Dropdown } from "react-bootstrap";
 
 const MyRecipesGrid = () => {
   const [myRecipes, setMyRecipes] = useState([]);
   const [myFavRecipes, setMyFavRecipes] = useState([]);
+  const [filterData, setFilterData] = useState([]);
 
   useEffect(() => {
     axios
@@ -51,6 +53,9 @@ const MyRecipesGrid = () => {
       </Link>
     );
   });
+  function sortFavs() {
+    return <h1>Favorited Recipes: {favRecipeList}</h1>;
+  }
 
   return (
     <div>
@@ -58,13 +63,27 @@ const MyRecipesGrid = () => {
         <NavLink to="/create-recipe" href="#">
           <button className="plus-button">+</button>
         </NavLink>
+        <Dropdown>
+          <Dropdown.Toggle variant="primary" id="dropdown-basic">
+            Sort
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="#/action-2">Category</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">A-Z</Dropdown.Item>
+            <Dropdown.Item href="#/action-4" onClick={sortFavs}>
+              Favorites
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </nav>
 
       <div className="recipe-grid">
         <h1>My Recipes</h1>
         {recipeList}
-        <h1>My favorite recipes</h1>
-        {favRecipeList}
+        {/* {allRecipes} */}
+        {/* <h1>My favorite recipes</h1> */}
+        {/* {favRecipeList} */}
         <Outlet />
       </div>
     </div>

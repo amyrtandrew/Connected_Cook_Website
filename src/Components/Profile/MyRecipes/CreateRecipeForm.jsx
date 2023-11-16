@@ -7,7 +7,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
   const [cookTime, setCookTime] = useState("");
   const [servings, setServings] = useState("");
   const [category, setCategory] = useState("");
-  //   const [ingredients, setIngredients] = useState("");
+  const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
   const [notes, setNotes] = useState("");
   const [image, setImage] = useState("");
@@ -21,6 +21,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
             recipeName: recipeName,
             servings: servings,
             category: category,
+            ingredients: ingredients,
             instructions: instructions,
             prepTime: prepTime,
             cookTime: cookTime,
@@ -59,13 +60,20 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           placeholder="# servings"
           onChange={(e) => setServings(e.target.value)}
         />
+        <label htmlFor="ingredients">Ingredients/Amounts:</label>
+        <input
+          name="ingredients"
+          id="ingredients"
+          type="text"
+          placeholder="ingredients"
+          onChange={(e) => setIngredients(e.target.value)}
+        />
         <label htmlFor="instructions">Instructions:</label>
         <input
           name="instructions"
           id="instructions"
           type="text"
           placeholder="instructions"
-          required
           onChange={(e) => setInstructions(e.target.value)}
         />
         <label htmlFor="prepTime">Prep Time:</label>
@@ -92,14 +100,22 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           placeholder="notes"
           onChange={(e) => setNotes(e.target.value)}
         />
+        <label htmlFor="image">Image URL:</label>
+        {/* <input
+          name="image"
+          id="image"
+          type="text"
+          placeholder="URL here"
+          onChange={(e) => setImage(e.target.value)}
+        /> */}
         <button type="submit">Add Recipe</button>
-        <input
+        {/* <input
           name="image"
           id="image"
           accept="image/*"
           type="file"
           onChange={(e) => setImage(e.target.files)}
-        />
+        /> */}
       </form>
       <div className="home-link">
         <Link to="/my-recipes">
