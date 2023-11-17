@@ -42,7 +42,7 @@ function MyRecipesPage() {
       </Link>
     );
   });
-
+  console.log(myFavRecipes);
   let favRecipeList = myFavRecipes.map((recipe) => {
     return (
       <Link
@@ -50,7 +50,7 @@ function MyRecipesPage() {
         className="recipe-square"
         key={recipe.recipeId}
       >
-        {recipe.recipeName}
+        {recipe.recipe.recipeName}
         <img id="recipe-image" src={recipe.image} />
       </Link>
     );

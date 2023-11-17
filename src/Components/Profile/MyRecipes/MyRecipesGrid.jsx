@@ -23,9 +23,8 @@ const MyRecipesGrid = ({ recipeList, favRecipeList }) => {
       </nav>
 
       <div className="recipe-grid">
-        <h1>My Recipes</h1>
+        <h1>All Recipes</h1>
         {recipeList}
-        <h1>Favorited</h1>
         {favRecipeList}
         {/* {allRecipes} */}
         {/* <h1>My favorite recipes</h1> */}

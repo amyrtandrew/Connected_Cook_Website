@@ -37,29 +37,39 @@ const ExplorePage = () => {
   };
 
   const filterFunc = () => {
-    let recipeData = data;
+    console.log(`time: ${timeFilter}`);
+    console.log(`app: ${appFilter}`);
+    console.log(`breakfast: ${bfastFilter}`);
+    console.log(`lunch: ${lunchFilter}`);
+    console.log(`dinner: ${dinnerFilter}`);
+    console.log(`dessert: ${dessertFilter}`);
+
+    let filteredData = [...data];
     setSubmitted(true);
     if (timeFilter) {
-      let filteredData = recipeData.filter((i) => i.cooktime < 10);
+      filteredData = filteredData.filter((i) => i.cookTime < 10);
+      // setFilterData(filteredData);
     }
     if (appFilter) {
-      let filteredData = recipeData.filter((i) => i.categoryId === 1);
+      filteredData = filteredData.filter((i) => i.categoryId === 1);
     }
     if (bfastFilter) {
-      let filteredData = recipeData.filter((i) => i.categoryId === 2);
+      filteredData = filteredData.filter((i) => i.categoryId === 2);
     }
     if (lunchFilter) {
-      let filteredData = recipeData.filter((i) => i.categoryId === 3);
+      filteredData = filteredData.filter((i) => i.categoryId === 3);
     }
     if (dinnerFilter) {
-      let filteredData = recipeData.filter((i) => i.categoryId === 4);
+      filteredData = filteredData.filter((i) => i.categoryId === 4);
     }
     if (dessertFilter) {
-      let filteredData = recipeData.filter((i) => i.categoryId === 5);
+      filteredData = filteredData.filter((i) => i.categoryId === 5);
     }
     if (popFilter) {
-      let filteredData = recipeData.filter((i) => i.favorites.length > 0);
+      filteredData = filteredData.filter((i) => i.favorites.length > 0);
     }
+
+    setFilterData(filteredData);
   };
 
   const filterCookTime = (e) => {
@@ -67,26 +77,27 @@ const ExplorePage = () => {
     // console.log(e.target.innerHTML);
     setTimeFilter(true);
     console.log(data);
+    console.log("hello");
   };
 
   const filterCategory = (e) => {
     e.preventDefault();
-    console.log(e.target.innerHTML);
+    console.log(e.target.value);
 
-    if (e.target.innerHTML === "Appetizer") {
-      setappFilter(true);
+    if (e.target.value === "appetizer") {
+      setAppFilter(true);
     }
-    if (e.target.innerHTML === "Breakfast") {
+    if (e.target.value === "breakfast") {
       setBfastFilter(true);
     }
-    if (e.target.innerHTML === "Lunch") {
+    if (e.target.value === "lunch") {
       setLunchFilter(true);
       console.log(lunchFilter);
     }
-    if (e.target.innerHTML === "Dinner") {
+    if (e.target.value === "dinner") {
       setDinnerFilter(true);
     }
-    if (e.target.innerHTML === "Dessert") {
+    if (e.target.value === "dessert") {
       setDessertFilter(true);
     }
   };

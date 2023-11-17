@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import RecipeGrid from "./ExploreGrid";
-import axios from "axios";
-import Dropdown from "react-bootstrap/Dropdown";
 import Accordion from "react-bootstrap/Accordion";
 
 const ExploreHeader = ({
@@ -11,6 +8,8 @@ const ExploreHeader = ({
   filterPopular,
   filterFunc,
 }) => {
+  const [accordian, setAccordian] = useState(true);
+
   return (
     <div className="explore-header">
       <nav
@@ -33,11 +32,13 @@ const ExploreHeader = ({
             className="btn btn-outline-success my-2 my-sm-0"
             type="button"
             onClick={filterFunc}
+            data-toggle="collapse"
+            data-target="#accordian"
           >
             Search
           </button>
 
-          <Accordion>
+          <Accordion className="accordian">
             <Accordion.Item eventKey="0">
               <Accordion.Header>Filter</Accordion.Header>
               <Accordion.Body>
@@ -47,48 +48,52 @@ const ExploreHeader = ({
                   // }
                   href="#/action-1"
                   onClick={filterCookTime}
+                  value="cookTime"
                 >
                   Ready in under 30 minutes
                 </button>
                 Category:
-                <button
-                  className="accordian-btn"
-                  href="#/action-2"
-                  onClick={filterCategory}
-                >
-                  Appetizer
-                </button>
+                <select onChange={filterCategory}>
+                  <option
+                    className="accordian-btn"
+                    href="#/action-2"
+                    value="appetizer"
+                  >
+                    Appetizer
+                  </option>
+                  <option
+                    className="accordian-btn"
+                    href="#/action-3"
+                    value="breakfast"
+                  >
+                    Breakfast
+                  </option>
+                  <option
+                    className="accordian-btn"
+                    href="#/action-4"
+                    value="lunch"
+                  >
+                    Lunch
+                  </option>
+                  <option
+                    className="accordian-btn"
+                    href="#/action-5"
+                    value="dinner"
+                  >
+                    Dinner
+                  </option>
+                  <option
+                    className="accordian-btn"
+                    href="#/action-6"
+                    value="dessert"
+                  >
+                    Dessert
+                  </option>
+                </select>
                 <button
                   className="accordian-btn"
                   href="#/action-3"
-                  onClick={filterCategory}
-                >
-                  Breakfast
-                </button>
-                <button
-                  className="accordian-btn"
-                  href="#/action-4"
-                  onClick={filterCategory}
-                >
-                  Lunch
-                </button>
-                <button
-                  className="accordian-btn"
-                  href="#/action-5"
-                  onClick={filterCategory}
-                >
-                  Dinner
-                </button>
-                <button
-                  className="accordian-btn"
-                  href="#/action-6"
-                  onClick={filterCategory}
-                >
-                  Dessert
-                </button>
-                <button
-                  className="accordian-btn"
-                  href="#/action-3"
+                  value="popular"
                   onClick={filterPopular}
                 >
                   Popular
