@@ -7,10 +7,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import MyRecipesHeader from "../Components/Profile/MyRecipes/MyRecipesHeader";
 
 function MyRecipesPage() {
   const [myRecipes, setMyRecipes] = useState([]);
   const [myFavRecipes, setMyFavRecipes] = useState([]);
+  const [sorted, setSorted] = useState(false);
 
   useEffect(() => {
     axios
@@ -42,7 +44,8 @@ function MyRecipesPage() {
       </Link>
     );
   });
-  console.log(myFavRecipes);
+
+  // console.log(myFavRecipes);
   let favRecipeList = myFavRecipes.map((recipe) => {
     return (
       <Link
@@ -56,9 +59,28 @@ function MyRecipesPage() {
     );
   });
 
+  const handleSort = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    // if (e.target.value === "favorites") {
+    setSorted(true);
+    console.log(sorted);
+    // }
+  };
+
+  const allRecipes = recipeList.concat(favRecipeList);
+  // console.log(recipeList);
+
   return (
     <div className="home-page">
-      <MyRecipesGrid recipeList={recipeList} favRecipeList={favRecipeList} />
+      <MyRecipesHeader />
+      <MyRecipesGrid
+        recipeList={recipeList}
+        favRecipeList={favRecipeList}
+        handleSort={handleSort}
+        allRecipes={allRecipes}
+        sorted={sorted}
+      />
       <Outlet />
     </div>
   );

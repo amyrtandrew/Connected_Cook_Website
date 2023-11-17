@@ -8,8 +8,6 @@ const ExploreHeader = ({
   filterPopular,
   filterFunc,
 }) => {
-  const [accordian, setAccordian] = useState(true);
-
   return (
     <div className="explore-header">
       <nav

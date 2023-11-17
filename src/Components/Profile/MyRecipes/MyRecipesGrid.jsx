@@ -1,36 +1,20 @@
 import { Link, Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
+import { useState } from "react";
 
-const MyRecipesGrid = ({ recipeList, favRecipeList }) => {
+const MyRecipesGrid = ({ recipeList, favRecipeList, allRecipes, sorted }) => {
   return (
-    <div>
-      <nav className="grid-navbar">
-        <NavLink to="/create-recipe" href="#">
-          <button className="plus-button">+</button>
-        </NavLink>
-        <Dropdown>
-          <Dropdown.Toggle variant="primary" id="dropdown-basic">
-            Sort
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-2">Category</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">A-Z</Dropdown.Item>
-            <Dropdown.Item href="#/action-4">Favorites</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </nav>
-
-      <div className="recipe-grid">
-        <h1>All Recipes</h1>
-        {recipeList}
-        {favRecipeList}
-        {/* {allRecipes} */}
-        {/* <h1>My favorite recipes</h1> */}
-        {/* {favRecipeList} */}
-        <Outlet />
-      </div>
+    <div className="recipe-grid">
+      {sorted ? favRecipeList : allRecipes}
+      {/* <h1>All Recipes</h1>
+      {res} */}
+      {/* {recipeList}
+        {favRecipeList} */}
+      {/* {allRecipes} */}
+      {/* <h1>My favorite recipes</h1> */}
+      {/* {favRecipeList} */}
+      <Outlet />
     </div>
   );
 };
