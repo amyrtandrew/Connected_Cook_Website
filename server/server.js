@@ -44,18 +44,18 @@ function loginRequired(req, res, next) {
 
 //Authentication
 app.post("/api/auth", login);
-app.post("/api/logout", loginRequired, logout);
+app.post("/api/logout", logout);
 app.post("/api/create-account", createAccount);
 app.get("/api/session-check", sessionCheck);
 //Recipes
 app.post("/api/create-recipe", loginRequired, createRecipe);
-app.put("/api/edit-recipe/:recipeId", editRecipe);
+app.put("/api/edit-recipe/:recipeId", loginRequired, editRecipe);
 app.delete("/api/edit-recipe/:recipeId", deleteRecipe);
-app.get("/api/recipe/:recipeId", viewRecipe);
-app.get("/api/all-recipes", allRecipes);
-app.get("/api/my-recipes", myRecipes);
-app.get("/api/my-recipes", myRecipes);
-app.get("/api/my-favrecipes", myFavRecipes);
+app.get("/api/recipe/:recipeId", loginRequired, viewRecipe);
+app.get("/api/all-recipes", loginRequired, allRecipes);
+app.get("/api/my-recipes", loginRequired, myRecipes);
+app.get("/api/my-recipes", loginRequired, myRecipes);
+app.get("/api/my-favrecipes", loginRequired, myFavRecipes);
 app.post("/api/favorite/:recipeId", favoriteRecipe);
 app.post("/api/unfavorite/:recipeId", unfavoriteRecipe);
 

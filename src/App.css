@@ -88,3 +88,11 @@
   background-color: silver;
   border-color: black;
 }
+
+.carousel {
+  margin-top: 200px;
+  color: pink;
+  margin-left: 350px;
+}
+.filterBtn {
+}

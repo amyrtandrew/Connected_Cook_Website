@@ -27,10 +27,9 @@ const router = createBrowserRouter(
       {/* <Route path="/" element={<LoginPage />} errorElement={<ErrorPage />} /> */}
       {/* <Route index element={<LoginPage />} /> */}
       <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+        <Route index element={<ExplorePage />} />
         <Route path="my-recipes" element={<MyRecipesPage />} />
-
         <Route path="explore-page" element={<ExplorePage />} />
-
         {/* All Movies */}
         <Route path="recipe/:recipeId" element={<RecipePage />} />
 

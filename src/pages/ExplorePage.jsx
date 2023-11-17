@@ -4,10 +4,20 @@ import ExploreGrid from "../Components/Profile/Explore/ExploreGrid";
 import { Outlet } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import PhotoSlide from "../Components/Profile/Explore/PhotoSlide";
 
 const ExplorePage = () => {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
+
+  const [timeFilter, setTimeFilter] = useState(false);
+  const [bfastFilter, setBfastFilter] = useState(false);
+  const [appFilter, setAppFilter] = useState(false);
+  const [lunchFilter, setLunchFilter] = useState(false);
+  const [dinnerFilter, setDinnerFilter] = useState(false);
+  const [dessertFilter, setDessertFilter] = useState(false);
+  const [popFilter, setPopFilter] = useState(false);
 
   useEffect(() => {
     axios
@@ -23,55 +33,68 @@ const ExplorePage = () => {
   const filterName = (value) => {
     const res = data.filter((f) => f.recipeName.toLowerCase().includes(value));
     setFilterData(res);
+    setSubmitted(false);
+  };
+
+  const filterFunc = () => {
+    let recipeData = data;
+    setSubmitted(true);
+    if (timeFilter) {
+      let filteredData = recipeData.filter((i) => i.cooktime < 10);
+    }
+    if (appFilter) {
+      let filteredData = recipeData.filter((i) => i.categoryId === 1);
+    }
+    if (bfastFilter) {
+      let filteredData = recipeData.filter((i) => i.categoryId === 2);
+    }
+    if (lunchFilter) {
+      let filteredData = recipeData.filter((i) => i.categoryId === 3);
+    }
+    if (dinnerFilter) {
+      let filteredData = recipeData.filter((i) => i.categoryId === 4);
+    }
+    if (dessertFilter) {
+      let filteredData = recipeData.filter((i) => i.categoryId === 5);
+    }
+    if (popFilter) {
+      let filteredData = recipeData.filter((i) => i.favorites.length > 0);
+    }
   };
 
   const filterCookTime = (e) => {
-    console.log(e.target.innerHTML);
-    const res = data.filter((f) => f.cookTime < 10);
-    setFilterData(res);
+    e.preventDefault();
+    // console.log(e.target.innerHTML);
+    setTimeFilter(true);
     console.log(data);
   };
 
   const filterCategory = (e) => {
+    e.preventDefault();
     console.log(e.target.innerHTML);
 
     if (e.target.innerHTML === "Appetizer") {
-      const res = data.filter((f) => f.categoryId === 1);
-      setFilterData(res);
+      setappFilter(true);
     }
     if (e.target.innerHTML === "Breakfast") {
-      const res = data.filter((f) => f.categoryId === 2);
-      setFilterData(res);
+      setBfastFilter(true);
     }
     if (e.target.innerHTML === "Lunch") {
-      const res = data.filter((f) => f.categoryId === 3);
-      setFilterData(res);
+      setLunchFilter(true);
+      console.log(lunchFilter);
     }
     if (e.target.innerHTML === "Dinner") {
-      const res = data.filter((f) => f.categoryId === 4);
-      setFilterData(res);
+      setDinnerFilter(true);
     }
     if (e.target.innerHTML === "Dessert") {
-      const res = data.filter((f) => f.categoryId === 5);
-      setFilterData(res);
+      setDessertFilter(true);
     }
   };
 
-  const filterPopular = () => {
-    const res = data.filter((f) => f.favorites.length > 0);
-    setFilterData(res);
-    console.log(data);
+  const filterPopular = (e) => {
+    e.preventDefault();
+    setPopFilter(true);
   };
-  //   const res = data.filter((f) => f.categorId === 1);
-  //   setFilterData(res);
-  //   console.log(data);
-  // };
-
-  // const handlePopular = () => {
-  //   const res = data.filter((f) => f.cookTime < 10);
-  //   setFilterData(res);
-  //   console.log(data);
-  // };
 
   // let searchResults = data.map((d, i) => {
   //   return <div key={i}>{d.recipeName}</div>;
@@ -80,13 +103,16 @@ const ExplorePage = () => {
   return (
     <div className="home-page">
       <ExploreHeader
+        // setSubmited={setSubmited}
         filterName={filterName}
         filterCookTime={filterCookTime}
         filterCategory={filterCategory}
         filterPopular={filterPopular}
+        filterFunc={filterFunc}
       />
-      <ExploreGrid filtered={filterData} />
-      <Outlet />
+      {submitted ? <ExploreGrid filtered={filterData} /> : <PhotoSlide />}
+      {/* <ExploreGrid filtered={submited ? filterData : data} /> */}
+      {/* <Outlet /> */}
     </div>
   );
 };

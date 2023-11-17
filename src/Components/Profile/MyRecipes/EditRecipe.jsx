@@ -16,13 +16,13 @@ const EditRecipe = () => {
     notes: "",
     image: "",
   });
-  console.log(values);
+  // console.log(values);
 
   const getRecipeVals = async () => {
     await axios
       .get("http://localhost:5555/api/recipe/" + recipeId)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setValues({
           ...values,
           recipeName: res.data.recipeName,
@@ -35,8 +35,8 @@ const EditRecipe = () => {
           notes: res.data.notes ? res.data.notes : "",
           image: res.data.image ? res.data.image : "",
         });
-        console.log(res.data);
-        console.log(values);
+        // console.log(res.data);
+        // console.log(values);
       })
       .catch((err) => console.log(err));
   };
