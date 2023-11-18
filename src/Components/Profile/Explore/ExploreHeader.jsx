@@ -29,7 +29,7 @@ const ExploreHeader = ({
           <button
             className="btn btn-outline-success my-2 my-sm-0"
             type="button"
-            onClick={filterFunc}
+            onClick={filterName}
             data-toggle="collapse"
             data-target="#accordian"
           >
