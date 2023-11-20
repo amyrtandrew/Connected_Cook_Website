@@ -12,21 +12,21 @@ const PhotoSlide = () => {
           {/* <ExampleCarouselImage text="First slide" /> */}
           <Tacos text="chicken tacos" />
           <Carousel.Caption>
-            <h3>Chicken Tacos</h3>
+            <h3 className="carousel-text">Chicken Tacos</h3>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           {/* <ExampleCarouselImage text="Second slide" /> */}
           <Burger text="Southwest Burger" />
           <Carousel.Caption>
-            <h3>Southwest Burger</h3>
+            <h3 className="carousel-text">Southwest Burger</h3>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <Crepes />
           {/* <ExampleCarouselImage text="Third slide" /> */}
-          <Carousel.Caption>
-            <h3>Stawberry Banana Crepes</h3>
+          <Carousel.Caption className="carousel-text">
+            <h3 className="carousel-text">Stawberry Banana Crepes</h3>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

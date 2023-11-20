@@ -101,13 +101,13 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           onChange={(e) => setNotes(e.target.value)}
         />
         <label htmlFor="image">Image URL:</label>
-        {/* <input
+        <input
           name="image"
           id="image"
           type="text"
           placeholder="URL here"
           onChange={(e) => setImage(e.target.value)}
-        /> */}
+        />
         <button type="submit">Add Recipe</button>
         {/* <input
           name="image"

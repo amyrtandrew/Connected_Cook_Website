@@ -4,6 +4,7 @@
 
 .logo {
   width: 12rem;
+  align-self: flex-end;
 }
 
 .recipe-grid {
@@ -92,8 +93,32 @@
 .carousel {
   margin-top: 200px;
   color: pink;
-  margin-left: 350px;
+  /* margin-left: 350px; */
   background-color: black;
+  margin-left: 100px;
+  margin-right: 100px;
+  width: 500px;
+  height: 350px;
 }
-.filterBtn {
+
+.tacos {
+  width: 500px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.crepes {
+  width: 500px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.burger {
+  width: 500px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.carousel-text {
+  color: white;
 }

@@ -161,14 +161,22 @@ const EditRecipe = () => {
           value={values.notes}
           onChange={(e) => setValues({ ...values, notes: e.target.value })}
         />
+        <label htmlFor="image">Image URL:</label>
         <input
+          name="image"
+          id="image"
+          type="text"
+          value={values.image}
+          onChange={(e) => setValues({ ...values, image: e.target.value })}
+        />
+        {/* <input
           name="image"
           id="image"
           accept="image/*"
           type="file"
           // value={values.image}
           onChange={(e) => setValues({ ...values, image: e.target.files[0] })}
-        />
+        /> */}
         <button type="submit">Save</button>
       </form>
       <div className="home-link">
