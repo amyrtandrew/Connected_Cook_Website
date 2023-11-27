@@ -11,25 +11,24 @@ const ExploreHeader = ({
   return (
     <div className="explore-header">
       <nav
-        className="navbar justify-content-between navbar-explore"
+        className="navbar navbar-explore"
         style={{ marginTop: "50px", height: "80px" }}
       >
         {/* <p className="explore-message">
           Check out what your community is cooking!
         </p> */}
-        <form className="form-inline search-items">
+        <form className="form-inline search-items" onSubmit={filterFunc}>
           <input
             className="form-control mr-sm-2 search-bar"
             type="search"
             placeholder="Search"
             aria-label="Search"
-            onChange={(e) => filterName(e.target.value)}
+            onChange={(e) => filterName(e)}
           />
 
           <button
             className="btn btn-outline-primary my-2 my-sm-0"
-            type="button"
-            onClick={filterName}
+            type="submit"
             data-toggle="collapse"
             data-target="#accordian"
           >

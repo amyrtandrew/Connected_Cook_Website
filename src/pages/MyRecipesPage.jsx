@@ -40,7 +40,7 @@ function MyRecipesPage() {
         key={recipe.recipeId}
       >
         {recipe.recipeName}
-        <img id="recipe-image" src={recipe.image} />
+        {/* <img id="recipe-image" src={recipe.image} /> */}
       </Link>
     );
   });
@@ -54,7 +54,7 @@ function MyRecipesPage() {
         key={recipe.recipeId}
       >
         {recipe.recipe.recipeName}
-        <img id="recipe-image" src={recipe.recipe.image} />
+        {/* <img id="recipe-image" src={recipe.recipe.image} /> */}
       </Link>
     );
   });

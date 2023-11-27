@@ -12,12 +12,14 @@ const ExplorePage = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const [timeFilter, setTimeFilter] = useState(false);
+  const [nameFilter, setNameFilter] = useState(false);
   const [bfastFilter, setBfastFilter] = useState(false);
   const [appFilter, setAppFilter] = useState(false);
   const [lunchFilter, setLunchFilter] = useState(false);
   const [dinnerFilter, setDinnerFilter] = useState(false);
   const [dessertFilter, setDessertFilter] = useState(false);
   const [popFilter, setPopFilter] = useState(false);
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     axios
@@ -30,13 +32,8 @@ const ExplorePage = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const filterName = (value) => {
-    const res = data.filter((f) => f.recipeName.toLowerCase().includes(value));
-    setFilterData(res);
-    setSubmitted(false);
-  };
-
-  const filterFunc = () => {
+  const filterFunc = (e) => {
+    e.preventDefault();
     console.log(`time: ${timeFilter}`);
     console.log(`app: ${appFilter}`);
     console.log(`breakfast: ${bfastFilter}`);
@@ -48,6 +45,12 @@ const ExplorePage = () => {
     setSubmitted(true);
     if (timeFilter) {
       filteredData = filteredData.filter((i) => i.cookTime < 10);
+      // setFilterData(filteredData);
+    }
+    if (nameFilter) {
+      filteredData = filteredData.filter((i) =>
+        i.recipeName.toLowerCase().includes(input)
+      );
       // setFilterData(filteredData);
     }
     if (appFilter) {
@@ -77,8 +80,20 @@ const ExplorePage = () => {
     // console.log(e.target.innerHTML);
     setTimeFilter(true);
     console.log(data);
-    console.log("hello");
   };
+
+  const filterName = (e) => {
+    e.preventDefault();
+    setInput(e.target.value);
+    setNameFilter(true);
+    console.log(data);
+  };
+
+  // const filterName = (value) => {
+  //   const res = data.filter((f) => f.recipeName.toLowerCase().includes(value));
+  //   setFilterData(res);
+  //   setSubmitted(false);
+  // };
 
   const filterCategory = (e) => {
     e.preventDefault();
