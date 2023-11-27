@@ -68,7 +68,31 @@ function MyRecipesPage() {
     // }
   };
 
-  const allRecipes = recipeList.concat(favRecipeList);
+  let allRecipes = recipeList.concat(favRecipeList);
+
+  // console.log(myRecipes[0].recipeName);
+  // function compare(a, b) {
+  //   if (a.myRecipes[0].recipeName < b.myRecipes[1].recipeName) {
+  //     return -1;
+  //   }
+  //   if (a.myRecipes[0].recipeName > b.myRecipes[1].recipeName) {
+  //     return 1;
+  //   }
+  //   return 0;
+  // }
+
+  let alphaList = myRecipes.map((recipe) => {
+    return (
+      <Link
+        to={`/recipe/${recipe.recipeId}`}
+        className="recipe-square"
+        key={recipe.recipeId}
+      >
+        {recipe.recipeName}
+        {/* <img id="recipe-image" src={recipe.image} /> */}
+      </Link>
+    );
+  });
   // console.log(recipeList);
 
   return (
@@ -80,6 +104,7 @@ function MyRecipesPage() {
         handleSort={handleSort}
         allRecipes={allRecipes}
         sorted={sorted}
+        alphaList={alphaList}
       />
       <Outlet />
     </div>

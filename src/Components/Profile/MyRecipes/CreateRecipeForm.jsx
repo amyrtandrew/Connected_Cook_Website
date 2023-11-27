@@ -104,18 +104,18 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
         <input
           name="image"
           id="image"
-          type="text"
-          placeholder="URL here"
-          onChange={(e) => setImage(e.target.value)}
+          accept="image/*"
+          type="file"
+          onChange={(e) => setImage(e.target.files[0])}
         />
-        <button type="submit">Add Recipe</button>
         {/* <input
           name="image"
           id="image"
-          accept="image/*"
-          type="file"
-          onChange={(e) => setImage(e.target.files)}
+          type="text"
+          placeholder="URL here"
+          onChange={(e) => setImage(e.target.value)}
         /> */}
+        <button type="submit">Add Recipe</button>
       </form>
       <div className="home-link">
         <Link to="/my-recipes">

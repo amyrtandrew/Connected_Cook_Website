@@ -42,10 +42,12 @@ const ExplorePage = () => {
     console.log(`dessert: ${dessertFilter}`);
 
     let filteredData = [...data];
+    // console.log(filteredData);
     setSubmitted(true);
     if (timeFilter) {
       filteredData = filteredData.filter((i) => i.cookTime < 10);
       // setFilterData(filteredData);
+      console.log(filteredData);
     }
     if (nameFilter) {
       filteredData = filteredData.filter((i) =>
@@ -55,9 +57,11 @@ const ExplorePage = () => {
     }
     if (appFilter) {
       filteredData = filteredData.filter((i) => i.categoryId === 1);
+      console.log(filteredData);
     }
     if (bfastFilter) {
       filteredData = filteredData.filter((i) => i.categoryId === 2);
+      console.log(filteredData);
     }
     if (lunchFilter) {
       filteredData = filteredData.filter((i) => i.categoryId === 3);
@@ -73,6 +77,7 @@ const ExplorePage = () => {
     }
 
     setFilterData(filteredData);
+    console.log(filteredData);
   };
 
   const filterCookTime = (e) => {
@@ -101,19 +106,39 @@ const ExplorePage = () => {
 
     if (e.target.value === "appetizer") {
       setAppFilter(true);
+      setBfastFilter(false);
+      setLunchFilter(false);
+      setDinnerFilter(false);
+      setDessertFilter(false);
     }
     if (e.target.value === "breakfast") {
       setBfastFilter(true);
+      setAppFilter(false);
+      setLunchFilter(false);
+      setDinnerFilter(false);
+      setDessertFilter(false);
     }
     if (e.target.value === "lunch") {
       setLunchFilter(true);
+      setBfastFilter(false);
+      setAppFilter(false);
+      setDinnerFilter(false);
+      setDessertFilter(false);
       console.log(lunchFilter);
     }
     if (e.target.value === "dinner") {
       setDinnerFilter(true);
+      setBfastFilter(false);
+      setLunchFilter(false);
+      setAppFilter(false);
+      setDessertFilter(false);
     }
     if (e.target.value === "dessert") {
       setDessertFilter(true);
+      setBfastFilter(false);
+      setLunchFilter(false);
+      setDinnerFilter(false);
+      setAppFilter(false);
     }
   };
 

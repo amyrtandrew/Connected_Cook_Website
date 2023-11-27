@@ -1,7 +1,3 @@
-.navbar {
-  background-color: silver;
-}
-
 .logo {
   width: 12rem;
   align-self: flex-end;
@@ -14,12 +10,12 @@
   row-gap: 40px;
   margin: 50px;
   padding: 10px;
-  background-color: silver;
+  background-color: #213547;
 }
 
 .recipe-square {
-  background-color: #f0f0f0;
   border: 1px solid #ccc;
+  background-color: silver;
   text-align: center;
   font-size: 18px;
   cursor: pointer;
@@ -29,6 +25,9 @@
   border-radius: 7%;
 }
 
+.recipe-link {
+  color: white;
+}
 #recipe-image {
   width: 100%;
   height: 100%;
@@ -82,7 +81,7 @@
 .logout-btn {
   align-self: flex-end;
   color: white;
-  background-color: #36454f;
+  background-color: #213547;
 }
 
 .accordian-btn {
@@ -95,7 +94,7 @@
   margin-top: 200px;
   color: pink;
   /* margin-left: 350px; */
-  background-color: #36454f;
+  background-color: #213547;
   /* margin-left: 100px; */
   /* margin-right: 100px; */
   width: 500px;
@@ -127,11 +126,11 @@
 .navbar-main {
   height: 100px;
   font-size: large;
-  background-color: #36454f;
+  background-color: #213547;
 }
 
 .navbar-explore {
-  background-color: #36454f;
+  background-color: #213547;
   justify-content: space-between;
 }
 
@@ -142,12 +141,14 @@
 
 .my-recipes-item {
   margin-left: 300px;
+  color: white;
   /* border-left-style: double;
   border-left-color: red; */
 }
 
 .explore-item {
   margin-left: 250px;
+  color: white;
 }
 
 .globe {
@@ -166,17 +167,17 @@
 } */
 
 .home-page {
-  background-color: #36454f;
+  background-color: #213547;
   color: white;
 }
 
 .app {
-  background-color: #36454f;
+  background-color: #213547;
   color: white;
 }
 
 .recipe-grid {
-  background-color: #36454f;
+  background-color: #213547;
 }
 
 .plus-icon {

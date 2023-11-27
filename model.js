@@ -90,10 +90,10 @@ Recipe.init(
     //   type: DataTypes.STRING,
     //   allowNull: true,
     // },
-    image: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
+    // image: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
   },
   {
     modelName: "recipe",
