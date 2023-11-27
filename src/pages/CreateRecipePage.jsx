@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import axios from "axios";
 import CreateRecipeForm from "../Components/Profile/MyRecipes/CreateRecipeForm";
+import NavBar from "../Components/NavBar/NavBar";
 
 const CreateRecipePage = ({ recipeId }) => {
   const navigate = useNavigate();
@@ -18,9 +19,11 @@ const CreateRecipePage = ({ recipeId }) => {
   };
 
   return (
+    <> <NavBar />
     <div className="create-recipe-page">
       <CreateRecipeForm onCreateRecipe={handleCreateRecipe} />
     </div>
+    </>
   );
 };
 

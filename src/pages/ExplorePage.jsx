@@ -5,6 +5,7 @@ import { Outlet } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PhotoSlide from "../Components/Profile/Explore/PhotoSlide";
+import NavBar from "../Components/NavBar/NavBar";
 
 const ExplorePage = () => {
   const [data, setData] = useState([]);
@@ -152,19 +153,22 @@ const ExplorePage = () => {
   // });
 
   return (
-    <div className="home-page">
-      <ExploreHeader
-        // setSubmited={setSubmited}
-        filterName={filterName}
-        filterCookTime={filterCookTime}
-        filterCategory={filterCategory}
-        filterPopular={filterPopular}
-        filterFunc={filterFunc}
-      />
-      {submitted ? <ExploreGrid filtered={filterData} /> : <PhotoSlide />}
-      {/* <ExploreGrid filtered={submited ? filterData : data} /> */}
-      {/* <Outlet /> */}
-    </div>
+    <>
+      <NavBar />
+      <div className="home-page">
+        <ExploreHeader
+          // setSubmited={setSubmited}
+          filterName={filterName}
+          filterCookTime={filterCookTime}
+          filterCategory={filterCategory}
+          filterPopular={filterPopular}
+          filterFunc={filterFunc}
+        />
+        {submitted ? <ExploreGrid filtered={filterData} /> : <PhotoSlide />}
+        {/* <ExploreGrid filtered={submited ? filterData : data} /> */}
+        {/* <Outlet /> */}
+      </div>
+    </>
   );
 };
 

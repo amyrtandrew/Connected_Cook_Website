@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MyRecipesHeader from "../Components/Profile/MyRecipes/MyRecipesHeader";
+// import MyRecipesHeader from "../Components/Profile/MyRecipes/MyRecipesHeader";
 
 function MyRecipesPage() {
   const [myRecipes, setMyRecipes] = useState([]);
@@ -31,17 +32,31 @@ function MyRecipesPage() {
     });
   }, []);
 
+  // const filterCat = (e) => {
+  //   e.preventDefault()
+
+  //   let recipeData = [...allRecipes];
+  //   let favData = [...]
+
+  //   if (favCat) {
+  //     recipeData = recipeData.filter((i) => )
+  //   }
+  // }
+
   // Do this, but one for myRecipes array, and myFavRecipes array
   let recipeList = myRecipes.map((recipe) => {
     return (
-      <Link
-        to={`/recipe/${recipe.recipeId}`}
-        className="recipe-square"
-        key={recipe.recipeId}
-      >
-        {recipe.recipeName}
-        {/* <img id="recipe-image" src={recipe.image} /> */}
-      </Link>
+      <>
+        <NavBar />
+        <Link
+          to={`/recipe/${recipe.recipeId}`}
+          className="recipe-square"
+          key={recipe.recipeId}
+        >
+          {recipe.recipeName}
+          {/* <img id="recipe-image" src={recipe.image} /> */}
+        </Link>
+      </>
     );
   });
 
@@ -58,6 +73,7 @@ function MyRecipesPage() {
       </Link>
     );
   });
+  let allRecipes = recipeList.concat(favRecipeList);
 
   const handleSort = (e) => {
     e.preventDefault();
@@ -65,21 +81,9 @@ function MyRecipesPage() {
     // if (e.target.value === "favorites") {
     setSorted(true);
     console.log(sorted);
+    console.log("sorted is now true");
     // }
   };
-
-  let allRecipes = recipeList.concat(favRecipeList);
-
-  // console.log(myRecipes[0].recipeName);
-  // function compare(a, b) {
-  //   if (a.myRecipes[0].recipeName < b.myRecipes[1].recipeName) {
-  //     return -1;
-  //   }
-  //   if (a.myRecipes[0].recipeName > b.myRecipes[1].recipeName) {
-  //     return 1;
-  //   }
-  //   return 0;
-  // }
 
   myRecipes.sort((a, b) => a.recipeName.localeCompare(b.recipeName));
   // console.log(test);
@@ -89,7 +93,7 @@ function MyRecipesPage() {
     return (
       <Link
         to={`/recipe/${recipe.recipeId}`}
-        className="recipe-link"
+        className="recipe-square"
         key={recipe.recipeId}
       >
         {recipe.recipeName}

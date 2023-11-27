@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import NavBar from "../Components/NavBar/NavBar";
 
 export default function RecipePage() {
   const [recipe, setRecipe] = useState(null);
@@ -62,6 +63,7 @@ export default function RecipePage() {
 
   return (
     <>
+      <NavBar />
       {recipe && (
         <div>
           <h1>{recipe.recipeName}</h1>
