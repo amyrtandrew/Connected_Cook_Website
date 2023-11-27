@@ -12,7 +12,7 @@ const ExploreGrid = ({ filtered }) => {
         key={recipe.recipeId}
       >
         {recipe.recipeName}
-        <img id="recipe-image" src={recipe.image} />
+        {/* <img id="recipe-image" src={recipe.image} /> */}
       </Link>
     );
   });

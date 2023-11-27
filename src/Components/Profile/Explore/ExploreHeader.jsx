@@ -27,7 +27,7 @@ const ExploreHeader = ({
           />
 
           <button
-            className="btn btn-outline-primary my-2 my-sm-0"
+            className="btn btn-outline-primary my-2 my-sm-0 search-btn"
             type="submit"
             data-toggle="collapse"
             data-target="#accordian"
@@ -37,13 +37,16 @@ const ExploreHeader = ({
 
           <Accordion className="accordian">
             <Accordion.Item eventKey="0">
-              <Accordion.Header>Filter</Accordion.Header>
+              <Accordion.Header className="filter-accordian">
+                Filter
+              </Accordion.Header>
               <Accordion.Body>
                 <button
                   // className={
                   //   timeFilter ? "bg-primary accordian-btn filterBtn" : ""
                   // }
                   href="#/action-1"
+                  className="cook-filter"
                   onClick={filterCookTime}
                   value="cookTime"
                 >

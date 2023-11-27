@@ -81,11 +81,15 @@ function MyRecipesPage() {
   //   return 0;
   // }
 
+  myRecipes.sort((a, b) => a.recipeName.localeCompare(b.recipeName));
+  // console.log(test);
+
+  // let ordered = myRecipes.sort();
   let alphaList = myRecipes.map((recipe) => {
     return (
       <Link
         to={`/recipe/${recipe.recipeId}`}
-        className="recipe-square"
+        className="recipe-link"
         key={recipe.recipeId}
       >
         {recipe.recipeName}
