@@ -26,6 +26,7 @@
   width: 200px;
   height: 200px;
   box-shadow: 0px 0px 8px silver;
+  border-radius: 7%;
 }
 
 #recipe-image {
@@ -79,9 +80,9 @@
 }
 
 .logout-btn {
-  background-color: silver;
   align-self: flex-end;
-  color: blue;
+  color: white;
+  background-color: #36454f;
 }
 
 .accordian-btn {
@@ -94,31 +95,80 @@
   margin-top: 200px;
   color: pink;
   /* margin-left: 350px; */
-  background-color: black;
-  margin-left: 100px;
-  margin-right: 100px;
+  background-color: #36454f;
+  /* margin-left: 100px; */
+  /* margin-right: 100px; */
   width: 500px;
   height: 350px;
+  /* margin-left: 200px; */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.tacos {
+.carousel-image {
   width: 500px;
   height: 350px;
   object-fit: cover;
-}
-
-.crepes {
-  width: 500px;
-  height: 350px;
-  object-fit: cover;
-}
-
-.burger {
-  width: 500px;
-  height: 350px;
-  object-fit: cover;
+  border-radius: 3%;
 }
 
 .carousel-text {
-  color: white;
+  align-content: baseline;
+  top: 300px;
+}
+
+.recipe-info {
+  border-color: black;
+  border-style: double;
+  height: 500px;
+  width: 700px;
+}
+
+.navbar-main {
+  height: 100px;
+  font-size: large;
+  background-color: #36454f;
+}
+
+.navbar-explore {
+  background-color: #36454f;
+  justify-content: space-between;
+}
+
+.logout-item {
+  margin-left: 300px;
+  font-size: large;
+}
+
+.my-recipes-item {
+  margin-left: 300px;
+  /* border-left-style: double;
+  border-left-color: red; */
+}
+
+.explore-item {
+  margin-left: 250px;
+}
+
+.globe {
+  height: 50px;
+  width: 50px;
+  color: black;
+  margin-left: 10px;
+}
+
+/* .search-bar {
+  border-right: 200px;
+} */
+
+/* .search-items {
+  border-right: 200px;
+} */
+
+.home-page {
+  background-color: #36454f;
+}
+
+.app {
+  background-color: #36454f;
 }

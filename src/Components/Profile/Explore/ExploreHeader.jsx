@@ -11,15 +11,15 @@ const ExploreHeader = ({
   return (
     <div className="explore-header">
       <nav
-        className="navbar navbar-light justify-content-between"
+        className="navbar justify-content-between navbar-explore"
         style={{ marginTop: "50px", height: "80px" }}
       >
-        <p className="explore-message">
+        {/* <p className="explore-message">
           Check out what your community is cooking!
-        </p>
-        <form className="form-inline">
+        </p> */}
+        <form className="form-inline search-items">
           <input
-            className="form-control mr-sm-2"
+            className="form-control mr-sm-2 search-bar"
             type="search"
             placeholder="Search"
             aria-label="Search"
@@ -27,7 +27,7 @@ const ExploreHeader = ({
           />
 
           <button
-            className="btn btn-outline-success my-2 my-sm-0"
+            className="btn btn-outline-primary my-2 my-sm-0"
             type="button"
             onClick={filterName}
             data-toggle="collapse"

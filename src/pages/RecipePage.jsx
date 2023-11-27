@@ -10,6 +10,7 @@ export default function RecipePage() {
   const { recipeId } = useParams("");
   // const [like, setLike] = useState(50);
   const [fav, setFav] = useState(false);
+  const [comment, setComment] = useState("");
 
   let userId = useSelector((state) => state.userId);
   // console.log(userId);
@@ -64,7 +65,7 @@ export default function RecipePage() {
       {recipe && (
         <div>
           <h1>{recipe.recipeName}</h1>
-          <ul>
+          <ul className="recipe-info">
             <li>
               {/* {recipe.categoryId} */}Category:
               {recipe.categoryId === 1
@@ -97,19 +98,29 @@ export default function RecipePage() {
               <button>Edit</button>
             </Link>
           ) : (
-            <button
-              onClick={() => {
-                console.log("hit button");
-                if (!fav) {
-                  handleFavorite();
-                } else {
-                  handleUnfavorite();
-                }
-              }}
-            >
-              {/* like {like} */}
-              likes {recipe.favorites.length}
-            </button>
+            <div>
+              <button
+                onClick={() => {
+                  console.log("hit button");
+                  if (!fav) {
+                    handleFavorite();
+                  } else {
+                    handleUnfavorite();
+                  }
+                }}
+              >
+                {/* like {like} */}
+                likes {recipe.favorites.length}
+              </button>
+              {/* <label htmlFor="comment">Comment:</label>
+              <input
+                name="comment"
+                id="comment"
+                type="text"
+                placeholder="Add comment here"
+                onChange={(e) => setComment(e.target.value)}
+              /> */}
+            </div>
           )}
           <Link to="/my-recipes">
             <button>Back to Recipes</button>

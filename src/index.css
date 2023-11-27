@@ -21,7 +21,7 @@ button {
   font-size: 0.8rem;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  /* background-color: #1a1a1a; */
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -45,12 +45,12 @@ a:hover {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
   }
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: #f9f9f9;
-  }
+  /* button {
+    /* background-color: #f9f9f9; */
+  /* } */
 }
