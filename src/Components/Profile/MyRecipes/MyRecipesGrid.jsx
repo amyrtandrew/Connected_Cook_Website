@@ -1,26 +1,23 @@
 import { Link, Outlet } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import { Dropdown } from "react-bootstrap";
-import { useState } from "react";
 
-const MyRecipesGrid = ({
-  recipeList,
-  favRecipeList,
-  allRecipes,
-  sorted,
-  alphaList,
-}) => {
+const MyRecipesGrid = ({ allRecipes, recipeData }) => {
+  console.log(recipeData);
+  const renderedRecipes = recipeData
+    ? recipeData.map((recipe) => (
+        <Link
+          to={`/recipe/${recipe.recipeId}`}
+          className="recipe-square"
+          key={recipe.recipeId}
+        >
+          {recipe.recipeName ?? recipe.recipe.recipeName}
+          {/* Additional information or components related to the recipe can be added here */}
+        </Link>
+      ))
+    : null;
+
   return (
     <div className="recipe-grid">
-      {alphaList}
-      {/* {sorted ? favRecipeList : allRecipes} */}
-      {/* <h1>All Recipes</h1>
-      {res} */}
-      {/* {recipeList}
-        {favRecipeList} */}
-      {/* {allRecipes} */}
-      {/* <h1>My favorite recipes</h1> */}
-      {/* {favRecipeList} */}
+      {renderedRecipes}
       <Outlet />
     </div>
   );

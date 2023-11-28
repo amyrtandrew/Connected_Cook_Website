@@ -17,6 +17,7 @@ function MyRecipesPage() {
   const [favorite, setFavorite] = useState(false);
   const [alphabetical, setAlphabetical] = useState(false);
   const [auto, setAuto] = useState(false);
+  const [recipeData, setRecipeData] = useState([]);
 
   useEffect(() => {
     axios
@@ -36,115 +37,89 @@ function MyRecipesPage() {
   }, []);
 
   // Do this, but one for myRecipes array, and myFavRecipes array
-  let recipeList = myRecipes.map((recipe) => {
-    return (
-      <>
-        <Link
-          to={`/recipe/${recipe.recipeId}`}
-          className="recipe-square"
-          key={recipe.recipeId}
-        >
-          {recipe.recipeName}
-          {/* <img id="recipe-image" src={recipe.image} /> */}
-        </Link>
-      </>
-    );
-  });
+  // myRecipes.map((recipe) => {
+  //   return (
+  //     <>
+  //       <Link
+  //         to={`/recipe/${recipe.recipeId}`}
+  //         className="recipe-square"
+  //         key={recipe.recipeId}
+  //       >
+  //         {recipe.recipeName}
+  //         {/* <img id="recipe-image" src={recipe.image} /> */}
+  //       </Link>
+  //     </>
+  //   );
+  // });
 
   // console.log(myFavRecipes);
-  let favRecipeList = myFavRecipes.map((recipe) => {
-    return (
-      <>
-        <Link
-          to={`/recipe/${recipe.recipeId}`}
-          className="recipe-square"
-          key={recipe.recipeId}
-        >
-          {recipe.recipe.recipeName}
-          {/* <img id="recipe-image" src={recipe.recipe.image} /> */}
-        </Link>
-      </>
-    );
-  });
-  let allRecipes = recipeList.concat(favRecipeList);
-
-  // const handleSort = (e) => {
-  //   e.preventDefault();
-  //   console.log(e.target.value);
-  //   // if (e.target.value === "favorites") {
-  //   setSorted(true);
-  //   console.log(sorted);
-  //   console.log("sorted is now true");
-  //   // }
-  // };
+  // myFavRecipes.map((recipe) => {
+  //   return (
+  //     <>
+  //       <Link
+  //         to={`/recipe/${recipe.recipeId}`}
+  //         className="recipe-square"
+  //         key={recipe.recipeId}
+  //       >
+  //         {recipe.recipe.recipeName}
+  //         {/* <img id="recipe-image" src={recipe.recipe.image} /> */}
+  //       </Link>
+  //     </>
+  //   );
+  // });
+  let allRecipes = myRecipes.concat(myFavRecipes);
+  console.log(allRecipes);
 
   myRecipes.sort((a, b) => a.recipeName.localeCompare(b.recipeName));
-  // console.log(test);
 
-  // let ordered = myRecipes.sort();
-  let alphaList = myRecipes.map((recipe) => {
-    return (
-      <Link
-        to={`/recipe/${recipe.recipeId}`}
-        className="recipe-square"
-        key={recipe.recipeId}
-      >
-        {recipe.recipeName}
-        {/* <img id="recipe-image" src={recipe.image} /> */}
-      </Link>
-    );
-  });
-  // console.log(recipeList);
+  // allRecipes.map((recipe) => {
+  //   return (
+  //     <Link
+  //       to={`/recipe/${recipe.recipeId}`}
+  //       className="recipe-link"
+  //       key={recipe.recipeId}
+  //     >
+  //       {recipe.recipeName ?? recipe.recipe.recipeName}
+  //       {/* <img id="recipe-image" src={recipe.image} /> */}
+  //     </Link>
+  //   );
+  // });
+
+  useEffect(
+    () => {
+      let filteredData;
+      if (favorite) {
+        filteredData = myFavRecipes;
+      } else if (alphabetical) {
+        filteredData = allRecipes;
+      } else if (auto) {
+        filteredData = myRecipes;
+      }
+      setRecipeData(filteredData);
+    },
+    [auto, favorite, alphabetical],
+    myFavRecipes,
+    allRecipes,
+    myRecipes
+  );
 
   const changeCat = (e) => {
     e.preventDefault();
+    const selectedValue = e.target.value;
+    setAuto(selectedValue === "category");
+    setFavorite(selectedValue === "favorites");
+    setAlphabetical(selectedValue === "alphabetical");
     console.log(e.target.value);
-
-    if (e.target.value === "category") {
-      setAuto(true);
-      setFavorite(false);
-      setAlphabetical(false);
-    }
-    if (e.target.value === "alphabetical") {
-      setAuto(false);
-      setFavorite(false);
-      setAlphabetical(true);
-    }
-    if (e.target.value === "favorites") {
-      setAuto(false);
-      setFavorite(true);
-      setAlphabetical(false);
-    }
-
-    let recipeData = [...allRecipes];
-    let favData = [...myFavRecipes];
-    let myData = [...myRecipes];
-
-    if (favCat) {
-      recipeData = favData;
-    }
-    if (alphaCat) {
-      recipeData = recipeData;
-    }
-    if (autoCat) {
-      recipeData = myData;
-    }
   };
+
+  console.log(recipeData);
 
   return (
     <>
       <NavBar />
       <div className="home-page">
-        <MyRecipesHeader />
-        <MyRecipesGrid
-          recipeList={recipeList}
-          favRecipeList={favRecipeList}
-          // handleSort={handleSort}
-          allRecipes={allRecipes}
-          sorted={sorted}
-          changeCat={changeCat}
-          alphaList={alphaList}
-        />
+        <MyRecipesHeader changeCat={changeCat} />
+        <MyRecipesGrid allRecipes={allRecipes} recipeData={recipeData} />
         <Outlet />
       </div>
     </>
