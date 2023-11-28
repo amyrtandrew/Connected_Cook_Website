@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 
-const MyRecipesHeader = ({ handleSort }) => {
+const MyRecipesHeader = ({ changeCat }) => {
   return (
     <div>
       <nav className="grid-navbar">
@@ -19,7 +19,7 @@ const MyRecipesHeader = ({ handleSort }) => {
           </svg>
         </NavLink>
         <form>
-          <select onChange={(e) => handleSort(e)}>
+          <select onChange={(e) => changeCat(e)}>
             <option
               className="accordian-btn"
               href="#/action-2"

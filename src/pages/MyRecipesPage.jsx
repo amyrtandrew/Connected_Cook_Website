@@ -14,6 +14,9 @@ function MyRecipesPage() {
   const [myRecipes, setMyRecipes] = useState([]);
   const [myFavRecipes, setMyFavRecipes] = useState([]);
   const [sorted, setSorted] = useState(false);
+  const [favorite, setFavorite] = useState(false);
+  const [alphabetical, setAlphabetical] = useState(false);
+  const [auto, setAuto] = useState(false);
 
   useEffect(() => {
     axios
@@ -31,17 +34,6 @@ function MyRecipesPage() {
       setMyFavRecipes(res.data.favRecipes);
     });
   }, []);
-
-  // const filterCat = (e) => {
-  //   e.preventDefault()
-
-  //   let recipeData = [...allRecipes];
-  //   let favData = [...]
-
-  //   if (favCat) {
-  //     recipeData = recipeData.filter((i) => )
-  //   }
-  // }
 
   // Do this, but one for myRecipes array, and myFavRecipes array
   let recipeList = myRecipes.map((recipe) => {
@@ -75,15 +67,47 @@ function MyRecipesPage() {
   });
   let allRecipes = recipeList.concat(favRecipeList);
 
-  const handleSort = (e) => {
+  const filterCat = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    // if (e.target.value === "favorites") {
-    setSorted(true);
-    console.log(sorted);
-    console.log("sorted is now true");
-    // }
+
+    let recipeData = [...allRecipes];
+    let favData = [...myFavRecipes];
+    let myData = [...myRecipes];
+
+    if (favCat) {
+      recipeData = favData;
+    }
+    if (alphaCat) {
+      recipeData = recipeData;
+    }
+    if (autoCat) {
+      recipeData = myData;
+    }
   };
+
+  const favCat = (e) => {
+    e.preventDefault();
+    setFavorite(true);
+  };
+
+  const alphaCat = (e) => {
+    e.preventDefault();
+    setAlphabetical(true);
+  };
+
+  const autoCat = (e) => {
+    e.preventDefault();
+    setAuto(true);
+  };
+  // const handleSort = (e) => {
+  //   e.preventDefault();
+  //   console.log(e.target.value);
+  //   // if (e.target.value === "favorites") {
+  //   setSorted(true);
+  //   console.log(sorted);
+  //   console.log("sorted is now true");
+  //   // }
+  // };
 
   myRecipes.sort((a, b) => a.recipeName.localeCompare(b.recipeName));
   // console.log(test);
@@ -103,15 +127,37 @@ function MyRecipesPage() {
   });
   // console.log(recipeList);
 
+  const changeCat = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+
+    if (e.target.value === "category") {
+      setAuto(true);
+      setFavorite(false);
+      setAlphabetical(false);
+    }
+    if (e.target.value === "alphabetical") {
+      setAuto(false);
+      setFavorite(false);
+      setAlphabetical(true);
+    }
+    if (e.target.value === "favorites") {
+      setAuto(false);
+      setFavorite(true);
+      setAlphabetical(false);
+    }
+  };
+
   return (
     <div className="home-page">
       <MyRecipesHeader />
       <MyRecipesGrid
         recipeList={recipeList}
         favRecipeList={favRecipeList}
-        handleSort={handleSort}
+        // handleSort={handleSort}
         allRecipes={allRecipes}
         sorted={sorted}
+        changeCat={changeCat}
         alphaList={alphaList}
       />
       <Outlet />
