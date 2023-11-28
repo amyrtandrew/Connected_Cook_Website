@@ -82,10 +82,10 @@ Recipe.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    // imageType: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    // },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     // imageName: {
     //   type: DataTypes.STRING,
     //   allowNull: true,

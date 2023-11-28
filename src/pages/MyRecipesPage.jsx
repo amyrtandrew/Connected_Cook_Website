@@ -39,7 +39,6 @@ function MyRecipesPage() {
   let recipeList = myRecipes.map((recipe) => {
     return (
       <>
-        <NavBar />
         <Link
           to={`/recipe/${recipe.recipeId}`}
           className="recipe-square"
@@ -55,50 +54,20 @@ function MyRecipesPage() {
   // console.log(myFavRecipes);
   let favRecipeList = myFavRecipes.map((recipe) => {
     return (
-      <Link
-        to={`/recipe/${recipe.recipeId}`}
-        className="recipe-square"
-        key={recipe.recipeId}
-      >
-        {recipe.recipe.recipeName}
-        {/* <img id="recipe-image" src={recipe.recipe.image} /> */}
-      </Link>
+      <>
+        <Link
+          to={`/recipe/${recipe.recipeId}`}
+          className="recipe-square"
+          key={recipe.recipeId}
+        >
+          {recipe.recipe.recipeName}
+          {/* <img id="recipe-image" src={recipe.recipe.image} /> */}
+        </Link>
+      </>
     );
   });
   let allRecipes = recipeList.concat(favRecipeList);
 
-  const filterCat = (e) => {
-    e.preventDefault();
-
-    let recipeData = [...allRecipes];
-    let favData = [...myFavRecipes];
-    let myData = [...myRecipes];
-
-    if (favCat) {
-      recipeData = favData;
-    }
-    if (alphaCat) {
-      recipeData = recipeData;
-    }
-    if (autoCat) {
-      recipeData = myData;
-    }
-  };
-
-  const favCat = (e) => {
-    e.preventDefault();
-    setFavorite(true);
-  };
-
-  const alphaCat = (e) => {
-    e.preventDefault();
-    setAlphabetical(true);
-  };
-
-  const autoCat = (e) => {
-    e.preventDefault();
-    setAuto(true);
-  };
   // const handleSort = (e) => {
   //   e.preventDefault();
   //   console.log(e.target.value);
@@ -146,22 +115,39 @@ function MyRecipesPage() {
       setFavorite(true);
       setAlphabetical(false);
     }
+
+    let recipeData = [...allRecipes];
+    let favData = [...myFavRecipes];
+    let myData = [...myRecipes];
+
+    if (favCat) {
+      recipeData = favData;
+    }
+    if (alphaCat) {
+      recipeData = recipeData;
+    }
+    if (autoCat) {
+      recipeData = myData;
+    }
   };
 
   return (
-    <div className="home-page">
-      <MyRecipesHeader />
-      <MyRecipesGrid
-        recipeList={recipeList}
-        favRecipeList={favRecipeList}
-        // handleSort={handleSort}
-        allRecipes={allRecipes}
-        sorted={sorted}
-        changeCat={changeCat}
-        alphaList={alphaList}
-      />
-      <Outlet />
-    </div>
+    <>
+      <NavBar />
+      <div className="home-page">
+        <MyRecipesHeader />
+        <MyRecipesGrid
+          recipeList={recipeList}
+          favRecipeList={favRecipeList}
+          // handleSort={handleSort}
+          allRecipes={allRecipes}
+          sorted={sorted}
+          changeCat={changeCat}
+          alphaList={alphaList}
+        />
+        <Outlet />
+      </div>
+    </>
   );
 }
 export default MyRecipesPage;
