@@ -21,7 +21,7 @@ function NavBar() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-main">
-        <NavLink to="/" className="navbar-brand" href="#">
+        <NavLink to="/" className="navbar-brand">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -46,17 +46,17 @@ function NavBar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav">
-            <li className="nav-item explore-item">
-              <NavLink to="/explore-page" className="nav-link" href="#">
+            <li className="view">
+              <NavLink to="/explore-page" className="nav-link">
                 Explore
               </NavLink>
             </li>
-            <li className="nav-item my-recipes-item">
-              <NavLink to="/my-recipes" className="nav-link" href="#">
+            <li className="view">
+              <NavLink to="/my-recipes" className="nav-link ">
                 My Recipes
               </NavLink>
             </li>
-            <li className="nav-item logout-item">
+            <li className="nav-item">
               <Logout onLogout={handleLogout} />
             </li>
           </ul>
