@@ -48,19 +48,6 @@ const EditRecipe = () => {
   const handleEdit = async (event) => {
     event.preventDefault();
 
-    // console.log(values.image);
-    // console.log(values);
-    // let body = {
-    //   recipeName,
-    //   category,
-    //   servings,
-    //   instructions,
-    //   prepTime,
-    //   cookTime,
-    //   notes,
-    //   image,
-    //   // image: URL.createObjectURL(values.image),
-    // };
     console.log(values);
     const res = await axios.put(`/api/edit-recipe/${recipeId}`, values);
 

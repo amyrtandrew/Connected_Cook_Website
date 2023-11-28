@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useLoaderData, useNavigate, useParams, Link } from "react-router-dom";
+import { useLoaderData, useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 import { Image } from "react-bootstrap";
@@ -13,6 +13,11 @@ export default function RecipePage() {
 
   let userId = useSelector((state) => state.userId);
   // console.log(userId);
+
+  // const navigate = useNavigate();
+  // const backButton = () => {
+  //   navigate(-1);
+  // };
 
   const loadRecipe = async () => {
     const { data } = await axios.get(`/api/recipe/${recipeId}`);

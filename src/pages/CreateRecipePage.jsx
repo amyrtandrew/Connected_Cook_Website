@@ -19,10 +19,12 @@ const CreateRecipePage = ({ recipeId }) => {
   };
 
   return (
-    <> <NavBar />
-    <div className="create-recipe-page">
-      <CreateRecipeForm onCreateRecipe={handleCreateRecipe} />
-    </div>
+    <>
+      {" "}
+      <NavBar />
+      <div className="create-recipe-page">
+        <CreateRecipeForm onCreateRecipe={handleCreateRecipe} />
+      </div>
     </>
   );
 };

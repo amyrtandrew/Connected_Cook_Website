@@ -8,12 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MyRecipesHeader from "../Components/Profile/MyRecipes/MyRecipesHeader";
-// import MyRecipesHeader from "../Components/Profile/MyRecipes/MyRecipesHeader";
 
 function MyRecipesPage() {
   const [myRecipes, setMyRecipes] = useState([]);
   const [myFavRecipes, setMyFavRecipes] = useState([]);
-  const [sorted, setSorted] = useState(false);
   const [favorite, setFavorite] = useState(false);
   const [alphabetical, setAlphabetical] = useState(false);
   const [auto, setAuto] = useState(false);
@@ -23,67 +21,18 @@ function MyRecipesPage() {
     axios
       .get("/api/my-recipes")
       .then((res) => {
-        // setRecipes(res.data);
         let { data } = res;
         setMyRecipes(data.myRecipes);
-        // setMyFavRecipes(res.data.myFavRecipes)
       })
       .catch((err) => console.log(err));
     axios.get("/api/my-favrecipes").then((res) => {
-      // setRecipes(res.data);
-      // setMyRecipes(res.data.myRecipes)
       setMyFavRecipes(res.data.favRecipes);
     });
   }, []);
 
-  // Do this, but one for myRecipes array, and myFavRecipes array
-  // myRecipes.map((recipe) => {
-  //   return (
-  //     <>
-  //       <Link
-  //         to={`/recipe/${recipe.recipeId}`}
-  //         className="recipe-square"
-  //         key={recipe.recipeId}
-  //       >
-  //         {recipe.recipeName}
-  //         {/* <img id="recipe-image" src={recipe.image} /> */}
-  //       </Link>
-  //     </>
-  //   );
-  // });
-
-  // console.log(myFavRecipes);
-  // myFavRecipes.map((recipe) => {
-  //   return (
-  //     <>
-  //       <Link
-  //         to={`/recipe/${recipe.recipeId}`}
-  //         className="recipe-square"
-  //         key={recipe.recipeId}
-  //       >
-  //         {recipe.recipe.recipeName}
-  //         {/* <img id="recipe-image" src={recipe.recipe.image} /> */}
-  //       </Link>
-  //     </>
-  //   );
-  // });
   let allRecipes = myRecipes.concat(myFavRecipes);
-  console.log(allRecipes);
 
   myRecipes.sort((a, b) => a.recipeName.localeCompare(b.recipeName));
-
-  // allRecipes.map((recipe) => {
-  //   return (
-  //     <Link
-  //       to={`/recipe/${recipe.recipeId}`}
-  //       className="recipe-link"
-  //       key={recipe.recipeId}
-  //     >
-  //       {recipe.recipeName ?? recipe.recipe.recipeName}
-  //       {/* <img id="recipe-image" src={recipe.image} /> */}
-  //     </Link>
-  //   );
-  // });
 
   useEffect(
     () => {
@@ -106,13 +55,11 @@ function MyRecipesPage() {
   const changeCat = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
-    setAuto(selectedValue === "category");
+    setAuto(selectedValue === "personal");
     setFavorite(selectedValue === "favorites");
     setAlphabetical(selectedValue === "alphabetical");
     console.log(e.target.value);
   };
-
-  console.log(recipeData);
 
   return (
     <>

@@ -20,26 +20,17 @@ const MyRecipesHeader = ({ changeCat }) => {
         </NavLink>
         <form>
           <select onChange={(e) => changeCat(e)}>
-            <option
-              className="accordian-btn"
-              href="#/action-2"
-              value="category"
-            >
+            <option className="accordian-btn" value="category">
               Category
             </option>
-            <option
-              className="accordian-btn"
-              href="#/action-3"
-              value="alphabetical"
-            >
-              A-Z
+            <option className="accordian-btn" value="personal">
+              Personal
             </option>
-            <option
-              className="accordian-btn"
-              href="#/action-4"
-              value="favorites"
-            >
+            <option className="accordian-btn" value="favorites">
               Favorites
+            </option>
+            <option className="accordian-btn" value="alphabetical">
+              A-Z
             </option>
           </select>
         </form>

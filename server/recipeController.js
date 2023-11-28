@@ -15,9 +15,7 @@ const recipeFunctions = {
       notes,
       image,
     } = req.body;
-    // const { imageType } = req.file.mimetype;
-    // const { imageName } = req.file.originalname;
-    // const { imageData } = req.file.buffer;
+    console.log(req.body);
     const { userId } = req.session;
     console.log(category);
     const user = await User.findByPk(userId);
@@ -33,14 +31,9 @@ const recipeFunctions = {
       image: image || null,
     });
     console.log(req.body);
-    // await user.createFavorite({
-    //   recipeId: recipe.recipeId,
-    // });
-    // console.log(req.body.recipeName);
     if (recipe) {
       res.json({ success: true, recipeId: recipe.recipeId });
     }
-    // res.sendStatus(200);
   },
 
   //edit a recipe
