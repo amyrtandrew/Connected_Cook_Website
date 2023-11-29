@@ -7,6 +7,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorPage from "./pages/ErrorPage";
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
   const dispatch = useDispatch();

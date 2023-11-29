@@ -84,6 +84,7 @@
   justify-content: center;
   color: lightgrey;
   opacity: 60%;
+  margin-top: 10vh;
 }
 
 .recipe-square {
@@ -129,27 +130,26 @@
 
 .carousel {
   color: pink;
-  width: 20vw;
-  height: 20vh;
-  border-radius: 7%;
+  width: 30vw;
+  height: 30vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
   margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .carousel-image {
-  width: 20vw;
-  height: 20vh;
+  width: 30vw;
+  height: 30vh;
   object-fit: cover;
-  border-radius: 7%;
-  text-align: center;
 }
 
-/* .carousel-text {
-  margin-bottom: 10vw;
-} */
+.carousel-text {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* Single Recipe Page */
 .recipe-info {
@@ -183,11 +183,18 @@
   color: white;
 }
 
-.filter-accordian {
-  width: 50px;
-  color: green;
-}
-
 .cook-filter:focus {
   background-color: blue;
+}
+
+/* .accordion-button:not(.collapsed)::after,
+.accordion-button::after {
+  background-image: unset !important;
+} */
+
+.accordion {
+  --bs-accordion-btn-color: ghostwhite;
+  --bs-accordion-btn-bg: pink;
+  --bs-accordion-active-color: maroon;
+  --bs-accordion-active-bg: lightpink;
 }
