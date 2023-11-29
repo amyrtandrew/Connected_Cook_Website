@@ -7,20 +7,19 @@ import Crepes from "./Crepes";
 const PhotoSlide = () => {
   return (
     <div className="carousel">
-      <Carousel fade>
+      <p className="explore-message">Need some inspo? Try seaching...</p>
+      <Carousel>
         <Carousel.Item>
-          {/* <ExampleCarouselImage text="First slide" /> */}
-          <Tacos text="chicken tacos" />
           <h3 className="carousel-text">Chicken Tacos</h3>
+          <Tacos text="chicken tacos" />
         </Carousel.Item>
-        <Carousel.Item className="carousel-image">
-          {/* <ExampleCarouselImage text="Second slide" /> */}
-          <Burger text="Southwest Burger" />
+        <Carousel.Item>
           <h3 className="carousel-text">Southwest Burger</h3>
+          <Burger text="Southwest Burger" />
         </Carousel.Item>
-        <Carousel.Item className="carousel-image">
+        <Carousel.Item>
+          <h3 className="carousel-text">Crepes</h3>
           <Crepes />
-          <h3 className="carousel-text">Stawberry Banana Crepes</h3>
         </Carousel.Item>
       </Carousel>
     </div>

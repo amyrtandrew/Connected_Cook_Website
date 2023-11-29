@@ -95,12 +95,6 @@ const ExplorePage = () => {
     console.log(data);
   };
 
-  // const filterName = (value) => {
-  //   const res = data.filter((f) => f.recipeName.toLowerCase().includes(value));
-  //   setFilterData(res);
-  //   setSubmitted(false);
-  // };
-
   const filterCategory = (e) => {
     e.preventDefault();
     console.log(e.target.value);
@@ -148,14 +142,10 @@ const ExplorePage = () => {
     setPopFilter(true);
   };
 
-  // let searchResults = data.map((d, i) => {
-  //   return <div key={i}>{d.recipeName}</div>;
-  // });
-
   return (
     <>
       <NavBar />
-      <div className="home-page">
+      <div className="flexbox-container home-page">
         <ExploreHeader
           // setSubmited={setSubmited}
           filterName={filterName}

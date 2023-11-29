@@ -1,28 +1,87 @@
+/* App */
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10vw;
+  padding-right: 10vw;
+
+  background-image: linear-gradient(
+    to top,
+    #7694cc,
+    #878fca,
+    #9889c6,
+    #a882be,
+    #b67cb4,
+    #c377a6,
+    #cd7397,
+    #d27286,
+    #d37671,
+    #cd7d5e,
+    #c18650,
+    #b08f48
+  );
+  background-color: black;
+}
+
+/* login/create account */
+.login-title {
+  text-align: center;
+}
+
+.login-form {
+  text-align: center;
+}
+
+.login-message {
+  text-align: center;
+}
+
+.create-account-form {
+  text-align: center;
+}
+
+.login-link {
+  text-align: center;
+}
+
+/* Main Navbar */
+.navbar-main {
+  font-size: large;
+  position: relative;
+  margin-top: 3vw;
+}
+
+.navbar-items li {
+  color: black;
+  text-decoration: none;
+}
+
+.navbar-items li {
+  color: white;
+}
+
+.nav-logout:hover {
+  cursor: pointer;
+}
+
+.globe {
+  height: 50px;
+  width: 50px;
+  color: white;
+  margin-left: -7vw;
+}
+/* Recipe Grid */
+
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   row-gap: 40px;
-  margin: 50px;
   padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-image: linear-gradient(
-    to top,
-    #151424,
-    #1d1c32,
-    #262441,
-    #2f2c50,
-    #393560,
-    #3f3c6b,
-    #444376,
-    #4a4a82,
-    #4c518b,
-    #4f5995,
-    #50609e,
-    #5268a8
-  ); */
   color: lightgrey;
   opacity: 60%;
 }
@@ -52,245 +111,13 @@
 .recipe-link {
   color: pink;
 }
-#recipe-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
-.form {
-  margin-left: 50px;
-}
-
-.login-title {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.login-form {
-  text-align: center;
-}
-
-.login-message {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.create-account-form {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.login-link {
-  text-align: center;
-}
-
-.plus-button {
-  align-self: flex-end;
-}
-/* 
-.explore-header {
-  background-image: linear-gradient(
-    to top,
-    #151424,
-    #1d1c32,
-    #262441,
-    #2f2c50,
-    #393560,
-    #3f3c6b,
-    #444376,
-    #4a4a82,
-    #4c518b,
-    #4f5995,
-    #50609e,
-    #5268a8
-  );
-} */
+/* My Recipes Header */
 
 .create-recipe-form {
   text-align: left;
   padding: 100px;
 }
-
-.logout-btn {
-  align-self: flex-end;
-  color: white !important;
-  background: none;
-  margin-left: 30px;
-}
-
-.view {
-  margin-right: 25px;
-}
-.navbar view {
-  color: lightgray;
-}
-
-.navbar-nav {
-  margin-left: 945px;
-}
-
-/* .accordian-btn {
-  color: blue;
-  background-color: silver;
-  border-color: black;
-} */
-
-.carousel {
-  margin-top: 200px;
-  color: pink;
-  /* margin-left: 350px; */
-  /* background-image: linear-gradient(
-    to top,
-    #151424,
-    #1d1c32,
-    #262441,
-    #2f2c50,
-    #393560,
-    #3f3c6b,
-    #444376,
-    #4a4a82,
-    #4c518b,
-    #4f5995,
-    #50609e,
-    #5268a8
-  ); */
-  /* margin-left: 100px; */
-  /* margin-right: 100px; */
-  width: 500px;
-  height: 350px;
-  /* margin-left: 200px; */
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-}
-
-.carousel-image {
-  width: 500px;
-  height: 350px;
-  object-fit: cover;
-}
-
-.carousel-text {
-  align-content: baseline;
-  top: 300px;
-  height: 100px;
-  border-radius: 7%;
-  background-color: black;
-}
-
-.recipe-info {
-  border-color: black;
-  border-style: double;
-  height: 500px;
-  width: 700px;
-}
-
-.navbar-main {
-  height: 100px;
-  font-size: large;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* margin-right: 50vw; */
-}
-
-.explore-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.search-bar {
-  margin-right: 100px;
-  border: 4px;
-  border-radius: 7%;
-}
-
-.search-btn {
-  margin-left: 500px;
-}
-
-.filter-accordian {
-  margin-left: 600px;
-  width: 50px;
-  color: green;
-}
-
-.my-recipes-item {
-  /* margin-left: 300px; */
-  color: white;
-  /* border-left-style: double;
-  border-left-color: red; */
-}
-
-.explore-item {
-  /* margin-left: 250px; */
-  color: white;
-}
-
-.globe {
-  height: 50px;
-  width: 50px;
-  color: white;
-  margin-left: 3vw;
-}
-
-/* .search-bar {
-  border-right: 200px;
-} */
-
-/* .search-items {
-  border-right: 200px;
-} */
-
-.home-page {
-  /* background-image: linear-gradient(
-    to top,
-    #151424,
-    #1d1c32,
-    #262441,
-    #2f2c50,
-    #393560,
-    #3f3c6b,
-    #444376,
-    #4a4a82,
-    #4c518b,
-    #4f5995,
-    #50609e,
-    #5268a8
-  ); */
-  background-clip: content-box;
-  color: white;
-}
-
-.app {
-  background-clip: content-box;
-  color: white;
-  /* background-color: black; */
-  height: 100vh;
-  background-image: linear-gradient(
-    to bottom,
-    #5a79a2,
-    #555675,
-    #433749,
-    #271e24,
-    #000000
-  );
-}
-
-/* .home-page {
-  /* background-color: #011526; */
-/* } */
-/* */
-/* .recipe-grid {
-  /* background-color: #011526; */
-/* } */
-*/ */
-
-/* .login-page {
-  /* background-color: #011526; */
-/* } */ */
 
 .plus-icon {
   height: 40px;
@@ -298,15 +125,67 @@
   color: rgb(174, 68, 90);
 }
 
-.unfilled-star {
-  background-color: #011526;
-  height: 40px;
-  width: 40px;
+/* Carousel */
+
+.carousel {
+  color: pink;
+  width: 20vw;
+  height: 20vh;
+  border-radius: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 150px;
+}
+
+.carousel-image {
+  width: 20vw;
+  height: 20vh;
+  object-fit: cover;
+  border-radius: 7%;
+  text-align: center;
+}
+
+/* .carousel-text {
+  margin-bottom: 10vw;
+} */
+
+/* Single Recipe Page */
+.recipe-info {
+  border-color: black;
+  border-style: double;
+  height: 500px;
+  width: 700px;
 }
 
 .favorite-count {
   font-size: x-large;
   color: white;
+}
+
+/* Explore Header */
+
+.explore-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-input {
+  background-color: white;
+  right: 50px;
+  color: black;
+  border: none;
+}
+
+.search-btn {
+  background-color: black;
+  color: white;
+}
+
+.filter-accordian {
+  width: 50px;
+  color: green;
 }
 
 .cook-filter:focus {

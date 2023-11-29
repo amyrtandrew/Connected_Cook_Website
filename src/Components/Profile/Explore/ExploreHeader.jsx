@@ -9,19 +9,22 @@ const ExploreHeader = ({
   filterFunc,
 }) => {
   return (
-    <div className="explore-header">
+    <div className="explore-header-grid">
       <nav
         className="navbar navbar-explore"
-        style={{ marginTop: "50px", height: "80px" }}
+        style={{
+          marginTop: "50px",
+          height: "80px",
+          display: "grid",
+          gap: "100px",
+        }}
       >
-        {/* <p className="explore-message">
-          Check out what your community is cooking!
-        </p> */}
         <form className="search-item" onSubmit={filterFunc}>
           <input
-            className="search-bar"
-            type="search"
+            className="search-input"
+            type="text"
             placeholder="Search"
+            style={{ marginLeft: "50vw", marginTop: "5vw" }}
             onChange={(e) => filterName(e)}
           />
 
@@ -35,49 +38,48 @@ const ExploreHeader = ({
           </button>
 
           <Accordion className="accordian">
-            <Accordion.Item>
-              <Accordion.Header className="filter-accordian">
-                Filter
-              </Accordion.Header>
-              <Accordion.Body>
-                <button
-                  // className={
-                  //   timeFilter ? "bg-primary accordian-btn filterBtn" : ""
-                  // }
-                  href="#/action-1"
-                  className="cook-filter"
-                  onClick={filterCookTime}
-                  value="cookTime"
-                >
-                  Ready in under 30 minutes
-                </button>
-                Category:
-                <select onChange={filterCategory}>
-                  <option className="accordian-btn" value="appetizer">
-                    Appetizer
-                  </option>
-                  <option className="accordian-btn" value="breakfast">
-                    Breakfast
-                  </option>
-                  <option className="accordian-btn" value="lunch">
-                    Lunch
-                  </option>
-                  <option className="accordian-btn" value="dinner">
-                    Dinner
-                  </option>
-                  <option className="accordian-btn" value="dessert">
-                    Dessert
-                  </option>
-                </select>
-                <button
-                  className="accordian-btn"
-                  value="popular"
-                  onClick={filterPopular}
-                >
-                  Popular
-                </button>
-              </Accordion.Body>
-            </Accordion.Item>
+            <Accordion.Header
+              className="filter-accordian"
+              style={{ width: "4vw", background: "none" }}
+            ></Accordion.Header>
+            <Accordion.Body>
+              <button
+                // className={
+                //   timeFilter ? "bg-primary accordian-btn filterBtn" : ""
+                // }
+                href="#/action-1"
+                className="cook-filter"
+                onClick={filterCookTime}
+                value="cookTime"
+              >
+                Ready in under 30 minutes
+              </button>
+              Category:
+              <select onChange={filterCategory}>
+                <option className="accordian-btn" value="appetizer">
+                  Appetizer
+                </option>
+                <option className="accordian-btn" value="breakfast">
+                  Breakfast
+                </option>
+                <option className="accordian-btn" value="lunch">
+                  Lunch
+                </option>
+                <option className="accordian-btn" value="dinner">
+                  Dinner
+                </option>
+                <option className="accordian-btn" value="dessert">
+                  Dessert
+                </option>
+              </select>
+              <button
+                className="accordian-btn"
+                value="popular"
+                onClick={filterPopular}
+              >
+                Popular
+              </button>
+            </Accordion.Body>
           </Accordion>
         </form>
       </nav>
