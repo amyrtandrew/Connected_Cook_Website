@@ -17,17 +17,16 @@ const ExploreHeader = ({
         {/* <p className="explore-message">
           Check out what your community is cooking!
         </p> */}
-        <form className="form-inline search-items" onSubmit={filterFunc}>
+        <form className="search-item" onSubmit={filterFunc}>
           <input
-            className="form-control mr-sm-2 search-bar"
+            className="search-bar"
             type="search"
             placeholder="Search"
-            aria-label="Search"
             onChange={(e) => filterName(e)}
           />
 
           <button
-            className="btn btn-outline-primary my-2 my-sm-0 search-btn"
+            className="btn my-2 my-sm-0 search-btn"
             type="submit"
             data-toggle="collapse"
             data-target="#accordian"
@@ -36,7 +35,7 @@ const ExploreHeader = ({
           </button>
 
           <Accordion className="accordian">
-            <Accordion.Item eventKey="0">
+            <Accordion.Item>
               <Accordion.Header className="filter-accordian">
                 Filter
               </Accordion.Header>
@@ -54,45 +53,24 @@ const ExploreHeader = ({
                 </button>
                 Category:
                 <select onChange={filterCategory}>
-                  <option
-                    className="accordian-btn"
-                    href="#/action-2"
-                    value="appetizer"
-                  >
+                  <option className="accordian-btn" value="appetizer">
                     Appetizer
                   </option>
-                  <option
-                    className="accordian-btn"
-                    href="#/action-3"
-                    value="breakfast"
-                  >
+                  <option className="accordian-btn" value="breakfast">
                     Breakfast
                   </option>
-                  <option
-                    className="accordian-btn"
-                    href="#/action-4"
-                    value="lunch"
-                  >
+                  <option className="accordian-btn" value="lunch">
                     Lunch
                   </option>
-                  <option
-                    className="accordian-btn"
-                    href="#/action-5"
-                    value="dinner"
-                  >
+                  <option className="accordian-btn" value="dinner">
                     Dinner
                   </option>
-                  <option
-                    className="accordian-btn"
-                    href="#/action-6"
-                    value="dessert"
-                  >
+                  <option className="accordian-btn" value="dessert">
                     Dessert
                   </option>
                 </select>
                 <button
                   className="accordian-btn"
-                  href="#/action-3"
                   value="popular"
                   onClick={filterPopular}
                 >
