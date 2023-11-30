@@ -111,17 +111,20 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
         <input
           name="image"
           id="image"
+          required
           type="text"
           placeholder="URL here"
           onChange={(e) => setImage(e.target.value)}
         />
         <button type="submit">Add Recipe</button>
+        <div className="home-link">
+          <Link to="/my-recipes">
+            <button style={{ backgroundColor: "blue", color: "black" }}>
+              Cancel
+            </button>
+          </Link>
+        </div>
       </form>
-      <div className="home-link">
-        <Link to="/my-recipes">
-          <button>Cancel</button>
-        </Link>
-      </div>
     </div>
   );
 };

@@ -6,80 +6,128 @@ export default function LoginForm({ onLogin }) {
   const [passwordValue, setPasswordValue] = useState("");
 
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        padding: "60px",
-        marginTop: "15vh",
-        marginLeft: "25vw",
-        marginRight: "25vw",
-        borderRadius: "10px",
-        height: "45vh",
-        // alignContent: "center",
-      }}
-    >
-      <form
-        className="login-form"
-        onSubmit={(e) => {
-          onLogin(e, {
-            username: usernameValue,
-            password: passwordValue,
-          });
+    <div>
+      <h1
+        className="login-title"
+        style={{
+          color: "white",
+          fontSize: "40px",
+          position: "relative",
+          display: "flex",
+          marginTop: "5vh",
+          width: "fit-content",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginBottom: "20px",
+          paddingLeft: "12vw",
+          paddingRight: "12vw",
+          textAlign: "center",
+          height: "10vh",
         }}
       >
-        <input
-          id="username"
-          type="text"
-          placeholder="username"
-          required
-          className="user-input"
-          style={{ borderRadius: "10px", width: "18vw" }}
-          onChange={(e) => setUsernameValue(e.target.value)}
-        />
-        <input
-          name="password"
-          id="password"
-          type="password"
-          placeholder="password"
-          required
-          className="user-input"
-          style={{ borderRadius: "10px", width: "18vw", marginTop: "20px" }}
-          onChange={(e) => setPasswordValue(e.target.value)}
-        />
-        <button
-          type="submit"
-          className="login-btn"
+        Welcome to Connected Cook, where you can explore for and store recipes!
+      </h1>
+
+      <div
+        style={{
+          backgroundColor: "white",
+          marginTop: "10vh",
+          paddingTop: "50px",
+          marginLeft: "auto",
+          marginRight: "auto",
+          borderRadius: "9px",
+          height: "55vh",
+          width: "30vw",
+          // alignContent: "center",
+        }}
+      >
+        <h1
+          className="login-message"
           style={{
-            backgroundColor: "royalblue",
-            color: "white",
-            marginLeft: "auto",
-            marginRight: "auto",
             position: "relative",
             display: "flex",
             marginTop: "10px",
-            width: "18vw",
-            textAlign: "center",
+            width: "fit-content",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: "20px",
           }}
         >
-          <p style={{ marginLeft: "auto", marginRight: "auto" }}>Log In</p>
-        </button>
-      </form>
-      <span
-        style={{
-          position: "relative",
-          display: "flex",
-          width: "fit-content",
-          textAlign: "center",
-          marginLeft: "auto",
-          marginRight: "auto",
-          marginTop: "10px",
-        }}
-      >
-        Don't have an account?{" "}
-        <span style={{ textDecoration: "underline" }}>
-          <Link to="/create-account">Create Account</Link>
+          Login
+        </h1>
+        <form
+          className="login-form"
+          onSubmit={(e) => {
+            onLogin(e, {
+              username: usernameValue,
+              password: passwordValue,
+            });
+          }}
+        >
+          <input
+            id="username"
+            type="text"
+            placeholder="username"
+            required
+            className="user-input"
+            style={{ borderRadius: "10px", width: "18vw" }}
+            onChange={(e) => setUsernameValue(e.target.value)}
+          />
+          <input
+            name="password"
+            id="password"
+            type="password"
+            placeholder="password"
+            required
+            className="user-input"
+            style={{ borderRadius: "10px", width: "18vw", marginTop: "20px" }}
+            onChange={(e) => setPasswordValue(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="login-btn"
+            style={{
+              backgroundColor: "royalblue",
+              color: "white",
+              marginLeft: "auto",
+              marginRight: "auto",
+              position: "relative",
+              display: "flex",
+              marginTop: "10px",
+              width: "18vw",
+              textAlign: "center",
+            }}
+          >
+            <p
+              style={{
+                marginLeft: "auto",
+                marginRight: "auto",
+                position: "relative",
+                display: "flex",
+                fontSize: "17px",
+              }}
+            >
+              Log In
+            </p>
+          </button>
+        </form>
+        <span
+          style={{
+            position: "relative",
+            display: "flex",
+            marginTop: "10px",
+            width: "fit-content",
+            marginLeft: "auto",
+            marginRight: "auto",
+            fontSize: "16px",
+          }}
+        >
+          Don't have an account?
+          <span style={{ textDecoration: "underline" }}>
+            <Link to="/create-account"> Create Account</Link>
+          </span>
         </span>
-      </span>
+      </div>
     </div>
   );
 }

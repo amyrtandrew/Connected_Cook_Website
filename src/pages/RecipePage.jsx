@@ -114,7 +114,7 @@ export default function RecipePage() {
               }}
             >
               {/* like {like} */}
-              likes {recipe.favorites.length}
+              Favorites: {recipe.favorites.length}
             </button>
           )}
           <Link to="/my-recipes">

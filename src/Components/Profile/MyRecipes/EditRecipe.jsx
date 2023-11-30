@@ -152,6 +152,7 @@ const EditRecipe = () => {
         <input
           name="image"
           id="image"
+          required
           type="text"
           value={values.image}
           onChange={(e) => setValues({ ...values, image: e.target.value })}

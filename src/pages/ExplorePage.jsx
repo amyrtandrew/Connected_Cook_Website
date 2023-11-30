@@ -46,7 +46,7 @@ const ExplorePage = () => {
     // console.log(filteredData);
     setSubmitted(true);
     if (timeFilter) {
-      filteredData = filteredData.filter((i) => i.cookTime < 10);
+      filteredData = filteredData.filter((i) => i.cookTime < 30);
       // setFilterData(filteredData);
       console.log(filteredData);
     }

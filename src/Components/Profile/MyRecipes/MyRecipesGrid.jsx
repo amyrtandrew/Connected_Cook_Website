@@ -1,28 +1,29 @@
 import { Container } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 
-const MyRecipesGrid = ({ allRecipes, recipeData }) => {
+const MyRecipesGrid = ({ recipeData }) => {
   console.log(recipeData);
   const renderedRecipes = recipeData
     ? recipeData.map((recipe) => (
         <Link
           to={`/recipe/${recipe.recipeId}`}
-          className="recipe-square"
+          className="col-md recipe-square"
           key={recipe.recipeId}
         >
-          {recipe.recipeName ?? recipe.recipe.recipeName}
+          {" "}
+          <h1 className="grid-title">
+            {recipe.recipeName ?? recipe.recipe.recipeName}
+          </h1>
           <img
             className="grid-image"
             src={recipe.image ?? recipe.recipe.image}
           />
-          {/* {recipe.image ?? recipe.recipe.image} */}
-          {/* Additional information or components related to the recipe can be added here */}
         </Link>
       ))
     : null;
 
   return (
-    <div className="recipe-grid">
+    <div className="container recipe-grid">
       {renderedRecipes}
       <Outlet />
     </div>

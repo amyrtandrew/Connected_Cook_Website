@@ -31,7 +31,11 @@ function NavBar() {
         <div>
           <ul className="navbar-nav">
             <li className="view">
-              <NavLink to="/explore-page" className="nav-link">
+              <NavLink
+                to="/explore-page"
+                className="nav-link"
+                style={{ position: "absolute" }}
+              >
                 Explore
               </NavLink>
             </li>
@@ -39,14 +43,18 @@ function NavBar() {
               <NavLink
                 to="/my-recipes"
                 className="nav-link "
-                style={{ marginLeft: "3vw" }}
+                style={{ marginLeft: "8vw", position: "absolute" }}
               >
                 My Recipes
               </NavLink>
             </li>
             <li
               className="nav-link nav-logout"
-              style={{ color: "white", marginLeft: " 59vw" }}
+              style={{
+                position: "absolute",
+                color: "white",
+                marginLeft: " 70vw",
+              }}
               onClick={handleLogout}
             >
               Logout

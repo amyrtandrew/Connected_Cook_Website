@@ -20,6 +20,8 @@ const cookie = await Recipe.create({
   prepTime: 10,
   cookTime: 15,
   notes: "these are my notes",
+  image:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSyZkrAGCHZsFF3-iaqbtMo_ngPKb4Ry28_A&usqp=CAU",
 });
 
 const chickenStrips = await Recipe.create({
@@ -30,6 +32,8 @@ const chickenStrips = await Recipe.create({
   prepTime: 1,
   cookTime: 1,
   notes: "fry at 350 degrees",
+  image:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQik5JrixH7m16xmBsPfuN8jB8HntaKvYJIA&usqp=CAU",
 });
 
 let categories = [
