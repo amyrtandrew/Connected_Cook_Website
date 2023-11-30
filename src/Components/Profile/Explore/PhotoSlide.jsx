@@ -7,20 +7,25 @@ import Crepes from "./Crepes";
 const PhotoSlide = () => {
   return (
     <div>
-      <p
+      <button className="border-cover"></button>
+      <span
         className="explore-message"
         style={{
           position: "absolute",
           color: "white",
           fontSize: "35px",
           bottom: "45vh",
+          left: "15vw",
         }}
       >
-        Need some inspo? <br> Try seaching... </br>
-      </p>
+        <span> Need some inspo?</span> <br />{" "}
+        <span style={{ marginLeft: "90px", fontStyle: "italic" }}>
+          Try searching for...
+        </span>
+      </span>
       <div
         className="carousel"
-        style={{ textAlign: "center", fontSize: "20px" }}
+        style={{ textAlign: "center", fontSize: "35px" }}
       >
         <Carousel>
           <Carousel.Item>
