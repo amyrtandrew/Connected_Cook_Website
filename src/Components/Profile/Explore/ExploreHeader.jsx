@@ -15,7 +15,7 @@ const ExploreHeader = ({
         style={{
           position: "absolute",
           marginTop: "12vh",
-          marginLeft: "0vw",
+          marginLeft: "51vw",
           padding: "10px",
         }}
       >
@@ -70,7 +70,7 @@ const ExploreHeader = ({
             type="text"
             placeholder="Search"
             style={{
-              marginLeft: "0.5vw",
+              marginLeft: "45vw",
               marginRight: "auto",
               marginTop: "3vw",
               borderRadius: "20px",
@@ -87,7 +87,7 @@ const ExploreHeader = ({
           style={{
             position: "absolute",
             marginBottom: "15vh",
-            marginLeft: "21vw",
+            marginLeft: "66vw",
             marginRight: "1vw",
             top: "6.5vh",
             backgroundColor: "#7694CC",
