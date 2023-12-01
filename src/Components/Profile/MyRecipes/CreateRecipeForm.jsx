@@ -18,8 +18,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        paddingTop: "50px",
-        marginTop: "25vh",
+        marginTop: "15vh",
         marginLeft: "auto",
         marginRight: "auto",
         borderRadius: "9px",
@@ -176,10 +175,35 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
           placeholder="URL here"
           onChange={(e) => setImage(e.target.value)}
         />
-        <button type="submit">Add Recipe</button>
+        <button
+          type="submit"
+          style={{
+            backgroundColor: "royalblue",
+            color: "white",
+            marginLeft: "15vw",
+            position: "absolute",
+            display: "flex",
+            marginTop: "5vh",
+            width: "fit-content",
+            textAlign: "center",
+          }}
+        >
+          Add Recipe
+        </button>
         <div className="home-link">
           <Link to="/my-recipes">
-            <button style={{ backgroundColor: "blue", color: "black" }}>
+            <button
+              style={{
+                backgroundColor: "#C6B466",
+                color: "white",
+                marginLeft: "-5vw",
+                position: "absolute",
+                display: "flex",
+                marginTop: "5vh",
+                width: "fit-content",
+                textAlign: "center",
+              }}
+            >
               Cancel
             </button>
           </Link>
