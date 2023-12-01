@@ -225,7 +225,7 @@ export default function RecipePage() {
                         position: "relative",
                         display: "flex",
                         marginLeft: "5.3vw",
-                        top: "2.2vh",
+                        top: "-0.5vh",
                       }}
                     >
                       {" "}
