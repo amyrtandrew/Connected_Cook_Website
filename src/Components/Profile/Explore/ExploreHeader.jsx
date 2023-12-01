@@ -15,10 +15,7 @@ const ExploreHeader = ({
         style={{
           position: "absolute",
           marginTop: "12vh",
-          marginLeft: "50vw",
-          borderStyle: "solid",
-          borderColor: "white",
-          borderWidth: "1px",
+          marginLeft: "0vw",
           padding: "10px",
         }}
       >
@@ -30,14 +27,18 @@ const ExploreHeader = ({
         >
           &#x3c; 30 min
         </button>
-        <button
-          className="accordian-btn"
-          value="popular"
-          onClick={filterPopular}
-        >
+        <button className="cook-filter" value="popular" onClick={filterPopular}>
           Popular
         </button>
-        <select onChange={filterCategory} style={{ borderRadius: "5px" }}>
+        <select
+          onChange={filterCategory}
+          style={{
+            borderRadius: "5px",
+            backgroundColor: "black",
+            color: "white",
+            height: "40px",
+          }}
+        >
           <option className="accordian-btn" value="appetizer">
             Appetizer
           </option>
@@ -69,9 +70,11 @@ const ExploreHeader = ({
             type="text"
             placeholder="Search"
             style={{
-              marginLeft: "50vw",
+              marginLeft: "0.5vw",
+              marginRight: "auto",
               marginTop: "3vw",
               borderRadius: "20px",
+              width: "20vw",
             }}
             onChange={(e) => filterName(e)}
           />
@@ -84,7 +87,8 @@ const ExploreHeader = ({
           style={{
             position: "absolute",
             marginBottom: "15vh",
-            marginLeft: "65vw",
+            marginLeft: "21vw",
+            marginRight: "1vw",
             top: "6.5vh",
             backgroundColor: "#7694CC",
           }}

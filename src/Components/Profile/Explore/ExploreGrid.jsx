@@ -20,7 +20,7 @@ const ExploreGrid = ({ filtered }) => {
     );
   });
   return (
-    <div className="recipe-grid">
+    <div className="recipe-grid" style={{ marginTop: "15vh" }}>
       {recipeList}
       <Outlet />
     </div>

@@ -1,6 +1,7 @@
 /* App */
 .app {
   height: 200vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   padding-left: 15vw;
@@ -164,7 +165,7 @@ p {
   display: grid;
   grid-template-columns: repeat(2, minmax(20vw, 1rem));
   gap: 1vw;
-  row-gap: 2vw;
+  row-gap: 1vw;
   padding: 10px;
   color: lightgrey;
   margin-top: 20vh;
@@ -295,8 +296,14 @@ p {
   color: white;
 }
 
+.cook-filter {
+  background-color: black;
+  color: white;
+  margin-right: 0.5vw;
+  height: 40px;
+}
 .cook-filter:focus {
-  background-color: blue;
+  background-color: #7694cc;
 }
 
 /* .accordion-button:not(.collapsed)::after,
