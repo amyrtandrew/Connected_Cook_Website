@@ -74,11 +74,15 @@ export default function RecipePage() {
           <h1
             className="recipe-title"
             style={{
+              color: "black / 100%",
               position: "absolute",
               display: "flex",
-              marginTop: "20vh",
-              marginLeft: "30vw",
-              color: "black / 100%",
+              justifyContent: "center", // Center horizontally
+              alignItems: "center", // Center vertically
+              top: "30%", // Move to the vertical center
+              left: "50%", // Move to the horizontal center
+              transform: "translate(-50%, -50%)", // Adjust for both horizontal and vertical centering
+              color: "black",
             }}
           >
             {recipe.recipeName}
@@ -134,8 +138,7 @@ export default function RecipePage() {
                 </li>
                 <li>
                   <span className="recipe-comp">Servings:</span>{" "}
-                  {recipe.servings}
-                  people
+                  {recipe.servings} people
                 </li>
                 <li>
                   {" "}
@@ -184,8 +187,11 @@ export default function RecipePage() {
                         position: "absolute",
                         display: "flex",
                         bottom: "1vh",
+                        justifyContent: "center", // Center horizontally
+                        alignItems: "center", // Center vertically
                         backgroundColor: "#7B77B4",
                         color: "black",
+                        width: "5vw",
                       }}
                     >
                       Edit

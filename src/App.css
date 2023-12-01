@@ -73,6 +73,52 @@
 .nav-logout:hover {
   cursor: pointer;
 }
+.blog-post {
+  width: 1000px;
+  height: 1000vh;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.post-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.post-title {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.post-intro {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #333;
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.post-conclusion {
+  color: #555;
+  font-style: italic;
+  margin-top: 20px;
+}
 
 .globe {
   position: absolute;
@@ -115,11 +161,39 @@
   border-radius: 3%;
 }
 
-.recipe-square img {
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(30vw, 1rem));
+  gap: 1vw;
+  row-gap: 2vw;
+  padding: 10px;
+  color: lightgrey;
+  margin-top: 1vh;
+}
+
+.blog-square {
+  background-color: royalblue;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100%; /* Adjusted to take 100% of the column width */
+  height: 40vh;
+  border-width: 5px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 3%;
+}
+
+.blog-square img {
   width: 100%;
-  height: 88.7%;
-  object-fit: cover; /* or object-fit: contain; depending on your preference */
+  height: 81.8%;
+  object-fit: cover;
   border-radius: 0% 0% 3% 3%;
+}
+
+.grid-title {
+  background-color: black;
+  font-size: 30px;
 }
 */ .recipe-link {
   color: pink;

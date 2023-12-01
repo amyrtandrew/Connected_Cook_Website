@@ -20,6 +20,7 @@ import RecipePage from "./pages/RecipePage.jsx";
 import store from "./store.js";
 import { Provider } from "react-redux";
 import MyRecipesPage from "./pages/MyRecipesPage.jsx";
+import Blog1Page from "./pages/Blog1Page.jsx";
 
 <link
   rel="stylesheet"
@@ -44,6 +45,7 @@ const router = createBrowserRouter(
         <Route path="create-account" element={<CreateAccountPage />} />
         <Route path="create-recipe" element={<CreateRecipePage />} />
         <Route path="edit-recipe/:recipeId" element={<EditRecipe />} />
+        <Route path="blog1" element={<Blog1Page />} />
       </Route>
     </>
   )

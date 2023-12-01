@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Accordion from "react-bootstrap/Accordion";
 import "bootstrap/dist/css/bootstrap.css";
 
 const ExploreHeader = ({
