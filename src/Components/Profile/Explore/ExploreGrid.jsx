@@ -12,10 +12,10 @@ const ExploreGrid = ({ filtered }) => {
         className="recipe-square"
         key={recipe.recipeId}
       >
-        {recipe.recipeName ?? recipe.recipe.recipeName}
+        <h1 className="grid-title">
+          {recipe.recipeName ?? recipe.recipe.recipeName}
+        </h1>
         <img className="grid-image" src={recipe.image ?? recipe.recipe.image} />
-        {/* <img className="grid-image" src={recipe.image ?? recipe.recipe.image} /> */}
-        {/* <img id="recipe-image" src={recipe.image} /> */}
       </Link>
     );
   });
