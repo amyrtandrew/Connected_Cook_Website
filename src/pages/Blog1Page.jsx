@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Blog1Page = () => {
   return (
@@ -73,6 +74,21 @@ const Blog1Page = () => {
         Follow these tips, and you'll be well on your way to a stress-free and
         enjoyable Christmas dinner. Happy holidays!
       </p>
+      <Link to="/explore-page">
+        <button
+          className="back-btn"
+          style={{
+            position: "absolute",
+            display: "flex",
+            top: "142vh",
+            left: "17vw",
+            backgroundColor: "black",
+            color: "white",
+          }}
+        >
+          Return to Explore
+        </button>
+      </Link>
     </div>
   );
 };
