@@ -138,15 +138,6 @@ export default function RecipePage() {
                   people
                 </li>
                 <li>
-                  <span className="recipe-comp">Ingredients:</span> <br />
-                  <span>{recipe.ingredients}</span>{" "}
-                </li>
-                <li>
-                  {" "}
-                  <span className="recipe-comp">Instructions:</span> <br />{" "}
-                  <span>{recipe.instructions}</span>{" "}
-                </li>
-                <li>
                   {" "}
                   <span className="recipe-comp">Prep Time::</span>{" "}
                   {recipe.prepTime} minutes
@@ -162,13 +153,33 @@ export default function RecipePage() {
                   {recipe.prepTime + recipe.cookTime} minutes
                 </li>
                 <li>
+                  <span className="recipe-comp">Ingredients:</span> <br />
+                  <span>{recipe.ingredients}</span>{" "}
+                </li>
+                <li>
+                  {" "}
+                  <span className="recipe-comp">Instructions:</span> <br />{" "}
+                  <span>{recipe.instructions}</span>{" "}
+                </li>
+                <li>
                   <span className="recipe-comp"> Notes:</span> <br />{" "}
                   <span>{recipe.notes}</span>{" "}
                 </li>
               </ul>
               {userId === recipe.userId ? (
                 <Link to={`/edit-recipe/${recipe.recipeId}`}>
-                  <button>Edit</button>
+                  <button
+                    style={{
+                      position: "absolute",
+                      display: "flex",
+                      marginLeft: "0vw",
+                      marginTop: "10vh",
+                      backgroundColor: "#7B77B4",
+                      color: "black",
+                    }}
+                  >
+                    Edit
+                  </button>
                 </Link>
               ) : (
                 <div
@@ -193,7 +204,10 @@ export default function RecipePage() {
                   >
                     Favorite
                   </button>
-                  <span> {recipe.favorites.length}</span>
+                  <span style={{ fontSize: "23px", marginLeft: "0.5vw" }}>
+                    {" "}
+                    {recipe.favorites.length}
+                  </span>
                 </div>
               )}
               <Link to="/my-recipes">
@@ -202,10 +216,11 @@ export default function RecipePage() {
                   style={{
                     backgroundColor: "black",
                     color: "white",
-                    position: "absolute",
+                    position: "relative",
                     display: "flex",
                     marginLeft: "40vw",
-                    marginTop: "2vh",
+                    bottom: "-2vh",
+                    width: "8.4vw",
                   }}
                 >
                   Back to Recipes
