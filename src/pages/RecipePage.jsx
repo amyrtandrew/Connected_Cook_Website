@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import NavBar from "../Components/NavBar/NavBar";
 
 export default function RecipePage() {
   const [recipe, setRecipe] = useState(null);
@@ -67,61 +68,151 @@ export default function RecipePage() {
 
   return (
     <>
+      <NavBar />
       {recipe && (
         <div>
-          <h1>{recipe.recipeName}</h1>
-          <ul>
-            <li>
-              {/* {recipe.categoryId} */}Category:
-              {recipe.categoryId === 1
-                ? " Appetizer"
-                : recipe.categoryId === 2
-                ? " Breakfast"
-                : recipe.categoryId === 3
-                ? " Lunch"
-                : recipe.categoryId === 4
-                ? " Dinner"
-                : recipe.categoryId === 5
-                ? " Dessert"
-                : " Other"}
-            </li>
-            <li>Servings: {recipe.servings} people</li>
-            <li>Ingredients/Amounts: {recipe.ingredients}</li>
-            <li>Instructions: {recipe.instructions}</li>
-            <li>Prep Time: {recipe.prepTime} minutes</li>
-            <li>Cook Time: {recipe.cookTime} minutes</li>
-            <li>Total Time: {recipe.prepTime + recipe.cookTime} minutes</li>
-            <li>Notes: {recipe.notes}</li>
-            {/* <img src={recipe.image.data} alt="could not load" /> */}
-            {/* <li> */}
-            {/* <Image src={recipe.image}></Image> */}
-            {/* <img src={recipe.image} /> */}
-            {/* </li> */}
-          </ul>
-          {userId === recipe.userId ? (
-            <Link to={`/edit-recipe/${recipe.recipeId}`}>
-              <button>Edit</button>
-            </Link>
-          ) : (
-            <button
-              onClick={() => {
-                console.log("hit button");
-                if (!fav) {
-                  handleFavorite();
-                } else {
-                  handleUnfavorite();
-                }
-              }}
-            >
-              {/* like {like} */}
-              Favorites: {recipe.favorites.length}
-            </button>
-          )}
-          <Link to="/my-recipes">
-            <button>Back to Recipes</button>
-          </Link>
+          <h1
+            className="recipe-title"
+            style={{
+              position: "absolute",
+              display: "flex",
+              marginTop: "20vh",
+              marginLeft: "30vw",
+              color: "black / 100%",
+            }}
+          >
+            {recipe.recipeName}
+          </h1>
+          <div
+            className="single-recipe"
+            style={{
+              position: "relative",
+              display: "flex",
+              marginTop: "10vh",
+              paddingTop: "50px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              marginTop: "20vh",
+              borderRadius: "9px",
+              padding: "5vh 1vw 5vh 1vw",
+              height: "55vh",
+              width: "50vw",
+              backgroundColor: "rgb(255 255 255 / 50%)",
 
-          {/* <button onClick={dislikef}>dislike {dislike}</button> */}
+              // alignContent: "center",
+            }}
+          >
+            <div>
+              {/* <img
+                src={recipe.image}
+                style={{
+                  position: "relative",
+                  display: "flex",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  marginLeft: "20vw",
+                  marginTop: "20vh",
+                }}
+              /> */}
+            </div>
+            <div>
+              <ul>
+                <li>
+                  <span className="recipe-comp">Category:</span>
+                  {recipe.categoryId === 1
+                    ? " Appetizer"
+                    : recipe.categoryId === 2
+                    ? " Breakfast"
+                    : recipe.categoryId === 3
+                    ? " Lunch"
+                    : recipe.categoryId === 4
+                    ? " Dinner"
+                    : recipe.categoryId === 5
+                    ? " Dessert"
+                    : " Other"}
+                </li>
+                <li>
+                  <span className="recipe-comp">Servings:</span>{" "}
+                  {recipe.servings}
+                  people
+                </li>
+                <li>
+                  <span className="recipe-comp">Ingredients:</span> <br />
+                  <span>{recipe.ingredients}</span>{" "}
+                </li>
+                <li>
+                  {" "}
+                  <span className="recipe-comp">Instructions:</span> <br />{" "}
+                  <span>{recipe.instructions}</span>{" "}
+                </li>
+                <li>
+                  {" "}
+                  <span className="recipe-comp">Prep Time::</span>{" "}
+                  {recipe.prepTime} minutes
+                </li>
+                <li>
+                  {" "}
+                  <span className="recipe-comp">Cook Time:</span>{" "}
+                  {recipe.cookTime} minutes
+                </li>
+                <li>
+                  {" "}
+                  <span className="recipe-comp">Total Time:</span>{" "}
+                  {recipe.prepTime + recipe.cookTime} minutes
+                </li>
+                <li>
+                  <span className="recipe-comp"> Notes:</span> <br />{" "}
+                  <span>{recipe.notes}</span>{" "}
+                </li>
+              </ul>
+              {userId === recipe.userId ? (
+                <Link to={`/edit-recipe/${recipe.recipeId}`}>
+                  <button>Edit</button>
+                </Link>
+              ) : (
+                <div
+                  style={{
+                    position: "absolute",
+                    display: "flex",
+                    marginLeft: "0vw",
+                    marginTop: "2vh",
+                  }}
+                >
+                  <button
+                    className="fav-btn"
+                    style={{ backgroundColor: "#7B77B4", color: "black" }}
+                    onClick={() => {
+                      console.log("hit button");
+                      if (!fav) {
+                        handleFavorite();
+                      } else {
+                        handleUnfavorite();
+                      }
+                    }}
+                  >
+                    Favorite
+                  </button>
+                  <span> {recipe.favorites.length}</span>
+                </div>
+              )}
+              <Link to="/my-recipes">
+                <button
+                  className="back-btn"
+                  style={{
+                    backgroundColor: "black",
+                    color: "white",
+                    position: "absolute",
+                    display: "flex",
+                    marginLeft: "40vw",
+                    marginTop: "2vh",
+                  }}
+                >
+                  Back to Recipes
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
       )}
     </>

@@ -232,3 +232,47 @@
   --bs-accordion-active-color: maroon;
   --bs-accordion-active-bg: lightpink;
 }
+
+/* Single Recipe Page */
+
+.recipe-comp {
+  font-weight: bold;
+}
+.recipe-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.single-recipe ul {
+  list-style: none;
+  padding: 0;
+}
+
+.single-recipe ul li {
+  margin-bottom: 10px;
+}
+
+/* .single-recipe button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.single-recipe button:hover {
+  background-color: #45a049;
+} */
+
+/* Optional: Add more styling for links if needed */
+.single-recipe a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.single-recipe a:hover {
+  text-decoration: underline;
+}
