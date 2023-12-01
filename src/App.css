@@ -148,6 +148,10 @@ p {
   margin-top: 1vh;
 }
 
+.snoop:hover {
+  cursor: pointer;
+}
+
 .recipe-square {
   background-color: black;
   text-align: center;

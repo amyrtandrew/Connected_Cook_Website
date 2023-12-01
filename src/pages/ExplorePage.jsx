@@ -157,32 +157,6 @@ const ExplorePage = () => {
         {submitted ? <ExploreGrid filtered={filterData} /> : <PhotoSlide />}
         {/* <ExploreGrid filtered={submited ? filterData : data} /> */}
         {/* <Outlet /> */}
-        <img
-          style={{
-            position: "absolute",
-            display: "relative",
-            top: "48vh",
-            left: "12vw",
-            width: "30vw",
-            height: "56vh",
-            objectFit: "cover",
-            borderRadius: "10px",
-          }}
-          src="https://static.themarthablog.com/2018/05/DSC04740.jpg"
-        />
-        <h1
-          style={{
-            position: "absolute",
-            display: "relative",
-            top: "37vh",
-            left: "12vw",
-            color: "rgb(255 255 255 / 77%)",
-            fontSize: "30px",
-          }}
-        >
-          <span>Watch: Snoop Rates</span>
-          <br /> <span> Your Favorite Recipes</span>
-        </h1>
       </div>
     </>
   );
