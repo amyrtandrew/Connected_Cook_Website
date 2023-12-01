@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import { Link, Outlet } from "react-router-dom";
 
 const MyRecipesGrid = ({ recipeData }) => {
-  console.log(recipeData);
+  // console.log(recipeData);
   const renderedRecipes = recipeData
     ? recipeData.map((recipe) => (
         <Link

@@ -12,7 +12,7 @@ const CreateAccountForm = ({ onCreateAccount }) => {
       <h1
         className="login-title"
         style={{
-          color: "white",
+          color: "rgb(255 255 255 / 77%)",
           fontSize: "40px",
           position: "relative",
           display: "flex",
@@ -31,7 +31,6 @@ const CreateAccountForm = ({ onCreateAccount }) => {
       </h1>
       <div
         style={{
-          backgroundColor: "white",
           marginTop: "10vh",
           paddingTop: "50px",
           marginLeft: "auto",
@@ -39,6 +38,7 @@ const CreateAccountForm = ({ onCreateAccount }) => {
           borderRadius: "9px",
           height: "55vh",
           width: "30vw",
+          backgroundColor: "rgb(255 255 255 / 50%)",
           // alignContent: "center",
         }}
       >
@@ -62,6 +62,7 @@ const CreateAccountForm = ({ onCreateAccount }) => {
               width: "fit-content",
               marginLeft: "auto",
               marginRight: "auto",
+              fontSize: "25px",
             }}
           >
             Create Account
@@ -71,7 +72,12 @@ const CreateAccountForm = ({ onCreateAccount }) => {
             id="fname"
             type="text"
             placeholder="first name"
-            style={{ borderRadius: "10px", width: "18vw", marginTop: "20px" }}
+            style={{
+              borderRadius: "10px",
+              width: "18vw",
+              marginTop: "20px",
+              backgroundColor: "rgb(255 255 255 / 60%)",
+            }}
             required
             onChange={(e) => setFnameValue(e.target.value)}
           />
@@ -80,7 +86,12 @@ const CreateAccountForm = ({ onCreateAccount }) => {
             id="lname"
             type="text"
             placeholder="last name"
-            style={{ borderRadius: "10px", width: "18vw", marginTop: "20px" }}
+            style={{
+              borderRadius: "10px",
+              width: "18vw",
+              marginTop: "20px",
+              backgroundColor: "rgb(255 255 255 / 70%)",
+            }}
             required
             onChange={(e) => setLnameValue(e.target.value)}
           />
@@ -89,7 +100,12 @@ const CreateAccountForm = ({ onCreateAccount }) => {
             id="username"
             type="text"
             placeholder="username"
-            style={{ borderRadius: "10px", width: "18vw", marginTop: "20px" }}
+            style={{
+              borderRadius: "10px",
+              width: "18vw",
+              marginTop: "20px",
+              backgroundColor: "rgb(255 255 255 / 70%)",
+            }}
             required
             onChange={(e) => setUsernameValue(e.target.value)}
           />
@@ -98,7 +114,12 @@ const CreateAccountForm = ({ onCreateAccount }) => {
             id="password"
             type="password"
             placeholder="password"
-            style={{ borderRadius: "10px", width: "18vw", marginTop: "20px" }}
+            style={{
+              borderRadius: "10px",
+              width: "18vw",
+              marginTop: "20px",
+              backgroundColor: "rgb(255 255 255 / 70%)",
+            }}
             required
             onChange={(e) => setPasswordValue(e.target.value)}
           />

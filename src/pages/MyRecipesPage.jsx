@@ -33,31 +33,26 @@ function MyRecipesPage() {
   let allRecipes = myRecipes.concat(myFavRecipes);
 
   myRecipes.sort((a, b) => a.recipeName.localeCompare(b.recipeName));
-
-  useEffect(
-    () => {
-      let filteredData;
-      if (favorite) {
-        filteredData = myFavRecipes;
-      } else if (alphabetical) {
-        filteredData = allRecipes;
-      } else if (auto) {
-        filteredData = myRecipes;
-      }
+  useEffect(() => {
+    let filteredData;
+    if (favorite) {
+      filteredData = myFavRecipes;
+    } else if (auto) {
+      filteredData = myRecipes;
+    } else {
+      filteredData = allRecipes;
+    }
+    if (JSON.stringify(filteredData) !== JSON.stringify(recipeData)) {
       setRecipeData(filteredData);
-    },
-    [auto, favorite, alphabetical],
-    myFavRecipes,
-    allRecipes,
-    myRecipes
-  );
+    }
+  }, [auto, favorite, alphabetical, myFavRecipes, allRecipes, myRecipes]);
 
   const changeCat = (e) => {
     e.preventDefault();
     const selectedValue = e.target.value;
     setAuto(selectedValue === "personal");
     setFavorite(selectedValue === "favorites");
-    setAlphabetical(selectedValue === "alphabetical");
+    setAlphabetical(selectedValue === "alphabetical" || selectedValue === "");
     console.log(e.target.value);
   };
 
@@ -66,7 +61,7 @@ function MyRecipesPage() {
       <NavBar />
       <div className="home-page">
         <MyRecipesHeader changeCat={changeCat} />
-        <MyRecipesGrid allRecipes={allRecipes} recipeData={recipeData} />
+        <MyRecipesGrid recipeData={recipeData} />
         <Outlet />
       </div>
     </>

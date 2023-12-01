@@ -10,7 +10,7 @@ export default function LoginForm({ onLogin }) {
       <h1
         className="login-title"
         style={{
-          color: "white",
+          color: "rgb(255 255 255 / 77%)",
           fontSize: "40px",
           position: "relative",
           display: "flex",
@@ -30,7 +30,6 @@ export default function LoginForm({ onLogin }) {
 
       <div
         style={{
-          backgroundColor: "white",
           marginTop: "10vh",
           paddingTop: "50px",
           marginLeft: "auto",
@@ -38,6 +37,7 @@ export default function LoginForm({ onLogin }) {
           borderRadius: "9px",
           height: "55vh",
           width: "30vw",
+          backgroundColor: "rgb(255 255 255 / 50%)",
           // alignContent: "center",
         }}
       >
@@ -51,6 +51,7 @@ export default function LoginForm({ onLogin }) {
             marginLeft: "auto",
             marginRight: "auto",
             marginBottom: "20px",
+            fontSize: "25px",
           }}
         >
           Login
@@ -70,7 +71,11 @@ export default function LoginForm({ onLogin }) {
             placeholder="username"
             required
             className="user-input"
-            style={{ borderRadius: "10px", width: "18vw" }}
+            style={{
+              borderRadius: "10px",
+              width: "18vw",
+              backgroundColor: "rgb(255 255 255 / 70%)",
+            }}
             onChange={(e) => setUsernameValue(e.target.value)}
           />
           <input
@@ -80,7 +85,12 @@ export default function LoginForm({ onLogin }) {
             placeholder="password"
             required
             className="user-input"
-            style={{ borderRadius: "10px", width: "18vw", marginTop: "20px" }}
+            style={{
+              borderRadius: "10px",
+              width: "18vw",
+              marginTop: "20px",
+              backgroundColor: "rgb(255 255 255 / 70%)",
+            }}
             onChange={(e) => setPasswordValue(e.target.value)}
           />
           <button

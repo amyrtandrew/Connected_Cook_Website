@@ -34,17 +34,14 @@ const MyRecipesHeader = ({ changeCat }) => {
             }}
             onChange={(e) => changeCat(e)}
           >
-            <option className="accordian-btn" value="category">
-              Category
+            <option className="accordian-btn" value="alphabetical">
+              A-Z
             </option>
             <option className="accordian-btn" value="personal">
               Personal
             </option>
             <option className="accordian-btn" value="favorites">
               Favorites
-            </option>
-            <option className="accordian-btn" value="alphabetical">
-              A-Z
             </option>
           </select>
         </form>
