@@ -34,7 +34,7 @@ function NavBar() {
               <NavLink
                 to="/explore-page"
                 className="nav-link"
-                style={{ position: "absolute" }}
+                style={{ position: "absolute", marginLeft: "2vw" }}
               >
                 Explore
               </NavLink>
@@ -43,7 +43,7 @@ function NavBar() {
               <NavLink
                 to="/my-recipes"
                 className="nav-link "
-                style={{ marginLeft: "8vw", position: "absolute" }}
+                style={{ marginLeft: "11vw", position: "absolute" }}
               >
                 My Recipes
               </NavLink>

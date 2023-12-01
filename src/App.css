@@ -80,6 +80,7 @@
   width: 50px;
   color: white;
   margin-left: -5vw;
+  margin-top: -0.5vh;
 }
 /* Recipe Grid */
 
@@ -98,7 +99,7 @@
   row-gap: 2vw;
   padding: 10px;
   color: lightgrey;
-  margin-top: 10vh;
+  margin-top: 1vh;
 }
 
 .recipe-square {
@@ -122,6 +123,10 @@
 }
 */ .recipe-link {
   color: pink;
+}
+
+.dropdown:hover {
+  cursor: pointer;
 }
 
 .grid-title {

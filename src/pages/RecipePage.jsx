@@ -166,66 +166,83 @@ export default function RecipePage() {
                   <span>{recipe.notes}</span>{" "}
                 </li>
               </ul>
-              {userId === recipe.userId ? (
-                <Link to={`/edit-recipe/${recipe.recipeId}`}>
+              <div
+              // style={{
+              //   position: "relative",
+              //   display: "flex",
+              //   width: "fit-content",
+              //   height: "5vh",
+              //   marginTop: "3vh",
+              //   textAlign: "center",
+              //   backgoundColor: "blue",
+              // }}
+              >
+                {userId === recipe.userId ? (
+                  <Link to={`/edit-recipe/${recipe.recipeId}`}>
+                    <button
+                      style={{
+                        position: "absolute",
+                        display: "flex",
+                        bottom: "1vh",
+                        backgroundColor: "#7B77B4",
+                        color: "black",
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </Link>
+                ) : (
+                  <div>
+                    <button
+                      className="fav-btn"
+                      style={{
+                        position: "absolute",
+                        display: "flex",
+                        bottom: "1vh",
+                        backgroundColor: "#7B77B4",
+                        color: "black",
+                      }}
+                      onClick={() => {
+                        console.log("hit button");
+                        if (!fav) {
+                          handleFavorite();
+                        } else {
+                          handleUnfavorite();
+                        }
+                      }}
+                    >
+                      Favorite
+                    </button>
+                    <span
+                      style={{
+                        fontSize: "23px",
+                        position: "relative",
+                        display: "flex",
+                        marginLeft: "5.3vw",
+                        top: "2.2vh",
+                      }}
+                    >
+                      {" "}
+                      {recipe.favorites.length}
+                    </span>
+                  </div>
+                )}
+                <Link to="/my-recipes">
                   <button
+                    className="back-btn"
                     style={{
                       position: "absolute",
                       display: "flex",
-                      marginLeft: "0vw",
-                      marginTop: "10vh",
-                      backgroundColor: "#7B77B4",
-                      color: "black",
+                      bottom: "1vh",
+                      right: "1vh",
+                      backgroundColor: "black",
+                      color: "white",
                     }}
                   >
-                    Edit
+                    Back to Recipes
                   </button>
                 </Link>
-              ) : (
-                <div
-                  style={{
-                    position: "absolute",
-                    display: "flex",
-                    marginLeft: "0vw",
-                    marginTop: "2vh",
-                  }}
-                >
-                  <button
-                    className="fav-btn"
-                    style={{ backgroundColor: "#7B77B4", color: "black" }}
-                    onClick={() => {
-                      console.log("hit button");
-                      if (!fav) {
-                        handleFavorite();
-                      } else {
-                        handleUnfavorite();
-                      }
-                    }}
-                  >
-                    Favorite
-                  </button>
-                  <span style={{ fontSize: "23px", marginLeft: "0.5vw" }}>
-                    {" "}
-                    {recipe.favorites.length}
-                  </span>
-                </div>
-              )}
-              <Link to="/my-recipes">
-                <button
-                  className="back-btn"
-                  style={{
-                    backgroundColor: "black",
-                    color: "white",
-                    position: "relative",
-                    display: "flex",
-                    marginLeft: "40vw",
-                    bottom: "-2vh",
-                    width: "8.4vw",
-                  }}
-                >
-                  Back to Recipes
-                </button>
-              </Link>
+              </div>
             </div>
           </div>
         </div>

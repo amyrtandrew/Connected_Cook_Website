@@ -16,6 +16,7 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
     <div
       style={{
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         marginTop: "15vh",
@@ -29,7 +30,6 @@ const CreateRecipeForm = ({ onCreateRecipe }) => {
     >
       <form
         className="create-recipe-form"
-        style={{ width: "100%" }}
         onSubmit={(e) => {
           onCreateRecipe(e, {
             recipeName: recipeName,

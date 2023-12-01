@@ -10,12 +10,13 @@ const MyRecipesHeader = ({ changeCat }) => {
           <button
             className="btn"
             style={{
-              backgroundColor: "black",
+              backgroundColor: "royalblue",
               color: "white",
-              position: "relative",
+              marginLeft: "61vw",
+              position: "absolute",
               display: "flex",
-              marginLeft: "60vw",
-              marginTop: "20vh",
+
+              width: "fit-content",
             }}
           >
             Add Recipe
@@ -27,11 +28,15 @@ const MyRecipesHeader = ({ changeCat }) => {
               borderRadius: "10px",
               backgroundColor: "black",
               color: "white",
+              marginLeft: "1vw",
               position: "relative",
               display: "flex",
-              marginLeft: "60vw",
-              marginTop: "20vh",
+              width: "fit-content",
+              height: "5vh",
+              marginTop: "25vh",
+              textAlign: "center",
             }}
+            className="dropdown"
             onChange={(e) => changeCat(e)}
           >
             <option className="accordian-btn" value="alphabetical">
