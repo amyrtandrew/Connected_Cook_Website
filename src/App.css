@@ -306,7 +306,7 @@ p {
   margin-right: 0.5vw;
   height: 40px;
 }
-.cook-filter:focus {
+.selected {
   background-color: #7694cc;
 }
 

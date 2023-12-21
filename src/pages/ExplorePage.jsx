@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ExploreHeader from "../Components/Profile/Explore/ExploreHeader";
 import ExploreGrid from "../Components/Profile/Explore/ExploreGrid";
-import { Outlet } from "react-router";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import PhotoSlide from "../Components/Profile/Explore/PhotoSlide";
@@ -21,6 +20,8 @@ const ExplorePage = () => {
   const [dessertFilter, setDessertFilter] = useState(false);
   const [popFilter, setPopFilter] = useState(false);
   const [input, setInput] = useState("");
+  const [selectedCook, setSelectedCook] = useState(null);
+  const [selectedPop, setSelectedPop] = useState(null);
 
   useEffect(() => {
     axios
@@ -85,6 +86,7 @@ const ExplorePage = () => {
     e.preventDefault();
     // console.log(e.target.innerHTML);
     setTimeFilter(true);
+    setSelectedCook("cookTime");
     console.log(data);
   };
 
@@ -140,6 +142,7 @@ const ExplorePage = () => {
   const filterPopular = (e) => {
     e.preventDefault();
     setPopFilter(true);
+    setSelectedPop("popular");
   };
 
   return (
@@ -153,6 +156,8 @@ const ExplorePage = () => {
           filterCategory={filterCategory}
           filterPopular={filterPopular}
           filterFunc={filterFunc}
+          selectedCook={selectedCook}
+          selectedPop={selectedPop}
         />
         {submitted ? <ExploreGrid filtered={filterData} /> : <PhotoSlide />}
         {/* <ExploreGrid filtered={submited ? filterData : data} /> */}

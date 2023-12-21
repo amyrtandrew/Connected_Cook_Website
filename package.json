@@ -9,7 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "seed": "node scripts/seed.js",
-    "initdb": "dropdb --conscious_cook && createdb conscious_cook"
+    "initdb": "dropdb conscious_cook && createdb conscious_cook"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",

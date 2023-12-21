@@ -7,6 +7,8 @@ const ExploreHeader = ({
   filterCategory,
   filterPopular,
   filterFunc,
+  selectedCook,
+  selectedPop,
 }) => {
   return (
     <div className="explore-header-grid">
@@ -21,13 +23,21 @@ const ExploreHeader = ({
       >
         <button
           href="#/action-1"
-          className="cook-filter"
+          className={`cook-filter ${
+            selectedCook === "cookTime" ? "selected" : "cook-filter"
+          }`}
           onClick={filterCookTime}
           value="cookTime"
         >
           &#x3c; 30 min
         </button>
-        <button className="cook-filter" value="popular" onClick={filterPopular}>
+        <button
+          className={`cook-filter ${
+            selectedPop === "popular" ? "selected" : "cook-filter"
+          }`}
+          value="popular"
+          onClick={filterPopular}
+        >
           Popular
         </button>
         <select

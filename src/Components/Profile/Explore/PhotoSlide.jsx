@@ -1,8 +1,4 @@
 import React from "react";
-import Carousel from "react-bootstrap/Carousel";
-import Tacos from "./tacos";
-import Burger from "./Burger";
-import Crepes from "./Crepes";
 import { Link } from "react-router-dom";
 
 const PhotoSlide = () => {
