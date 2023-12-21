@@ -17,13 +17,11 @@ const EditRecipe = () => {
     notes: "",
     image: "",
   });
-  // console.log(values);
 
   const getRecipeVals = async () => {
     await axios
       .get("http://localhost:5555/api/recipe/" + recipeId)
       .then((res) => {
-        // console.log(res.data);
         setValues({
           ...values,
           recipeName: res.data.recipeName,
@@ -36,8 +34,6 @@ const EditRecipe = () => {
           notes: res.data.notes ? res.data.notes : "",
           image: res.data.image ? res.data.image : "",
         });
-        // console.log(res.data);
-        // console.log(values);
       })
       .catch((err) => console.log(err));
   };
@@ -48,8 +44,6 @@ const EditRecipe = () => {
   const navigate = useNavigate();
   const handleEdit = async (event) => {
     event.preventDefault();
-
-    console.log(values);
     const res = await axios.put(`/api/edit-recipe/${recipeId}`, values);
 
     if (res.data.success) {

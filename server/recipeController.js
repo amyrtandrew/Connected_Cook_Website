@@ -1,4 +1,3 @@
-import { Sequelize } from "sequelize";
 import { Recipe, User, Favorite } from "../model.js";
 
 const recipeFunctions = {
@@ -15,9 +14,7 @@ const recipeFunctions = {
       notes,
       image,
     } = req.body;
-    console.log(req.body);
     const { userId } = req.session;
-    console.log(category);
     const user = await User.findByPk(userId);
     const recipe = await user.createRecipe({
       recipeName: recipeName,
@@ -30,7 +27,6 @@ const recipeFunctions = {
       notes: notes || null,
       image: image || null,
     });
-    console.log(req.body);
     if (recipe) {
       res.json({ success: true, recipeId: recipe.recipeId });
     }
@@ -50,11 +46,8 @@ const recipeFunctions = {
       notes,
       image,
     } = req.body;
-    // category = +category;
-    console.log(categoryId);
     const recipe = await Recipe.findByPk(recipeId);
     if (recipe) {
-      console.log(recipe);
       (recipe.recipeName = recipeName),
         (recipe.categoryId = +categoryId ?? recipe.categoryId),
         (recipe.servings = +servings ?? recipe.servings),
@@ -67,7 +60,6 @@ const recipeFunctions = {
         await recipe.save();
       res.json({ success: true, recipeId: recipe.recipeId });
     }
-    // res.sendStatus(200);
   },
 
   //delete a recipe
@@ -86,9 +78,7 @@ const recipeFunctions = {
     const recipe = await Recipe.findByPk(recipeId, {
       include: Favorite,
     });
-    console.log(recipe);
     if (recipe) {
-      // && req.session.userId === recipe.userId
       res.json(recipe);
     } else {
       console.log("error");
@@ -117,9 +107,6 @@ const recipeFunctions = {
     res.send({
       myRecipes: recipes,
     });
-    // if (recipes || favoriteRecipes) {
-    //   res.send([...recipes, ...favoriteRecipes]);
-    // }
   },
 
   myFavRecipes: async (req, res) => {
@@ -153,9 +140,6 @@ const recipeFunctions = {
   unfavoriteRecipe: async (req, res) => {
     const { recipeId } = req.params;
     const { userId } = req.session;
-    // const recipe = await Recipe.findByPk(recipeId);
-    // const user = await User.findByPk(userId);
-    // await recipe.removeUser(user);
     const favorited = await Favorite.findOne({
       where: { recipeId: recipeId, userId: userId },
     });

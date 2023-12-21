@@ -1,4 +1,4 @@
-import { Recipe, User } from "../model.js";
+import { User } from "../model.js";
 
 const authFunctions = {
   login: async (req, res) => {
@@ -6,7 +6,6 @@ const authFunctions = {
     const user = await User.findOne({ where: { username: username } });
     if (user && user.password === password) {
       req.session.userId = user.userId;
-      // console.log(req.session.userId);
       res.json({ success: true, userId: user.userId });
     } else {
       res.json({ success: false });
@@ -14,7 +13,6 @@ const authFunctions = {
   },
 
   logout: async (req, res) => {
-    // console.log(req.session.userId);
     req.session.destroy();
     res.json({ success: true });
   },
@@ -26,10 +24,8 @@ const authFunctions = {
       username: username,
       password: password,
     });
-    // console.log(req.body.fname);
     if (user) {
       req.session.userId = user.userId;
-      // console.log(user.userId);
       res.json({ success: true, userId: user.userId });
     }
   },

@@ -20,7 +20,6 @@ function App() {
           type: "SET_USER_ID",
           payload: res.data.user,
         });
-        // console.log(res.data.user);
       } else {
         console.log(res.data);
       }

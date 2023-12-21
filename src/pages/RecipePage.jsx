@@ -9,17 +9,9 @@ import NavBar from "../Components/NavBar/NavBar";
 export default function RecipePage() {
   const [recipe, setRecipe] = useState(null);
   const { recipeId } = useParams("");
-  // const [like, setLike] = useState(50);
   const [fav, setFav] = useState(false);
 
   let userId = useSelector((state) => state.userId);
-  // console.log(userId);
-
-  // const navigate = useNavigate();
-  // const backButton = () => {
-  //   navigate(-1);
-  // };
-
   const loadRecipe = async () => {
     const { data } = await axios.get(`/api/recipe/${recipeId}`);
     for (let favorite of data.favorites) {
@@ -28,7 +20,6 @@ export default function RecipePage() {
       }
     }
     setRecipe(data);
-    // console.log(recipe);
   };
 
   useEffect(() => {
@@ -39,15 +30,10 @@ export default function RecipePage() {
     if (event && event.preventDefault) {
       event.preventDefault();
     }
-    console.log("favorite hit");
     const res = await axios.post(`/api/favorite/${recipeId}`);
     if (res.data.success) {
       setFav(true);
-      console.log("favorited");
-      console.log(recipe.favorites.length);
       loadRecipe();
-
-      // setLike(like + 1);
     }
   };
 
@@ -55,12 +41,9 @@ export default function RecipePage() {
     if (event && event.preventDefault) {
       event.preventDefault();
     }
-    console.log("unfavorite hit");
     const res = await axios.post(`/api/unfavorite/${recipeId}`);
     if (res.data.success) {
       setFav(false);
-      console.log("unfavorited");
-      console.log(recipe.favorites.length);
       loadRecipe();
       // setLike(like - 1);
     }
@@ -209,7 +192,6 @@ export default function RecipePage() {
                         color: "black",
                       }}
                       onClick={() => {
-                        console.log("hit button");
                         if (!fav) {
                           handleFavorite();
                         } else {

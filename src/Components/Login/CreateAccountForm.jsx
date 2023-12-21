@@ -39,7 +39,6 @@ const CreateAccountForm = ({ onCreateAccount }) => {
           height: "55vh",
           width: "30vw",
           backgroundColor: "rgb(255 255 255 / 50%)",
-          // alignContent: "center",
         }}
       >
         <form

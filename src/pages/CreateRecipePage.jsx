@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import CreateRecipeForm from "../Components/Profile/MyRecipes/CreateRecipeForm";
 import NavBar from "../Components/NavBar/NavBar";
@@ -9,10 +9,8 @@ const CreateRecipePage = ({ recipeId }) => {
 
   const handleCreateRecipe = async (event, formData) => {
     event.preventDefault();
-    console.log(formData.category);
     const res = await axios.post("/api/create-recipe", formData);
     if (res.data.success) {
-      //   navigate("/recipe-grid");
       navigate(`/recipe/${res.data.recipeId}`);
     }
   };

@@ -50,10 +50,5 @@ for (const cat of categories) {
   });
 }
 
-console.log(user1);
-console.log(cookie);
-console.log(chickenStrips);
-// console.log(breakfast);
-
 await db.close();
 console.log("Finished seeding database!");

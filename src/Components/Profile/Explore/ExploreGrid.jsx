@@ -1,11 +1,8 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { NavLink } from "react-router-dom";
 
 const ExploreGrid = ({ filtered }) => {
   let recipeList = filtered.map((recipe) => {
-    console.log(recipe);
     return (
       <Link
         to={`/recipe/${recipe.recipeId}`}

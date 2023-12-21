@@ -69,7 +69,6 @@ const Blog1Page = () => {
         Follow these tips, and you'll be well on your way to a stress-free and
         enjoyable Christmas dinner. Happy holidays!
       </p>
-      {/* ... (Other tips) ... */}
       <p className="post-conclusion">
         Follow these tips, and you'll be well on your way to a stress-free and
         enjoyable Christmas dinner. Happy holidays!

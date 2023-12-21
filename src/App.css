@@ -25,15 +25,6 @@
   background-color: black;
 }
 
-/* login/create account */
-/* .login-title {
-  text-align: center;
-}
-
-.login-message {
-  text-align: center;
-} */
-
 .create-account-form {
   text-align: center;
 }
@@ -134,7 +125,7 @@ p {
 .recipe-square img {
   width: 100%;
   height: 81.3%;
-  object-fit: cover; /* or object-fit: contain; depending on your preference */
+  object-fit: cover;
   border-radius: 0% 0% 3% 3%;
 }
 

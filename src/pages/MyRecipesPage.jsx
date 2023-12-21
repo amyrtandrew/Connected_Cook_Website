@@ -53,7 +53,6 @@ function MyRecipesPage() {
     setAuto(selectedValue === "personal");
     setFavorite(selectedValue === "favorites");
     setAlphabetical(selectedValue === "alphabetical" || selectedValue === "");
-    console.log(e.target.value);
   };
 
   return (

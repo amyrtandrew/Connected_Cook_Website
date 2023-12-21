@@ -2,7 +2,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "../Components/Login/LoginForm.jsx";
 import { useDispatch } from "react-redux";
-import NavBar from "../Components/NavBar/NavBar.jsx";
 
 export default function LoginPage() {
   const navigate = useNavigate();

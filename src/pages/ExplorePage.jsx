@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ExploreHeader from "../Components/Profile/Explore/ExploreHeader";
 import ExploreGrid from "../Components/Profile/Explore/ExploreGrid";
 import { useState, useEffect } from "react";
@@ -10,7 +10,6 @@ const ExplorePage = () => {
   const [data, setData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [submitted, setSubmitted] = useState(false);
-
   const [timeFilter, setTimeFilter] = useState(false);
   const [nameFilter, setNameFilter] = useState(false);
   const [bfastFilter, setBfastFilter] = useState(false);
@@ -27,7 +26,6 @@ const ExplorePage = () => {
     axios
       .get("/api/all-recipes")
       .then(({ data }) => {
-        console.log(data);
         setData(data);
         setFilterData(data);
       })
@@ -36,34 +34,22 @@ const ExplorePage = () => {
 
   const filterFunc = (e) => {
     e.preventDefault();
-    console.log(`time: ${timeFilter}`);
-    console.log(`app: ${appFilter}`);
-    console.log(`breakfast: ${bfastFilter}`);
-    console.log(`lunch: ${lunchFilter}`);
-    console.log(`dinner: ${dinnerFilter}`);
-    console.log(`dessert: ${dessertFilter}`);
 
     let filteredData = [...data];
-    // console.log(filteredData);
     setSubmitted(true);
     if (timeFilter) {
       filteredData = filteredData.filter((i) => i.cookTime < 30);
-      // setFilterData(filteredData);
-      console.log(filteredData);
     }
     if (nameFilter) {
       filteredData = filteredData.filter((i) =>
         i.recipeName.toLowerCase().includes(input)
       );
-      // setFilterData(filteredData);
     }
     if (appFilter) {
       filteredData = filteredData.filter((i) => i.categoryId === 1);
-      console.log(filteredData);
     }
     if (bfastFilter) {
       filteredData = filteredData.filter((i) => i.categoryId === 2);
-      console.log(filteredData);
     }
     if (lunchFilter) {
       filteredData = filteredData.filter((i) => i.categoryId === 3);
@@ -79,27 +65,22 @@ const ExplorePage = () => {
     }
 
     setFilterData(filteredData);
-    console.log(filteredData);
   };
 
   const filterCookTime = (e) => {
     e.preventDefault();
-    // console.log(e.target.innerHTML);
     setTimeFilter(true);
     setSelectedCook("cookTime");
-    console.log(data);
   };
 
   const filterName = (e) => {
     e.preventDefault();
     setInput(e.target.value);
     setNameFilter(true);
-    console.log(data);
   };
 
   const filterCategory = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
 
     if (e.target.value === "appetizer") {
       setAppFilter(true);
@@ -121,7 +102,6 @@ const ExplorePage = () => {
       setAppFilter(false);
       setDinnerFilter(false);
       setDessertFilter(false);
-      console.log(lunchFilter);
     }
     if (e.target.value === "dinner") {
       setDinnerFilter(true);
@@ -150,7 +130,6 @@ const ExplorePage = () => {
       <NavBar />
       <div className="flexbox-container home-page">
         <ExploreHeader
-          // setSubmited={setSubmited}
           filterName={filterName}
           filterCookTime={filterCookTime}
           filterCategory={filterCategory}
@@ -160,8 +139,6 @@ const ExplorePage = () => {
           selectedPop={selectedPop}
         />
         {submitted ? <ExploreGrid filtered={filterData} /> : <PhotoSlide />}
-        {/* <ExploreGrid filtered={submited ? filterData : data} /> */}
-        {/* <Outlet /> */}
       </div>
     </>
   );
