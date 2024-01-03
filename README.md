@@ -51,7 +51,7 @@ Connected Cook has not been deployed as a live application, so follow these step
    ```
 
 6. **Access Connected Cook:**
-   Open your preferred web browser and visit [http://localhost:3000](http://localhost:5555).
+   Open your preferred web browser and visit [http://localhost:5555](http://localhost:5555).
 
 Now, you have Connected Cook up and running locally! Explore the platform, share your favorite recipes, and connect with fellow food enthusiasts.
 
