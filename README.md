@@ -1,7 +1,10 @@
 
-Table of Contents
+Welcome to Connected Cook!
+
+Table of Contents:
 Technologies and Frameworks
 How to Run Connected Cook Locally
+
 Technologies and Frameworks
 JavaScript
 HTML5
