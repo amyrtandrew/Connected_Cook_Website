@@ -1,4 +1,4 @@
-# Connected Cook
+# Connected Cook - Created By Amy Andrew
 
 Welcome to Connected Cook, your go-to platform for exploring, creating, and sharing delightful recipes! This web application is designed to connect food enthusiasts, providing a seamless experience to discover and contribute to a diverse collection of recipes.
 
