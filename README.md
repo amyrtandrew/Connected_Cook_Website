@@ -1,10 +1,11 @@
 # Connected Cook - Created By Amy Andrew
 
-Welcome to Connected Cook, your go-to platform for exploring, creating, and sharing delightful recipes! This web application is designed to connect food enthusiasts, providing a seamless experience to discover and contribute to a diverse collection of recipes.
+Welcome to Connected Cook, your go-to platform for exploring, creating, and sharing delightful recipes! This web application, crafted by Amy Andrew, is designed to connect food enthusiasts, providing a seamless experience to discover and contribute to a diverse collection of recipes.
 
 ## Table of Contents
 - [Technologies and Frameworks](#technologies-and-frameworks)
 - [How to Run Connected Cook Locally](#how-to-run-connected-cook-locally)
+- [How to Use Connected Cook](#how-to-use-connected-cook)
 
 ## Technologies and Frameworks
 Connected Cook is built with a variety of technologies and frameworks to ensure a robust and engaging user experience:
@@ -55,4 +56,7 @@ Connected Cook has not been deployed as a live application, so follow these step
 
 Now, you have Connected Cook up and running locally! Explore the platform, share your favorite recipes, and connect with fellow food enthusiasts.
 
-Feel free to contribute to the project, report issues, or suggest improvements. Happy cooking! 🍳🌮🍰
+## How to Use Connected Cook
+Watch the demo video on [YouTube](https://www.youtube.com/watch?v=9TT9PxPBAlM&t=1s) to learn how to make the most of Connected Cook. Discover the features, navigate the interface, and start your culinary journey today!
+
+Feel free to contribute to the project, report issues, or suggest improvements. Happy cooking! 🌮
