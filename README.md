@@ -1,8 +1,24 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Table of Contents
+Technologies and Frameworks
+How to Run Connected Cook Locally
+Technologies and Frameworks
+JavaScript
+HTML5
+CSS
+React
+React Bootstrap
+React Redux
+React Router
+Node/Express.js
+PostgreSQL
+Sequelize ORM
+Axios
+How to Run Connected Cook Locally
+Connected Cook has not been deployed as a live application, so it has to be run locally.
 
-Currently, two official plugins are available:
+After downloading the GitHub repository and adding it to a local directory, run the following terminal commands:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+npm i or npm install (Installs project dependencies)
+npm run initdb and npm run seed (Creates and seeds the database)
+npm run dev (Launches the application)
